@@ -42,18 +42,22 @@ export default function WhatWeDoSlider() {
     slidesToScroll: 1,
     arrows: false,
     dotsClass: "slick-dots whatwedo-dots",
-    customPaging: function () {
-      return <div className="whatwedo-dot" />;
-    },
+    customPaging: () => <div className="whatwedo-dot" />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280, // laptop
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1024, // tablet
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 640, // mobile
         settings: {
           slidesToShow: 1,
         },
@@ -62,34 +66,42 @@ export default function WhatWeDoSlider() {
   };
 
   return (
-    <div className="whatwedo-slider mt-10">
+    <div className="whatwedo-slider mt-10 px-2 sm:px-4">
       <Slider {...settings}>
         {whatWeDoData.map((item, index) => (
-          <div key={index} className="px-3 h-full">
-            <div className="bg-white border border-[#000000]/10 rounded-[16px] py-5 px-4 space-y-4 card-what-we-do overflow-hidden flex flex-col h-full justify-between">
-              <div>
+          <div key={index} className="px-2 sm:px-3 h-full">
+            <div className="bg-white border border-[#000000]/10 rounded-[16px] p-4 sm:p-5 space-y-4 flex flex-col h-full">
+              
+              {/* Image */}
+              <div className="overflow-hidden rounded-[12px]">
                 <Image
                   src={item.image}
                   alt={item.title}
                   width={500}
                   height={300}
-                  className="w-full "
+                  className="w-full object-cover"
                 />
               </div>
-              <div className="flex flex-col flex-1 space-y-2">
+
+              {/* Content */}
+              <div className="flex flex-col flex-1">
                 <div>
-                  <h3 className="text-black lg:text-2xl text-xl font-bold">
+                  <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-bold">
                     {item.title}
                   </h3>
-                  <p className="lg:text-base text-[#000]/60">
+                  <p className="text-sm sm:text-base text-[#000]/60 mt-1">
                     {item.description}
                   </p>
                 </div>
+
                 <a
                   href={item.link}
-                  className="text-[#81BA45] text-base font-semibold mt-auto"
-                >Learn More </a>
+                  className="text-[#81BA45] text-sm sm:text-base font-semibold mt-4"
+                >
+                  Learn More →
+                </a>
               </div>
+
             </div>
           </div>
         ))}

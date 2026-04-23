@@ -20,52 +20,54 @@
 }
 
 body {
-  background: var(--background);
+  background: #F3F5EE;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
 
 /* .......... css .......  */
 
-.empowering-women{
+.empowering-women {
   position: relative;
 }
 
-.empowering-women::after{
+.empowering-women::after {
   content: "";
   position: absolute;
   width: 574px;
   height: 100%;
-  background: url(/images/ellipse-img-right.png) no-repeat; 
+  background: url(/images/ellipse-img-right.png) no-repeat;
   top: 0px;
-  right: 0px; 
+  right: 0px;
 }
 
-.empowering-women::before{
+.empowering-women::before {
   content: "";
   position: absolute;
   width: 529px;
   height: 1000px;
   background: url(/images/ellipse-left.png) no-repeat;
   top: 0px;
-  left: 0px; 
+  left: 0px;
 }
 
-.card-what-we-do{
+.card-what-we-do {
   position: relative;
   transition: all 0.3s ease;
 }
+
 .card-what-we-do:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
-.card-what-we-do::after{
+
+.card-what-we-do::after {
   position: absolute;
   content: "";
   width: 5px;
@@ -74,6 +76,7 @@ html{
   top: 40px;
   left: 0px;
 }
+
 .whatwedo-dots {
   display: flex !important;
   justify-content: center;
@@ -112,7 +115,7 @@ html{
   height: inherit !important;
 }
 
-.whatwedo-slider .slick-slide > div {
+.whatwedo-slider .slick-slide>div {
   height: 100%;
 }
 
@@ -124,9 +127,27 @@ html{
   height: auto;
 }
 
-.whatwedo-slider .slick-slide > div {
+.whatwedo-slider .slick-slide>div {
   height: 100%;
 }
 
 
+.chairman-details {
+  position: relative;
+}
 
+.chairman-details {
+  position: relative;
+}
+
+.chairman-details::after {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 80%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}

@@ -42,7 +42,7 @@ const Header = () => {
         <div className="hidden md:flex gap-6 items-center py-2">
           <nav className="flex space-x-4 items-center">
             <Link href="/" className="text-[#fff] text-base font-medium">HOME</Link>
-            <Link href="/" className="text-[#fff] text-base font-medium">About Us</Link>
+            <Link href="/about-us" className="text-[#fff] text-base font-medium">About Us</Link>
             <Link href="/" className="text-[#fff] text-base font-medium">Our Programs</Link>
             <Link href="/" className="text-[#fff] text-base font-medium">Gallery</Link>
             <Link href="/" className="text-[#fff] text-base font-medium">Resource Center</Link>

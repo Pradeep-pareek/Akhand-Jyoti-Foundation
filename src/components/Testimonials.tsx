@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-/* ─── Data ─────────────────────────────────────────────────── */
 const testimonialsData = [
   {
     id: 1,
@@ -36,10 +35,8 @@ const testimonialsData = [
 
 const AUTO_DELAY = 3500;
 
-/* ─── Helpers ───────────────────────────────────────────────── */
 const mod = (n: number, m: number) => ((n % m) + m) % m;
 
-/* ─── Star Rating ───────────────────────────────────────────── */
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-1">
@@ -47,7 +44,7 @@ function StarRating({ rating }: { rating: number }) {
         const filled = rating >= star;
         const half = !filled && rating >= star - 0.5;
         return (
-          <div key={star} className="text-yellow-400 text-lg">
+          <div key={star} className="text-yellow-400 text-2xl">
             {filled ? "★" : half ? "☆" : "☆"}
           </div>
         );
@@ -56,7 +53,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-/* ─── Avatar ───────────────────────────────────────────────── */
+
 function Avatar({ name }: { name: string }) {
   const initials = name.split(" ").map(n => n[0]).join("");
   return (
@@ -66,7 +63,6 @@ function Avatar({ name }: { name: string }) {
   );
 }
 
-/* ─── Card ─────────────────────────────────────────────────── */
 function Card({ item }: any) {
   return (
     <div className="bg-white rounded-2xl p-5 shadow-md flex flex-col gap-3">
@@ -83,7 +79,7 @@ function Card({ item }: any) {
   );
 }
 
-/* ─── Main Component ───────────────────────────────────────── */
+
 export default function TestimonialsSlider() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<any>(null);
@@ -106,53 +102,37 @@ export default function TestimonialsSlider() {
     <section className="bg-[#f0ebe4] py-16 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
 
-        {/* LEFT SIDE */}
         <div className="w-full md:w-[40%] relative h-[420px] overflow-hidden">
 
-          {/* TOP PREVIEW */}
           <div className="absolute top-0 w-full opacity-60 scale-95 blur-[1px]">
             <Card item={testimonialsData[prevIndex]} />
           </div>
 
-          {/* CENTER CARD */}
           <div className="absolute top-1/2 -translate-y-1/2 w-full z-10">
             <Card item={testimonialsData[current]} />
           </div>
 
-          {/* BOTTOM PREVIEW */}
           <div className="absolute bottom-0 w-full opacity-60 scale-95 blur-[1px]">
             <Card item={testimonialsData[nextIndex]} />
           </div>
-
         </div>
-
-        {/* RIGHT SIDE */}
         <div className="w-full md:w-[60%]">
-          <h2 className="text-3xl font-bold mb-4">
-            What Akhand Jyoti <br /> Foundation Supporters Say
-          </h2>
-
-          <p className="text-gray-600 mb-5">
-            Hear from our supporters as they share their experiences,
-            insights, and stories of transformation, highlighting the meaningful
-            impact Akhand Jyoti Foundation has created.
-          </p>
-
+          <div className="space-y-2">
+            <h2 className="text-start text-black lg:text-4xl md:text-3xl text-xl font-bold">Our Media Coverage</h2>
+            <p className="text-start text-black text-sm md:text-base lg:text-lg">Explore how our work and impact have been recognized across various media platforms. From inspiring stories to meaningful achievements, discover how we are making a difference in communities nationwide.</p>
+          </div>
           <StarRating rating={4.5} />
-
-          <div className="flex items-center gap-4 mt-6">
-            <button className="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600">
+          <div className="flex items-center justify-between gap-4 mt-6">
+            <button className="bg-[#75E548] text-white px-6 py-2 rounded-full font-semibold cursor-pointer">
               ❤️ Donate Now
             </button>
-
             <div className="flex gap-2">
               {testimonialsData.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-2 rounded-full transition-all ${
-                    i === current ? "w-8 bg-green-500" : "w-3 bg-gray-300"
-                  }`}
+                  className={`h-2 rounded-full transition-all ${i === current ? "w-8 bg-[#75E548]" : "w-3 bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
