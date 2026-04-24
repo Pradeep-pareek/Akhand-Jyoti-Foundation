@@ -1,4 +1,3 @@
-import HeroSection from "@/components/HeroSection";
 import PartnersSlider from "@/components/PartnersSlider";
 import Whatwedoslider from "@/components/Whatwedoslider";
 import Testimonials from "@/components/Testimonials";
@@ -8,6 +7,7 @@ import Link from "next/link";
 import { IconHeartFilled } from '@tabler/icons-react';
 import Medianews from "@/components/Medianews";
 import { IconChevronsRight } from '@tabler/icons-react';
+import HeroSection from "@/components/Herosection";
 
 export default function Home() {
   return (

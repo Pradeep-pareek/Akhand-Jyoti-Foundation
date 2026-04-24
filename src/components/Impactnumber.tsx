@@ -55,29 +55,29 @@ export default function StatsSection() {
     );
 }
 
-function Card({ item, startCount }) {
+function Card({ item, startCount }: any) {
     return (
-      <div className="bg-white border border-[#000]/10 rounded-[16px] py-6 px-4">
-  <div className="flex flex-col items-center">
-    <div className="bg-[#81BA45]/20 rounded-full p-3 flex items-center justify-center">
-      <Image
-        src="/images/skill-development.png"
-        alt="logo image"
-        width={45}
-        height={45}
-        className="z-10 relative"
-      />
-    </div>
-    <h3 className="text-center text-[#000] font-bold text-2xl mt-4">
-      {startCount && (
-        <CountUp end={item.value} duration={2} suffix="+" />
-      )}
-    </h3>
-    <p className="text-center text-base text-[#000]/70">
-      {item.label}
-    </p>
+        <div className="bg-white border border-[#000]/10 rounded-[16px] py-6 px-4">
+            <div className="flex flex-col items-center">
+                <div className="bg-[#81BA45]/20 rounded-full p-3 flex items-center justify-center">
+                    <Image
+                        src="/images/skill-development.png"
+                        alt="logo image"
+                        width={45}
+                        height={45}
+                        className="z-10 relative"
+                    />
+                </div>
+                <h3 className="text-center text-[#000] font-bold text-2xl mt-4">
+                    {startCount && (
+                        <CountUp end={item.value} duration={2} suffix="+" />
+                    )}
+                </h3>
+                <p className="text-center text-base text-[#000]/70">
+                    {item.label}
+                </p>
 
-  </div>
-</div>
+            </div>
+        </div>
     );
 }
