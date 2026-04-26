@@ -10,6 +10,9 @@ import {
   IconMapPin,
 } from "@tabler/icons-react";
 import Image from "next/image";
+// import { IconMapPin } from '@tabler/icons-react';
+import { IconPhoneCall } from '@tabler/icons-react';
+// import { IconMail } from '@tabler/icons-react';
 
 export default function Footer() {
   const quickLinks = ["Home", "About Us", "What We Do", "Programs", "Contact Us"];
@@ -55,68 +58,21 @@ export default function Footer() {
         </div>
       </div>
 
-      <footer className="bg-[#222222] text-white -mt-10 pt-4">
+      <footer className="bg-[#182C30] text-white -mt-10 pt-4">
         <div className="max-w-6xl mx-auto px-6 md:px-8 pt-16 pb-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
             <div className="md:col-span-1 space-y-4">
-              <div className="flex items-center gap-3">
-                <svg
-                  width="60"
-                  height="60"
-                  viewBox="0 0 80 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-label="Akhand Jyoti Foundation logo"
-                >
-                  <circle cx="40" cy="40" r="40" fill="#2a2a2a" />
-                  <ellipse cx="40" cy="22" rx="4.5" ry="9" fill="#81BA45" />
-                  <ellipse
-                    cx="28"
-                    cy="29"
-                    rx="4"
-                    ry="7.5"
-                    fill="#81BA45"
-                    transform="rotate(-22 28 29)"
-                  />
-                  <ellipse
-                    cx="52"
-                    cy="29"
-                    rx="4"
-                    ry="7.5"
-                    fill="#81BA45"
-                    transform="rotate(22 52 29)"
-                  />
-                  <rect x="37" y="30" width="6" height="18" rx="3" fill="white" />
-                  <text
-                    x="40"
-                    y="70"
-                    textAnchor="middle"
-                    fontSize="7"
-                    fill="#81BA45"
-                    fontFamily="sans-serif"
-                    fontWeight="700"
-                  >
-                    AJF
-                  </text>
-                </svg>
-
-                <div>
-                  <p className="text-[#81BA45] text-[11px] font-semibold leading-snug">
-                    Creating Change,
-                  </p>
-                  <p className="text-[#81BA45] text-[11px] font-semibold leading-snug">
-                    One Step at a Time
-                  </p>
-                  <p className="text-gray-300 text-[13px] font-bold mt-1 leading-snug">
-                    Akhand Jyoti Foundation
-                    <span className="text-[10px] align-super ml-0.5">™</span>
-                  </p>
-                </div>
+              <div className="">
+                <Image
+                  src="/images/footer-logo.png"
+                  alt="logo image"
+                  width={150}
+                  height={150}
+                  className=""
+                />
               </div>
-
-              <p className="text-gray-400 text-sm leading-relaxed">
-                We are a dedicated non-profit organization working towards skill
-                development, education, and community empowerment across India.
+              <p className="text-[#fff] text-base leading-relaxed">
+                We are a dedicated non-profit organization working towards skill development, education, and community empowerment across India.
               </p>
 
               <div className="flex gap-2.5 pt-1">
@@ -125,9 +81,9 @@ export default function Footer() {
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="w-9 h-9 rounded-full bg-[#81BA45] flex items-center justify-center hover:bg-[#6fa336] transition-colors"
+                    className="w-10 h-10 rounded-full bg-[#81BA45] flex items-center justify-center hover:bg-[#6fa336] transition-colors"
                   >
-                    <Icon size={17} color="white" />
+                    <Icon size={26} color="white" />
                   </a>
                 ))}
               </div>
@@ -137,7 +93,7 @@ export default function Footer() {
               <h3 className="text-white font-bold text-[15px] mb-5 tracking-wide">
                 Quick Links
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link}>
                     <a
@@ -155,17 +111,33 @@ export default function Footer() {
               <h3 className="text-white font-bold text-[15px] mb-5 tracking-wide">
                 Get In Touch
               </h3>
-              <div className="flex gap-3">
-                {touchIcons.map(({ Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="w-10 h-10 rounded-full bg-[#2f2f2f] border border-[#444] flex items-center justify-center hover:border-[#81BA45] transition-colors"
+              <div className="space-y-4">
+                <div className="flex gap-2 items-center">
+                  <span><IconMapPin stroke={2} /></span>
+                  <a href="#"
+                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
                   >
-                    <Icon size={18} className="text-[#81BA45]" />
+                    C-4B/307-A-GF. Pocket 13. Janakpuri. NEW DELHI South West New Delhi – 110058
                   </a>
-                ))}
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  <IconMail stroke={2} />
+                  <a href="#"
+                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
+                  >
+                    akhandjyotifoundation@gmail.com
+                  </a>
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  <IconPhoneCall stroke={2} />
+                  <a href="#"
+                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
+                  >
+                    8800452255
+                  </a>
+                </div>
               </div>
             </div>
           </div>
