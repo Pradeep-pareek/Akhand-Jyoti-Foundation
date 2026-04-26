@@ -1,6 +1,7 @@
 import HeroSection from "../about-us/components/Herosection";
 // import Chairman from "./components/Offerings";
 import Offerings from "./components/Offerings";
+import Member from "./components/Member";
 
 
 import Link from "next/link";
@@ -212,7 +213,18 @@ export default function Home() {
                 </div>
             </section>
             <Offerings />
-
+            <section
+                className="bg-cover bg-center lg:py-16 py-10"
+                style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
+                <div>
+                    <div className="space-y-2">
+                        <h2 className="text-white lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
+                            Meet Our Board Members
+                        </h2>
+                        <p className="text-center text-white lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Our board comprises experienced leaders and visionaries committed to driving sustainable social impact across education, skill development, and community empowerment in India.</p>
+                    </div>
+                </div>
+            </section>
             <section className="bg-[#F5F5F5] lg:py-16 py-10">
                 <div className="mx-5 xl:mx-10 2xl:mx-0">
                     <div>
@@ -303,16 +315,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-
-            <section
-                className="bg-cover bg-center lg:py-16 py-10"
-                style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}
-            >
-
-            </section>
-
-
+            <Member />
         </>
     );
 }

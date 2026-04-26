@@ -43,12 +43,12 @@ const Header = () => {
           <nav className="flex space-x-4 items-center">
             <Link href="/" className="text-[#fff] text-base font-medium">HOME</Link>
             <Link href="/about-us" className="text-[#fff] text-base font-medium">About Us</Link>
-            <Link href="/" className="text-[#fff] text-base font-medium">Our Programs</Link>
-            <Link href="/" className="text-[#fff] text-base font-medium">Gallery</Link>
+            <Link href="/our-programs" className="text-[#fff] text-base font-medium">Our Programs</Link>
+            <Link href="/gallery" className="text-[#fff] text-base font-medium">Gallery</Link>
             <Link href="/" className="text-[#fff] text-base font-medium">Resource Center</Link>
           </nav>
           <button className="bg-[#FFFFFF] rounded-full px-6 py-2 text-black text-base font-normal cursor-pointer">
-            <Link className="flex gap-1" href={"/contact-us"}>
+            <Link className="flex gap-1" href={"/donation"}>
               <IconHeartFilled className="text-red-500 text-base" /> Donation
             </Link>
           </button>

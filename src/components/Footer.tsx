@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <section className="relative lg:pt-16 pt-10">
+    <section className="relative lg:pt-16 pt-10 bg-white">
       <div className="relative z-10 mx-5 xl:mx-10 2xl:mx-auto 2xl:max-w-6xl">
         <div className="bg-[#81BA45] rounded-[18px] py-10 px-8 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 overflow-hidden">
           <div className="space-y-5 relative z-10">
@@ -54,7 +54,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
 
       <footer className="bg-[#222222] text-white -mt-10 pt-4">
         <div className="max-w-6xl mx-auto px-6 md:px-8 pt-16 pb-0">

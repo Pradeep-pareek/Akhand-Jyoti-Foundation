@@ -151,3 +151,14 @@ html {
   background: #fff;
   clip-path: polygon(100% 0, 0 50%, 100% 100%);
 }
+
+.text-line-main{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.text-line{
+  width: 30px;
+  height: 4px;
+  background-color: #81BA45;
+}
