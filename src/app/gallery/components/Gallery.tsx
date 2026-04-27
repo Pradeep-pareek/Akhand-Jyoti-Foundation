@@ -52,7 +52,7 @@ const slides = [
   },
 ];
 
-function GallerySlide({ slide }) {
+function GallerySlide({ slide }: { slide: any }) {
   return (
     <div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
@@ -82,7 +82,7 @@ function GallerySlide({ slide }) {
               <h4 className="text-[#000000] md:text-xl text-lg font-bold">Impact at a Glance</h4>
             </div>
             <div className="space-y-2 mt-2">
-              {slide.impacts.map((item, idx) => (
+              {slide.impacts.map((item: any, idx: number) => (
                 <div key={idx} className="flex gap-2 items-center">
                   <Image src="/images/right-icon.png" alt="logo image" width={20} height={20} />
                   <p className="text-black text-base">{item}</p>
@@ -108,7 +108,7 @@ export default function Gallery() {
     autoplaySpeed: 4500,
     pauseOnHover: true,
     cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
-    appendDots: (dots) => <ul>{dots}</ul>,
+    appendDots: (dots: any) => <ul>{dots}</ul>,
     customPaging: () => <div className="g-dot" />,
   };
 
