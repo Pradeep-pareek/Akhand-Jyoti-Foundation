@@ -46,7 +46,7 @@ const Header = () => {
               <Link href="/about-us" className="text-[#fff] text-base font-medium">About Us</Link>
               <Link href="/our-programs" className="text-[#fff] text-base font-medium">Our Programs</Link>
               <Link href="/gallery" className="text-[#fff] text-base font-medium">Gallery</Link>
-              <Link href="/" className="text-[#fff] text-base font-medium">Resource Center</Link>
+              <Link href="/contact-us" className="text-[#fff] text-base font-medium">Contact Us</Link>
             </nav>
             <button className="bg-[#FFFFFF] rounded-full px-6 py-2 text-black text-base font-normal cursor-pointer">
               <Link className="flex gap-1" href={"/donation"}>
@@ -85,7 +85,7 @@ const Header = () => {
             <Link href="/about-us" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>About Us</Link>
             <Link href="/our-programs" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Our Programs</Link>
             <Link href="/gallery" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Gallery</Link>
-            <Link href="/services" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Resource Center</Link>
+            <Link href="/contact-us" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Contact Us</Link>
 
             <button onClick={closeMenu} className="bg-[#81BA45] text-white rounded-full px-6 py-2 text-black text-base font-normal cursor-pointer">
               <Link className="flex gap-1" href={"/donation"}>

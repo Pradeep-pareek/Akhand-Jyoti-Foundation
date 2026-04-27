@@ -71,7 +71,7 @@ function Card({ item }: any) {
       <div className="flex items-center gap-3 mt-1">
         <Avatar name={item.name} />
         <div>
-          <p className="font-semibold text-sm">{item.name}</p>
+          <p className="font-semibold text-sm text-black">{item.name}</p>
           <p className="text-xs text-gray-500">{item.role}</p>
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function TestimonialsSlider() {
           </div>
           <StarRating rating={4.5} />
           <div className="flex items-center justify-between gap-4 mt-6">
-            <button className="bg-[#75E548] text-white px-6 py-2 rounded-full font-semibold cursor-pointer">
+            <button className="bg-[#81BA45] text-white px-6 py-2 rounded-full font-semibold cursor-pointer">
               ❤️ Donate Now
             </button>
             <div className="flex gap-2">
@@ -131,14 +131,15 @@ export default function TestimonialsSlider() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-2 rounded-full transition-all ${i === current ? "w-8 bg-[#75E548]" : "w-3 bg-gray-300"
+                  className={`h-2 rounded-full transition-all duration-500 ${i === current
+                      ? "w-8 bg-[#81BA45]"
+                      : "w-3 bg-gray-300"
                     }`}
                 />
               ))}
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
