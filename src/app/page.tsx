@@ -22,12 +22,12 @@ export default function Home() {
       </section>
 
       <section className="lg:py-16 py-10 bg-[url('/images/experts-bg-img.png')] bg-cover bg-center bg-no-repeat">
-        <div className="lg:mx-5 xl:mx-10 2xl:mx-0">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Guided by Experts</h2>
             <p className="text-center text-black text-sm md:text-base lg:text-lg ">Our advisors bring deep industry knowledge to shape strategy and maximize impact.</p>
           </div>
-          <div className="grid gap-8 pt-8 lg:grid-cols-3 md:grid-cols-2">
+          <div className="grid md:gap-8 gap-5 pt-8 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
             <div className="bg-[#FFFFFF] border border-[#000]/10 py-8 lg:px-6 px-4 rounded-[16px] space-y-3">
               <div className="space-y-2">
                 <Image
@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white lg:py-16 py-10 empowering-women">
-        <div className="lg:mx-5 xl:mx-10 2xl:mx-0">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Empowering Women Across Every Stage of Life</h2>
             <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women through every phase of life by ensuring access to health, education, care, and sustainable opportunities for a dignified future.</p>

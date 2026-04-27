@@ -37,7 +37,7 @@ html {
   position: relative;
 }
 
-.empowering-women::after {
+.empowering-women::before {
   content: "";
   position: absolute;
   width: 574px;
@@ -47,10 +47,10 @@ html {
   right: 0px;
 }
 
-.empowering-women::before {
+.empowering-women::after{
   content: "";
   position: absolute;
-  width: 529px;
+  width: 318px;
   height: 1000px;
   background: url(/images/ellipse-left.png) no-repeat;
   top: 0px;

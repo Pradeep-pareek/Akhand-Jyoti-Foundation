@@ -89,33 +89,36 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-white font-bold text-[15px] mb-5 tracking-wide">
-                Quick Links
-              </h3>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div className="lg:flex justify-center">
+              <div>
+                <h3 className="text-white font-bold text-lg mb-5 tracking-wide ">
+                  Quick Links
+                </h3>
+                <ul className="space-y-2 text-start">
+                  {quickLinks.map((link) => (
+                    <li key={link}>
+                      <a
+                        href="#"
+                        className="text-gray-400 text-center text-base hover:text-[#81BA45] transition-colors"
+                      >
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
+
             <div>
-              <h3 className="text-white font-bold text-[15px] mb-5 tracking-wide">
+              <h3 className="text-white font-bold text-lg mb-5 tracking-wide">
                 Get In Touch
               </h3>
               <div className="space-y-4">
                 <div className="flex gap-2 items-center">
                   <span><IconMapPin stroke={2} /></span>
                   <a href="#"
-                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
+                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
                   >
                     C-4B/307-A-GF. Pocket 13. Janakpuri. NEW DELHI South West New Delhi – 110058
                   </a>
@@ -124,7 +127,7 @@ export default function Footer() {
                 <div className="flex gap-2 items-center">
                   <IconMail stroke={2} />
                   <a href="#"
-                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
+                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
                   >
                     akhandjyotifoundation@gmail.com
                   </a>
@@ -133,7 +136,7 @@ export default function Footer() {
                 <div className="flex gap-2 items-center">
                   <IconPhoneCall stroke={2} />
                   <a href="#"
-                    className="text-gray-400 text-sm hover:text-[#81BA45] transition-colors"
+                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
                   >
                     8800452255
                   </a>

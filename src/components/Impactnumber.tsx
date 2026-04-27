@@ -39,13 +39,13 @@ export default function StatsSection() {
     return (
         <div ref={sectionRef} className="mt-10">
 
-            <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 md:gap-8 gap-5">
                 {statsData.slice(0, 4).map((item) => (
                     <Card key={item.id} item={item} startCount={startCount} />
                 ))}
             </div>
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mt-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-5 mt-8">
                 {statsData.slice(4).map((item) => (
                     <Card key={item.id} item={item} startCount={startCount} />
                 ))}
