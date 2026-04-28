@@ -39,7 +39,7 @@ export default function Home() {
                         <div className="bg-[#FFFFFF] rounded-[10px] border-1 border-[#000]/10 py-6 px-4 space-y-2">
                             <div className="w-20 h-20 rounded-full justify-center bg-[#81BA45]/20 flex items-center mx-auto">
                                 <Image
-                                    src="/images/lives-touched-img.png"
+                                    src="/images/programs-run-icon.png"
                                     alt="logo image"
                                     width={50}
                                     height={50}
@@ -54,7 +54,7 @@ export default function Home() {
                         <div className="bg-[#FFFFFF] rounded-[10px] border-1 border-[#000]/10 py-6 px-4 space-y-2">
                             <div className="w-20 h-20 rounded-full justify-center bg-[#81BA45]/20 flex items-center mx-auto">
                                 <Image
-                                    src="/images/lives-touched-img.png"
+                                    src="/images/districts-reached-icon.png"
                                     alt="logo image"
                                     width={50}
                                     height={50}
@@ -69,7 +69,7 @@ export default function Home() {
                         <div className="bg-[#FFFFFF] rounded-[10px] border-1 border-[#000]/10 py-6 px-4 space-y-2">
                             <div className="w-20 h-20 rounded-full justify-center bg-[#81BA45]/20 flex items-center mx-auto">
                                 <Image
-                                    src="/images/lives-touched-img.png"
+                                    src="/images/volunteers-icon.png"
                                     alt="logo image"
                                     width={50}
                                     height={50}

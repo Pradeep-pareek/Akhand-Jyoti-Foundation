@@ -60,18 +60,15 @@ export default function ChairmanQuoteSection() {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 md:gap-8">
+                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 md:gap-8">
                     {offerings.map((card) => (
                         <div
                             key={card.number}
-                            className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col gap-5 relative overflow-hidden"
-                        >
+                            className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col gap-5 relative overflow-hidden">
                             <div className={`absolute top-0 left-6 md:left-8 w-10 h-[3px] rounded-full ${card.accentColor}`} />
-
                             <div className="flex items-center justify-between pt-4">
                                 <span
-                                    className={`text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full ${card.tagColor}`}
-                                >
+                                    className={`text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full ${card.tagColor}`}>
                                     {card.tag}
                                 </span>
                                 <span className="text-5xl md:text-6xl font-bold text-gray-100 leading-none select-none">

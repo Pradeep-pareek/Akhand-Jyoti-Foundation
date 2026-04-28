@@ -42,7 +42,7 @@ const Header = () => {
           </Link>
           <div className="hidden md:flex gap-6 items-center py-2">
             <nav className="flex space-x-4 items-center">
-              <Link href="/" className="text-[#fff] text-base font-medium">HOME</Link>
+              <Link href="/" className="text-[#fff] text-base font-medium">Home</Link>
               <Link href="/about-us" className="text-[#fff] text-base font-medium">About Us</Link>
               <Link href="/our-programs" className="text-[#fff] text-base font-medium">Our Programs</Link>
               <Link href="/gallery" className="text-[#fff] text-base font-medium">Gallery</Link>
@@ -86,7 +86,6 @@ const Header = () => {
             <Link href="/our-programs" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Our Programs</Link>
             <Link href="/gallery" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Gallery</Link>
             <Link href="/contact-us" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Contact Us</Link>
-
             <button onClick={closeMenu} className="bg-[#81BA45] text-white rounded-full px-6 py-2 text-black text-base font-normal cursor-pointer">
               <Link className="flex gap-1" href={"/donation"}>
                 <IconHeartFilled className="text-red-500 text-base" /> Donation
@@ -95,7 +94,6 @@ const Header = () => {
           </div>
         </aside>
       </div>
-
     </header>
   );
 };
