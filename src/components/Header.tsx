@@ -28,7 +28,7 @@ const Header = () => {
   if (!hasMounted) return null;
 
   return (
-    <header className="w-full max-w-[1320px] mx-auto   md:px-6 lg:px-8"  >
+    <header className="w-full max-w-[1320px] mt-2 mx-auto   md:px-6 lg:px-8"  >
       <div className="bg-[#81BA45] md:rounded-[18px] sticky shadow-md top-0 z-50  ">
         <div className="flex items-center justify-between md:py-0 py-3 lg:px-10 px-5">
           <Link href="/" className="text-2xl font-bold text-[#f70d28] py-1">

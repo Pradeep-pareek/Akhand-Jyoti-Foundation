@@ -54,7 +54,7 @@ export default function DonationCard() {
     };
 
     return (
-        <div className="flex items-center justify-center p-4 font-sans">
+        <div className="flex items-center justify-end p-4 font-sans">
             {/*
                 FIX: Removed `overflow-hidden` from this wrapper.
                 `overflow: hidden` on ANY ancestor of a sticky element cancels
