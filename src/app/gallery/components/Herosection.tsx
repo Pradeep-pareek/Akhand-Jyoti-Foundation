@@ -1,8 +1,13 @@
 "use client";
 import Image from "next/image";
+import Imageslider from "./Imageslider";
+
+
+
+
 export default function HeroSection() {
   return (
-    <section className="lg:mx-5 xl:mx-10 2xl:mx-0 mt-2 lg:pb-10">
+    <section className="mt-2 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
       <div
         className="relative bg-[#81BA45]/30 rounded-[18px] border border-black/10 bg-cover bg-center">
         <div className="relative z-10  py-12 ">
@@ -18,13 +23,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <Image
-            src="/images/gallery-hero-img.png"
-            alt="logo image"
-            width={300}
-            height={300}
-            className="w-full mx-auto"
-          />
+              <Imageslider/>
         </div>
       </div>
     </section>

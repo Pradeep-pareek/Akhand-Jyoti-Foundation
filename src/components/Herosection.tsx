@@ -82,12 +82,12 @@ export default function HeroSection() {
                 : "opacity-100 translate-y-0"
             }`}
           >
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-1">
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-1 text-[#000]">
               <span className="text-[#5a9e3a]">{slide.badge}</span>
               <br />
               <span className="text-gray-900">{slide.title}</span>
             </h1>
-            <p className="text-gray-600 text-sm md:text-base lg:text-lg mt-3 mb-6 leading-relaxed">
+            <p className="text-black text-sm md:text-base lg:text-lg mt-3 mb-6 leading-relaxed">
               {slide.description}
             </p>
             <button className="bg-[#5a9e3a] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e] transition-colors cursor-pointer">

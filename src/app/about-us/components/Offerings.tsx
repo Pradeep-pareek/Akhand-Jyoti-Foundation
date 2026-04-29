@@ -1,5 +1,4 @@
 "use client";
-
 const offerings = [
     {
         number: "01",

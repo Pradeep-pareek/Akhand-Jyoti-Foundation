@@ -1,14 +1,12 @@
 import Herosection from "./components/Herosection";
 import Gallery from "./components/Gallery";
-
 import Image from "next/image";
 
 export default function Home() {
     return (
         <>
             <Herosection />
-             <Gallery/>
-
+            <Gallery />
             <section className="bg-[#F3F5EE] lg:py-16 py-10">
                 <div className="mx-5 xl:mx-10 2xl:mx-0">
                     <div>
@@ -20,7 +18,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mt-8">
+                    <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-8">
                         <div className="bg-[#FFFFFF] rounded-[10px] border-1 border-[#000]/10 py-6 px-4 space-y-2">
                             <div className="w-20 h-20 rounded-full justify-center bg-[#81BA45]/20 flex items-center mx-auto">
                                 <Image

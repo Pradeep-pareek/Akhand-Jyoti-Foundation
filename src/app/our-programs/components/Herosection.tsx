@@ -2,13 +2,13 @@
 import Image from "next/image";
 export default function HeroSection() {
   return (
-    <section className="lg:mx-5 xl:mx-10 2xl:mx-0 mt-2">
+    <section className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 mt-2">
 
       <div
         className="relative rounded-[18px] border border-black/10 bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: "url('/images/our-programs-hero-img.png')" }}
-      >
-        <div className="relative z-10 px-8 md:px-16 py-12 lg:py-20 lg:w-[80%]">
+        style={{ backgroundImage: "url('/images/our-programs-hero-img.png')" }}>
+        <div className=" w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="relative z-10 px-8 md:px-16 py-12 lg:py-20 lg:w-[80%]">
           <span className="bg-[#E8F5ED] inline-flex py-2 px-8  rounded-full items-center gap-2">
             <Image
               src="/images/making-impact-icon.png"
@@ -28,6 +28,7 @@ export default function HeroSection() {
             Explore Our Impact
           </button>
 
+        </div>
         </div>
       </div>
     </section>

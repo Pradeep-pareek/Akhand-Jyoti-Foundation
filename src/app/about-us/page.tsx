@@ -138,10 +138,10 @@ export default function Home() {
             <section className="bg-white lg:py-16 py-10">
                 <div className="mx-5 xl:mx-10 2xl:mx-0">
                     <div>
-                        <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
+                        <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-2">
                             Missing and visson
                         </h2>
-                        <p className="text-center text-black w-[60%] mx-auto text-sm md:text-base lg:text-lg">We are dedicated to empowering individuals and communities through skill development, innovation, and sustainable opportunities that create long-term impact.</p>
+                        <p className="text-center text-black md:w-[60%] mx-auto text-sm md:text-base lg:text-lg">We are dedicated to empowering individuals and communities through skill development, innovation, and sustainable opportunities that create long-term impact.</p>
                     </div>
                     <div className="grid lg:grid-cols-2 gap-8 mt-10">
                         <div className="bg-[#E1F5EE] rounded-[12px] border border-[#000]/10 py-6 px-8 space-y-4">

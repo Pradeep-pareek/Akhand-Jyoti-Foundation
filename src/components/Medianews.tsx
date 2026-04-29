@@ -53,10 +53,10 @@ export default function NewsSection() {
   return (
     <div className="bg-white py-8 md:py-12 px-4 md:px-10 rounded-[16px] mt-10">
 
-      {/* GRID */}
+    
       <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
 
-        {/* IMAGE */}
+
         <div className="w-full aspect-[4/3] rounded-[18px] overflow-hidden border border-black/10">
           <Image
             src={newsData[activeIndex].image}
@@ -66,8 +66,6 @@ export default function NewsSection() {
             className="w-full h-full object-cover transition-all duration-700"
           />
         </div>
-
-        {/* CONTENT */}
         <div className="flex flex-col justify-between h-full">
 
           <div className="space-y-3 md:space-y-4">

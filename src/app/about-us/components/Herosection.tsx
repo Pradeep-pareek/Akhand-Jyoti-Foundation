@@ -2,13 +2,12 @@
 
 export default function HeroSection() {
   return (
-    <section className="lg:mx-5 xl:mx-10 2xl:mx-0 mt-2">
+    <section className=" mt-2 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
  
       <div
-        className="relative rounded-[18px] border border-black/10 bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: "url('/images/about-hero-bg.png')" }}
-      >
-        <div className="relative z-10 px-8 md:px-16 py-12 lg:py-20 lg:w-[80%]">
+        className="relative rounded-[18px] border border-black/10 bg-cover bg-center overflow-hidden lg:py-25 py-10"
+        style={{ backgroundImage: "url('/images/about-hero-bg.png')" }}>
+        <div className="relative z-10 px-8 md:px-16  lg:w-[80%]">
           <h1 className="text-3xl text-black md:text-5xl font-bold leading-tight mb-4">
             Building Sustainable Impact Through Empowerment
           </h1>

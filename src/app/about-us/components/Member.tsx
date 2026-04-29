@@ -32,7 +32,7 @@ export default function BoardMembers() {
       style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
       <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-2">
-          <h2 className="text-white lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
+          <h2 className="text-white lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-3">
             Meet Our Board Members
           </h2>
           <p className="text-center text-white lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Our board comprises experienced leaders and visionaries committed to driving sustainable social impact across education, skill development, and community empowerment in India.</p>
