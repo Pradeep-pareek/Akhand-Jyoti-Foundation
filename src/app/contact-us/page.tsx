@@ -15,7 +15,6 @@ export default function Home() {
     return (
         <>
             <HeroSection />
-
             <section className="bg-white lg:py-16 py-10">
                 <div className="mx-5 xl:mx-10 2xl:mx-0">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 lg:gap-16">
@@ -24,8 +23,6 @@ export default function Home() {
                             <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
                                 We'd love to hear from you. Please fill out this form.
                             </p>
-
-                            {/* First & Last Name */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 mt-5">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-[#000] font-medium text-base">First name</label>
@@ -44,9 +41,6 @@ export default function Home() {
                                     />
                                 </div>
                             </div>
-
-                            {/* Email */}
-
                             <div className="flex flex-col gap-2 mb-4">
                                 <label className="text-[#000] font-medium text-base">Email</label>
                                 <input
@@ -55,8 +49,6 @@ export default function Home() {
                                     className="bg-white border border-[#D0D5DD] text-[#000] rounded-xl px-4 py-2.5 text-base outline-none focus:border-[#81BA45] w-full"
                                 />
                             </div>
-
-                            {/* Phone */}
                             <div className="flex flex-col gap-2 mb-4">
                                 <label className="text-[#000] font-medium text-base">Phone number</label>
                                 <div className="flex bg-white border border-[#D0D5DD] text-[#000]  rounded-xl overflow-hidden focus-within:border-[#81BA45]">
@@ -74,8 +66,6 @@ export default function Home() {
                                     />
                                 </div>
                             </div>
-
-                            {/* Message */}
                             <div className="flex flex-col gap-1 mb-2">
                                 <label className="text-base font-medium text-[#000]">Message</label>
                                 <textarea
@@ -95,21 +85,16 @@ export default function Home() {
                                     You agree to our friendly privacy policy.
                                 </label>
                             </div>
-
-                            {/* Submit */}
                             <button className="w-full bg-[#81BA45] text-white font-semibold rounded-xl py-3 cursor-pointer text-lg transition">
                                 Send Message
                             </button>
                         </div>
-
                         <div>
                             <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug">We’d love to hear from you</h2>
                             <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
                                 Need something cleared up? Here are our most frequently asked questions.
                             </p>
-
                             <div className="grid grid-cols-2 gap-8 lg:mt-8 mt-6">
-
                                 <div className="flex flex-col gap-2">
                                     <div className="w-14 h-14 rounded-[12px] bg-[#FFF4EC] flex items-center justify-center text-xl">
                                         <IconMail className="text-[#FF2E27]" size={30} stroke={2} />
@@ -124,7 +109,6 @@ export default function Home() {
                                         akhandjyotifoundation@gmail.com
                                     </a>
                                 </div>
-
                                 <div className="flex flex-col gap-2">
                                     <div className="w-14 h-14 rounded-[12px] bg-[#E6F7F2] flex items-center justify-center text-xl">
                                         <IconPhoneCall className="text-[#6CEA96]" size={30} stroke={2} />
@@ -140,7 +124,6 @@ export default function Home() {
                                         +91 8800452255
                                     </a>
                                 </div>
-
 
                                 <div className="flex flex-col gap-2">
                                     <div className="w-14 h-14 rounded-[12px] bg-[#F6F2FF] flex items-center justify-center text-xl">
@@ -160,7 +143,6 @@ export default function Home() {
                                         Noida, Uttar Pradesh – 201301
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                     </div>

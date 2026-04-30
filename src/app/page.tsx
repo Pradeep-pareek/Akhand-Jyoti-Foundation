@@ -94,7 +94,7 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <Image
-              src="/images/empowering-women.png"
+            src="/images/empowering-women-img.svg"
               alt="logo image"
               width={700}
               height={700}

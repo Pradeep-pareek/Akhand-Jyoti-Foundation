@@ -143,7 +143,7 @@ export default function Home() {
                         </h2>
                         <p className="text-center text-black md:w-[60%] mx-auto text-sm md:text-base lg:text-lg">We are dedicated to empowering individuals and communities through skill development, innovation, and sustainable opportunities that create long-term impact.</p>
                     </div>
-                    <div className="grid lg:grid-cols-2 gap-8 mt-10">
+                    <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 mt-10">
                         <div className="bg-[#E1F5EE] rounded-[12px] border border-[#000]/10 py-6 px-8 space-y-4">
                             <div className="bg-[#1D9E75] rounded-full w-20 h-20 flex items-center justify-center shrink-0">
                                 <IconLicense size={40} stroke={2} />

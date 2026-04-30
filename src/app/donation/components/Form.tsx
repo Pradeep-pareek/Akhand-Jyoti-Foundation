@@ -54,14 +54,8 @@ export default function DonationCard() {
     };
 
     return (
-        <div className="flex items-center justify-end p-4 font-sans">
-            {/*
-                FIX: Removed `overflow-hidden` from this wrapper.
-                `overflow: hidden` on ANY ancestor of a sticky element cancels
-                the stickiness — the browser clips the scroll context, so
-                `position: sticky` has nothing to stick within.
-                The top gradient bar is now handled with a separate div instead.
-            */}
+        <div className="flex items-center justify-center p-4 font-sans">
+
             <div
                 className="w-full max-w-md bg-[#F4F9F1] rounded-[24px] shadow-xl"
                 style={{
@@ -69,16 +63,16 @@ export default function DonationCard() {
                         "0 8px 40px 0 rgba(80,160,60,0.10), 0 2px 8px 0 rgba(0,0,0,0.06)",
                 }}
             >
-                {/* Top gradient bar — replaces the one lost when overflow-hidden was removed */}
+
                 <div className="h-1.5 w-full bg-gradient-to-r from-[#7BBE4A] via-[#a8d87a] to-[#5a9e2f] rounded-t-[24px]" />
 
                 <div className="px-6 pt-6 pb-7 flex flex-col gap-5">
 
-                    {/* Illustration */}
+
                     <div className="flex justify-center">
                         <div className="relative w-44 h-36 sm:w-52 sm:h-40">
                             <Image
-                                src="/images/form-image.png"
+                                src="/images/donation-form-image.svg"
                                 alt="Donation illustration showing a diverse group of people"
                                 fill
                                 className="object-contain drop-shadow-md"
@@ -87,12 +81,10 @@ export default function DonationCard() {
                         </div>
                     </div>
 
-                    {/* Heading */}
+
                     <h2 className="text-center text-[1.18rem] sm:text-[1.28rem] font-semibold text-[#1a3a10] leading-snug tracking-tight">
                         Help us build a brighter future
                     </h2>
-
-                    {/* Preset Amount Buttons */}
                     <div className="grid grid-cols-4 gap-2">
                         {PRESET_AMOUNTS.slice(0, 4).map((amt) => (
                             <button

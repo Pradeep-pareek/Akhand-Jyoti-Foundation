@@ -10,8 +10,8 @@ const SLIDES = [
     title: "FOUNDATION",
     description:
       "We are a registered NPO delivering skill development, education, health, community, corporate training, and women entrepreneurship programs.",
-    heroBg: "/images/hero-img-bg-landing.png", 
-    personImg: "/images/hero-img01.png", 
+    heroBg: "/images/hero-img-bg-landing.png",
+    personImg: "/images/hero-img01.png",
   },
   {
     id: 2,
@@ -19,8 +19,8 @@ const SLIDES = [
     title: "FOUNDATION",
     description:
       "Empowering communities through education, healthcare, and sustainable livelihood programs across India.",
-  heroBg: "/images/hero-img-bg-landing.png", 
-    personImg: "/images/hero-img01.png", 
+    heroBg: "/images/hero-img-bg-landing.png",
+    personImg: "/images/hero-img01.png",
   },
   {
     id: 3,
@@ -28,8 +28,8 @@ const SLIDES = [
     title: "FOUNDATION",
     description:
       "Building a better tomorrow through women entrepreneurship, skill development, and community health initiatives.",
-    heroBg: "/images/hero-img-bg-landing.png", 
-    personImg: "/images/hero-img01.png", 
+    heroBg: "/images/hero-img-bg-landing.png",
+    personImg: "/images/hero-img01.png",
   },
 ];
 
@@ -59,10 +59,9 @@ export default function HeroSection() {
   const slide = SLIDES[current];
 
   return (
-    <section className="lg:mx-5 xl:mx-10 2xl:mx-0 mt-2 ">
+    <section className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 mt-2 ">
       <div className="relative overflow-hidden bg-[#EFF0EA]  rounded-[18px] border-1 border-[#000]/10 flex items-center">
-        <div className={`absolute inset-0 transition-opacity duration-500 ${
-            isTransitioning ? "opacity-0" : "opacity-100"
+        <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? "opacity-0" : "opacity-100"
           }`}>
           <Image
             src={slide.heroBg}
@@ -76,11 +75,10 @@ export default function HeroSection() {
 
         <div className="relative z-10 w-full flex items-center justify-between px-8 md:px-16 ">
           <div
-            className={`max-w-sm transition-all duration-500 lg:py-16 py-10 ${
-              isTransitioning
+            className={`max-w-sm transition-all duration-500 lg:py-16 py-10 ${isTransitioning
                 ? "opacity-0 translate-y-4"
                 : "opacity-100 translate-y-0"
-            }`}
+              }`}
           >
             <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-1 text-[#000]">
               <span className="text-[#5a9e3a]">{slide.badge}</span>
@@ -101,23 +99,21 @@ export default function HeroSection() {
                   key={i}
                   onClick={() => goToSlide(i)}
                   aria-label={`Go to slide ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
+                  className={`rounded-full transition-all duration-300 ${i === current
                       ? "w-6 h-2.5 bg-[#5a9e3a]"
                       : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
-                  }`}
+                    }`}
                 />
               ))}
             </div>
           </div>
 
-          {/* Right: Person / collage image */}
+
           <div
-            className={` relative w-[580px] lg:h-[380px] h-auto transition-all duration-500 ${
-              isTransitioning
+            className={` relative w-[580px] lg:h-[380px] h-auto transition-all duration-500 ${isTransitioning
                 ? "opacity-0 scale-95"
                 : "opacity-100 scale-100"
-            }`}
+              }`}
           >
             <Image
               src={slide.personImg}

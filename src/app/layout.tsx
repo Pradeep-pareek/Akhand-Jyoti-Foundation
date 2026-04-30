@@ -37,7 +37,7 @@ export default function RootLayout({
         {children}
         <Footer />
         {/* <Modal /> */}
-        <div className="fixed md:bottom-8 bottom-4 right-6">
+        {/* <div className="fixed md:bottom-8 bottom-4 right-6">
           <Link href={"https://wa.me/919079813762"}>
           <Image
             src="/images/whatsaap-icon.png"  
@@ -47,7 +47,7 @@ export default function RootLayout({
             className=" cursor-pointer"          
           />
           </Link>
-        </div>
+        </div> */}
       </body>
     </html>
   );
