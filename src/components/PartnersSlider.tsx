@@ -6,18 +6,26 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const logos = [
-  "/images/partners-logo.png",
-  "/images/partners-logo.png",
-  "/images/partners-logo.png",
-  "/images/partners-logo.png",
-  "/images/partners-logo.png",
-  "/images/partners-logo.png",
+  "/images/11 1.png",
+  "/images/22 1.png",
+  "/images/33 1.png",
+  "/images/44 1.png",
+  "/images/55 1.png",
+  "/images/66 1.png",
+  "/images/77 1.png",
+  "/images/88 1.png",
+  "/images/99 1.png",
+  "/images/100 1.png",
+  "/images/200 1.png",
+  "/images/300 1.png",
+  "/images/400 1.png",
+  "/images/500 1.png",
 ];
 
 export default function LogoSlider() {
   const settings = {
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
@@ -46,14 +54,16 @@ export default function LogoSlider() {
     <div className="mt-10 overflow-hidden">
       <Slider {...settings}>
         {logos.map((src, index) => (
-          <div key={index} className="px-3">
-            <Image
-              src={src}
-              alt={`partner logo ${index + 1}`}
-              width={200}
-              height={200}
-              className="object-contain cursor-pointer"
-            />
+          <div key={index} className="px-4">
+            <div className="h-[120px] flex items-center justify-center ">
+              <Image
+                src={src}
+                alt={`partner logo ${index + 1}`}
+                width={160}
+                height={80}
+                className="object-contain max-h-[80px] w-auto"
+              />
+            </div>
           </div>
         ))}
       </Slider>
