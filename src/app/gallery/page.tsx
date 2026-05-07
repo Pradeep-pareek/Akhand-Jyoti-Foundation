@@ -14,7 +14,7 @@ export default function Home() {
                             Be Part of the Change
                         </h2>
                         <p className="text-black text-sm md:text-base lg:text-lg text-center leading-relaxed lg:w-[60%] mx-auto">
-                            Whether you want to volunteer, donate, or simply spread the word — every contribution brings us closer to a more equitable society.
+                         Whether you choose to volunteer, donate, partner with us, or simply spread awareness, every contribution helps empower women, strengthen communities, and create sustainable social impact across India.
                         </p>
                     </div>
 

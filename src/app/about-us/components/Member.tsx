@@ -35,7 +35,7 @@ export default function BoardMembers() {
           <h2 className="text-white lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-3">
             Meet Our Board Members
           </h2>
-          <p className="text-center text-white lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Our board comprises experienced leaders and visionaries committed to driving sustainable social impact across education, skill development, and community empowerment in India.</p>
+          <p className="text-center text-white lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Our board brings together experienced leaders, industry experts, and visionaries united by a shared commitment to women empowerment, skill development, education, and sustainable community development across India.</p>
         </div>
 
         <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-8 gap-4  ">

@@ -37,11 +37,10 @@ export default function Footer() {
           <div className="space-y-5 relative z-10">
             <div className="space-y-2">
               <h2 className="text-white text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide">
-                Want to Know More?
+               Want to Know More?
               </h2>
-              <p className="text-[#fff] text-sm md:text-base lg:text-lg max-w-lg leading-relaxed">
-                Discover how our initiatives are creating real impact and how
-                you can be a part of this journey.
+              <p className="text-[#fff] text-sm md:text-base  max-w-lg leading-relaxed">
+                Discover how Akhandjyoti Foundation is empowering women, strengthening communities, and creating sustainable social impact—and learn how you can become a part of this journey of change.
               </p>
             </div>
             <button className="bg-white text-gray-900 py-2.5 px-7 rounded-full text-base font-semibold inline-flex items-center gap-1 hover:bg-gray-100 transition-colors cursor-pointer">

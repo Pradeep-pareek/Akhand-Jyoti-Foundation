@@ -6,28 +6,28 @@ import { useState, useEffect, useCallback } from "react";
 const SLIDES = [
   {
     id: 1,
-    badge: "AKHANDJYOTI",
-    title: "FOUNDATION",
+    badge: "Empowering Women, ",
+    title: "Transforming Communities",
     description:
-      "We are a registered NPO delivering skill development, education, health, community, corporate training, and women entrepreneurship programs.",
+      "Building sustainable livelihoods for women through skill development, entrepreneurship, education, and community led initiatives across India.",
     heroBg: "/images/hero-img-bg-landing.png",
     personImg: "/images/hero-img01.png",
   },
   {
     id: 2,
-    badge: "AKHANDJYOTI",
-    title: "FOUNDATION",
+    badge: "Skills That Create Livelihoods, ",
+    title: "Opportunities That Transform Lives",
     description:
-      "Empowering communities through education, healthcare, and sustainable livelihood programs across India.",
+      "Akhandjyoti Foundation equips women and youth with industry-relevant skill development, vocational training, and entrepreneurship support to build sustainable livelihoods, improve employability, and foster economic independence across underserved communities in India.",
     heroBg: "/images/hero-img-bg-landing.png",
     personImg: "/images/hero-img01.png",
   },
   {
     id: 3,
-    badge: "AKHANDJYOTI",
-    title: "FOUNDATION",
+    badge: "Creating Sustainable Change, ",
+    title: "One Community at a Time",
     description:
-      "Building a better tomorrow through women entrepreneurship, skill development, and community health initiatives.",
+      "Through education, healthcare, women entrepreneurship, and environmental sustainability initiatives, Akhandjyoti Foundation is building stronger communities, empowering rural families, and driving inclusive social development for a better tomorrow.",
     heroBg: "/images/hero-img-bg-landing.png",
     personImg: "/images/hero-img01.png",
   },

@@ -53,9 +53,7 @@ export default function ChairmanQuoteSection() {
                         Our Offerings
                     </h2>
                     <p className="text-center text-gray-600 w-full sm:w-[75%] md:w-[60%] mx-auto text-sm md:text-base lg:text-lg leading-relaxed">
-                        We are dedicated to empowering individuals and communities through
-                        skill development, innovation, and sustainable opportunities that
-                        create long-term impact.
+                      We create meaningful opportunities through skill development, women empowerment, entrepreneurship support, and community-led initiatives—helping individuals and communities build sustainable livelihoods and a brighter future.
                     </p>
                 </div>
 

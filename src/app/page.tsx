@@ -16,16 +16,15 @@ export default function Home() {
       <section className="lg:py-16 py-10 bg-white lg:mt-16 mt-10">
         <div>
           <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Trusted Partners</h2>
-          <p className="text-center text-black text-sm md:text-base lg:text-lg mt-3">Collaborating with organizations that share our vision for impactful and sustainable growth.</p>
+          <p className="text-center text-black text-sm md:text-base lg:text-lg mt-3">Trusted partnerships, driving meaningful change across communities.</p>
         </div>
         <PartnersSlider />
       </section>
-
       <section className="lg:py-16 py-10 bg-[url('/images/experts-bg-img.png')] bg-cover bg-center bg-no-repeat">
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Guided by Experts</h2>
-            <p className="text-center text-black text-sm md:text-base lg:text-lg ">Our advisors bring deep industry knowledge to shape strategy and maximize impact.</p>
+            <p className="text-center text-black text-sm md:text-base lg:text-lg ">Guided by experts, driven by purpose, and committed to lasting community impact.</p>
           </div>
           <div className="grid md:gap-8 gap-5 pt-8 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
             <div className="bg-[#FFFFFF] border border-[#000]/10 py-8 lg:px-6 px-4 rounded-[16px] space-y-3">
@@ -90,7 +89,7 @@ export default function Home() {
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Empowering Women Across Every Stage of Life</h2>
-            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women through every phase of life by ensuring access to health, education, care, and sustainable opportunities for a dignified future.</p>
+            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women at every phase of life through access to education, healthcare, skill development, and sustainable livelihood opportunities—enabling dignity, independence, and a brighter future.</p>
           </div>
           <div className="mt-6">
             <Image
@@ -109,7 +108,7 @@ export default function Home() {
           <div>
             <div className="space-y-1">
               <h2 className="text-center lg:text-4xl md:text-3xl text-xl font-bold text-black">What We Do</h2>
-              <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">We drive meaningful impact through initiatives focused on education, women empowerment, and sustainable community development.</p>
+              <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">We create meaningful social impact through initiatives in education, women empowerment, skill development, and sustainable community transformation.</p>
             </div>
             <Whatwedoslider />
           </div>
@@ -124,7 +123,7 @@ export default function Home() {
         <div className="mx-5 xl:mx-10 2xl:mx-0 ">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Impact in Numbers</h2>
-            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Our diverse range of services empowers clients to cultivate and enhance their skill sets while maintaining high standards of quality, transparency, authenticity, and productivity.</p>
+            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Every number tells a story of transformation. From empowering women and creating sustainable livelihoods to advancing education and community development, our impact reflects meaningful change across lives, families, and communities.</p>
           </div>
           <Impactnumber />
         </div>
@@ -139,7 +138,7 @@ export default function Home() {
         <div className="mx-5 xl:mx-10 2xl:mx-0">
           <div className="space-y-1">
             <h2 className="text-center text-white lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Media Coverage</h2>
-            <p className="text-center text-white text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Explore how our work and impact have been recognized across various media platforms. From inspiring stories to meaningful achievements, discover how we are making a difference in communities nationwide.</p>
+            <p className="text-center text-white text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Discover how Akhandjyoti Foundation’s work in women empowerment, education, and community development is being recognized across leading media platforms—sharing stories of impact, inspiration, and positive change across communities in India.</p>
           </div>
           <Medianews />
         </div>

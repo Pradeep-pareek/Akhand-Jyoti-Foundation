@@ -2,9 +2,6 @@
 import Image from "next/image";
 import Imageslider from "./Imageslider";
 
-
-
-
 export default function HeroSection() {
   return (
     <section className="mt-2 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +10,7 @@ export default function HeroSection() {
         <div className="relative z-10  py-12 ">
           <div className="px-5">
             <h1 className="text-3xl text-black md:text-5xl text-center font-bold leading-tight lg:w-[80%] mx-auto ">
-              Empowering <span className="text-[#81BA45]">Communities Through</span> Education & Action
+              Capturing Impact, <span className="text-[#81BA45]">Celebrating Change</span>
             </h1>
             <p className="text-gray-700 text-sm md:text-base text-center lg:text-lg mb-3 lg:w-[80%] mx-auto">
               Transforming communities with impactful initiatives focused on education, health, environment, and empowerment.

@@ -37,15 +37,15 @@ export default function LogoSlider() {
     responsive: [
       {
         breakpoint: 1024,
-        settings: { slidesToShow: 3 },
+        settings: { slidesToShow: 4 },
       },
       {
         breakpoint: 768,
-        settings: { slidesToShow: 2 },
+        settings: { slidesToShow: 3 },
       },
       {
         breakpoint: 480,
-        settings: { slidesToShow: 1 },
+        settings: { slidesToShow: 2 },
       },
     ],
   };

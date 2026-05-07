@@ -29,14 +29,11 @@ export default function Home() {
                         <div className="space-y-4">
                             <div className="space-y-3">
                                 <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug">
-                                    Empowering Growth Through Skills & Training Across India.
+                                    Empowering Lives Through Skills, Opportunity & Inclusion.
                                 </h2>
                                 <div>
                                     <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
-                                        Our diverse range of services empowers clients to cultivate and enhance their skill sets while maintaining high standards of quality, transparency, authenticity, and productivity. With a team of experienced professionals, we specialize in skill development, social development, corporate training,
-                                    </p>
-                                    <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
-                                        assessments, ground connect activities, and self-employment models. Our expertise and experience allow us to deliver comprehensive solutions in these areas, catering to the unique needs and goals of our clients.
+                                      At Akhandjyoti Foundation, we empower women, youth, and underserved communities through skill development, education, entrepreneurship, and sustainable livelihood programs. By combining grassroots outreach with professional expertise, we create meaningful opportunities that foster self-reliance, dignity, and long-term community development across India.
                                     </p>
                                 </div>
 
@@ -62,7 +59,7 @@ export default function Home() {
                     <div className="">
                         <p className="text-white text-lg font-semibold">Who We Are</p>
                         <h2 className="text-white lg:text-4xl md:text-3xl text-xl font-bold leading-snug md:w-[60%]">
-                            Empowering Growth Through Skills & Training Across India.
+                        Empowering Lives Through Skills, Opportunity & Sustainable Impact Across India
                         </h2>
                     </div>
                     <div className="grid lg:grid-cols-2 grid-cols-1 mt-8 gap-8">
@@ -76,15 +73,14 @@ export default function Home() {
                             />
                         </div>
                         <div>
-                            <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">Our diverse range of services empowers clients to cultivate and enhance their skill sets while maintaining high standards of quality, transparency, authenticity, and productivity. With a team of experienced professionals, we specialize in skill development, social development, corporate training,
-                                assessments, ground connect activities, and self-employment models. Our expertise and experience allow us to deliver comprehensive solutions in these areas, catering to the unique needs and goals of our clients.</p>
+                            <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">Akhandjyoti Foundation is committed to creating meaningful change through women empowerment, skill development, education, and sustainable livelihood initiatives. With deep grassroots engagement and strategic partnerships, we help underserved communities gain access to opportunities that foster self-reliance, economic independence, and long-term social transformation. Our mission is to build stronger communities by empowering individuals with the skills, support, and confidence to create a better future.</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12 mt-5">
                                 <div className="flex items-center gap-2">
                                     <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shrink-0">
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Skill Development
+                                       Skill Development Programs
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -92,7 +88,7 @@ export default function Home() {
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Sustainable Impact
+                                        Women Empowerment Initiatives
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -100,7 +96,7 @@ export default function Home() {
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Women Empowerment
+                                    Entrepreneurship & Livelihood Support
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -108,7 +104,7 @@ export default function Home() {
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Job Opportunities
+                                        Sustainable Community Development
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -116,7 +112,7 @@ export default function Home() {
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Entrepreneurship Support
+                                       Education & Social Inclusion
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -124,7 +120,7 @@ export default function Home() {
                                         <Check className="text-black w-5 h-5" />
                                     </div>
                                     <p className="text-white text-base sm:text-lg font-medium">
-                                        Community Growth
+                                      Creating Employment Opportunities
                                     </p>
                                 </div>
                             </div>
@@ -141,7 +137,7 @@ export default function Home() {
                         <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-2">
                             Missing and visson
                         </h2>
-                        <p className="text-center text-black md:w-[60%] mx-auto text-sm md:text-base lg:text-lg">We are dedicated to empowering individuals and communities through skill development, innovation, and sustainable opportunities that create long-term impact.</p>
+                        <p className="text-center text-black md:w-[60%] mx-auto text-sm md:text-base lg:text-lg">Creating opportunities that empower women, strengthen communities, and build sustainable livelihoods through skill development, education, and inclusive social impact initiatives across India.</p>
                     </div>
                     <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 mt-10">
                         <div className="bg-[#E1F5EE] rounded-[12px] border border-[#000]/10 py-6 px-8 space-y-4">
@@ -149,8 +145,8 @@ export default function Home() {
                                 <IconLicense size={40} stroke={2} />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-black lg:text-2xl text-xl font-bold">Driving Purpose</h3>
-                                <p className="text-black text-base">We empower youth and women with practical skills, training, and opportunities that enable self-reliance, entrepreneurship, and sustainable livelihoods.</p>
+                                <h3 className="text-black lg:text-2xl text-xl font-bold">Empowering Lives Through Opportunity</h3>
+                                <p className="text-black text-base">Our mission is to empower women, youth, and underserved communities through skill development, education, entrepreneurship support, and sustainable livelihood programs that foster self-reliance, dignity, and long-term community growth.</p>
                             </div>
 
                         </div>
@@ -159,8 +155,8 @@ export default function Home() {
                                <IconEyeDotted size={40} stroke={2} />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-black lg:text-2xl text-xl font-bold">Future We See</h3>
-                                <p className="text-black text-base">We envision a world where every individual has equal access to opportunities, enabling them to grow, succeed, and contribute to a stronger, self-reliant society.</p>
+                                <h3 className="text-black lg:text-2xl text-xl font-bold">Building a More Inclusive Future</h3>
+                                <p className="text-black text-base">We envision a future where every individual—especially women and marginalized communities—has equal access to education, skills, and opportunities to thrive, lead, and contribute to a stronger, self-reliant society.</p>
                             </div>
 
                         </div>
@@ -180,12 +176,12 @@ export default function Home() {
                         </div>
                         <div className="lg:w-[50%] bg-white rounded-[12px] px-6 py-6 space-y-2 chairman-details">
                             <p className="text-black text-base">
-                                I am convinced that the most profound exercise of the heart is reaching down to lift others up, fostering connections that enrich both lives. True growth comes not from individual success, but from the ability to uplift those around us. When we empower others, we create a ripple effect of positivity, purpose, and lasting impact in society. This shared journey of growth strengthens communities and builds a future rooted in compassion and collective progress.
+                               At Akhandjyoti Foundation, we believe that real change begins when people are empowered with opportunities, support, and hope. Our mission is to uplift women, youth, and underserved communities through initiatives focused on education, skill development, social welfare, and sustainable growth. By fostering confidence, self-reliance, and inclusion, we aim to create stronger communities and a brighter future where every individual has the chance to grow with dignity and purpose.
                             </p>
                             <div className="flex justify-between items-center ">
                                 <div>
                                     <h4 className="text-black text-lg font-bold">Saikat Mukherjee</h4>
-                                    <p className="text-base text-[#000]/60">( Chairman & Founder )</p>
+                                    <p className="text-base text-[#000]/60">Chairman & Founder</p>
                                 </div>
                                 <div>
                                     <Image
@@ -207,9 +203,9 @@ export default function Home() {
                     <div>
                         <h4 className="text-[#74AA3A] text-center font-semibold text-base">Our Team</h4>
                         <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
-                            The people powering our mission
+                           The People Powering Our Mission
                         </h2>
-                        <p className="text-center text-black lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Behind every program and initiative is a passionate team of dedicated professionals working on the ground to create real, lasting change in the lives of communities across India.</p>
+                        <p className="text-center text-black lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Behind every initiative is a passionate team of dedicated professionals, field experts, and changemakers working tirelessly to empower women, strengthen communities, and create lasting social impact through education, skill development, and sustainable livelihood programs across India.</p>
                     </div>
 
                     <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5 mt-10">
