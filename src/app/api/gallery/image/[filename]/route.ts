@@ -3,14 +3,14 @@ import { IMAGES_DIR } from "@/lib/gallery-store";
 import fs from "fs";
 import path from "path";
 
-type Params = { params: { filename: string } };
+type Params = { params: Promise<{ filename: string }> };
 
 // ─── GET /api/gallery/image/:filename ────────────────────────────────────────
 // Reads image from D:\Website\Api-Sample-Data\akhandjyoti and streams it back.
 export async function GET(_req: NextRequest, { params }: Params) {
   try {
     // Sanitize: prevent directory traversal
-    const filename = path.basename(params.filename);
+    const { filename } = await params;
     const filePath = path.join(IMAGES_DIR, filename);
 
     if (!fs.existsSync(filePath)) {

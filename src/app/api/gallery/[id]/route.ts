@@ -3,14 +3,14 @@ import { readGallery, writeGallery, IMAGES_DIR, GalleryItem } from "@/lib/galler
 import fs from "fs";
 import path from "path";
 
-type Params = { params: { id: string } };
-
+type Params = { params: Promise<{ id: string }> };
 // ─── GET /api/gallery/:id ────────────────────────────────────────────────────
 export async function GET(_req: NextRequest, { params }: Params) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+
     const items = readGallery();
-    const item = items.find((i) => i.id === id);
+    const item = items.find((i) => i.id == Number(id));
 
     if (!item) {
       return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
@@ -33,9 +33,9 @@ export async function GET(_req: NextRequest, { params }: Params) {
 // images = array of filenames (already uploaded). Pass full list to replace.
 export async function PUT(req: NextRequest, { params }: Params) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const items = readGallery();
-    const index = items.findIndex((i) => i.id === id);
+    const index = items.findIndex((i) => i.id == Number(id));
 
     if (index === -1) {
       return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
@@ -65,9 +65,9 @@ export async function PUT(req: NextRequest, { params }: Params) {
 // Also deletes image files from disk that are NOT referenced by any other item.
 export async function DELETE(_req: NextRequest, { params }: Params) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const items = readGallery();
-    const index = items.findIndex((i) => i.id === id);
+    const index = items.findIndex((i) => i.id == Number(id));
 
     if (index === -1) {
       return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
