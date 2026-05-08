@@ -1,8 +1,54 @@
-import { NextResponse } from "next/server";
-import { getConnection } from "@/lib/db";
+import { NextRequest, NextResponse } from "next/server";
+import { readGallery, writeGallery, nextId, GalleryItem } from "@/lib/gallery-store";
 
-export async function POST(req: Request) {
-    const { title, description, image_url } = await req.json();
+// ─── GET /api/gallery ────────────────────────────────────────────────────────
+// Returns all gallery items. Each image is returned as a URL path.
+export async function GET() {
+  try {
+    const items = readGallery();
+    // Map image filenames → public URLs  e.g. /api/gallery/image/photo.jpg
+    const result = items.map((item) => ({
+      ...item,
+      images: item.images.map((img) => `/api/gallery/image/${img}`),
+    }));
+    return NextResponse.json({ success: true, data: result });
+  } catch (err) {
+    return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
+  }
+}
 
-    return NextResponse.json({ success: true });
+// ─── POST /api/gallery ───────────────────────────────────────────────────────
+// Body: { title: string, description: string, images?: string[] }
+// images should be filenames already uploaded via /api/gallery/upload
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { title, description, images = [] } = body as Partial<GalleryItem>;
+
+    if (!title || !description) {
+      return NextResponse.json(
+        { success: false, error: "title and description are required" },
+        { status: 400 }
+      );
+    }
+
+    const items = readGallery();
+    const now = new Date().toISOString();
+
+    const newItem: GalleryItem = {
+      id: nextId(items),
+      title: title.trim(),
+      description: description.trim(),
+      images: images as string[],
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    items.push(newItem);
+    writeGallery(items);
+
+    return NextResponse.json({ success: true, data: newItem }, { status: 201 });
+  } catch (err) {
+    return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
+  }
 }
