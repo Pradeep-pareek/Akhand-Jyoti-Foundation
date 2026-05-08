@@ -29,10 +29,8 @@ const SensitizingSection = () => {
 
     return (
         <section className="bg-[#E6EBDB] lg:py-16 py-10 mt-10">
-            <div className="mx-5 xl:mx-10 2xl:mx-0">
+            <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 items-center">
-
-
                     <div className="w-full flex items-center justify-center">
                         <div className="relative w-full max-w-[600px] h-[250px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-lg">
                             <Image

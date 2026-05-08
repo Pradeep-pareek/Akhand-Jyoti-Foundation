@@ -13,44 +13,8 @@ export default function Home() {
         <>
             <HeroSection />
             <Program/>
-            {/* <section className="bg-[#E6EBDB] lg:py-16 py-10 mt-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
-                    <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
-                        <div>
-                            <Image
-                                src="/images/sensitizing-society.png"
-                                alt="logo image"
-                                width={300}
-                                height={300}
-                                className="w-full mx-auto"
-                            />
-                        </div>
-                        <div className="space-y-4">
-                            <div className="space-y-3">
-                                <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug">
-                                    Sensitizing Society on Menstrual Hygiene
-                                </h2>
-                                <div className="space-y-2">
-                                    <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
-                                        Menstruation remains a sensitive and often stigmatized topic in the lives of adolescents. Many young girls and women continue to face social stigma, harassment, and exclusion during their menstrual cycles.
-                                    </p>
-                                    <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
-                                        Project Swecha is an initiative dedicated to breaking these barriers by empowering girls and women with accurate knowledge, access to essential resources, and support for maintaining proper menstrual health and hygiene.
-                                    </p>
-                                </div>
-                            </div>
-                            <Link
-                                href=""
-                                className="inline-flex items-center bg-[#81BA45] rounded-full px-10 py-2.5 text-white font-semibold">
-                                Stand With Her
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section >  */}
-
             <section className="bg-white lg:py-16 py-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
                         <div className="space-y-4">
                             <div className="space-y-3">
@@ -96,11 +60,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-
             <section className="bg-cover bg-center lg:py-16 py-10"
                 style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 items-stretch">
                         <div className="flex flex-col justify-between">
                             <div>
@@ -185,9 +147,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
             <section className="bg-white lg:py-16 py-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
                         <div>
                             <Image
@@ -244,7 +205,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
         </>
     );
 }

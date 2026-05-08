@@ -8,8 +8,6 @@ import Image from "next/image";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
-
-
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -28,8 +26,8 @@ const Header = () => {
   if (!hasMounted) return null;
 
   return (
-    <header className="w-full max-w-[1320px] mx-auto   md:px-6 lg:px-8"  >
-      <div className="bg-[#81BA45] md:rounded-[18px] sticky shadow-md top-0 z-50 mt-2 sticky top-0 ">
+    <header className="w-full max-w-[1320px] mx-auto md:px-6 lg:px-8"  >
+      <div className="bg-[#81BA45] md:rounded-[18px] sticky shadow-md top-0 z-50 lg:mt-2 sticky top-0 ">
         <div className="flex items-center justify-between md:py-0 py-3 lg:px-10 px-5">
           <Link href="/" className="text-2xl font-bold text-[#f70d28] py-1">
             <Image
@@ -78,9 +76,7 @@ const Header = () => {
               <X size={24} />
             </button>
           </div>
-
           <div className="px-6 py-2 space-y-4">
-
             <Link href="/" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Home</Link>
             <Link href="/about-us" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>About Us</Link>
             <Link href="/our-programs" className="block text-gray-700 hover:text-blue-600" onClick={closeMenu}>Our Programs</Link>

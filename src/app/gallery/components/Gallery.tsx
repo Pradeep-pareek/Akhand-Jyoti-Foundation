@@ -54,7 +54,7 @@ const slides = [
 
 function GallerySlide({ slide }: { slide: any }) {
   return (
-    <div>
+    <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
         <div className="overflow-hidden rounded-xl">
           <Image src={slide.images.top[0]} alt="logo image" width={300} height={300} className="w-full h-[250px] lg:h-[300px] object-cover mx-auto" />

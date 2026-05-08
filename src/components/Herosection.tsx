@@ -10,7 +10,7 @@ const SLIDES = [
     title: "Transforming Communities",
     description:
       "Building sustainable livelihoods for women through skill development, entrepreneurship, education, and community led initiatives across India.",
-    heroBg: "/images/hero-img-bg-landing.png",
+    heroBg: "/images/women-hero-landing-page-image.svg",
     personImg: "/images/hero-img01.png",
   },
   {
@@ -19,7 +19,7 @@ const SLIDES = [
     title: "Opportunities That Transform Lives",
     description:
       "Akhandjyoti Foundation equips women and youth with industry-relevant skill development, vocational training, and entrepreneurship support to build sustainable livelihoods, improve employability, and foster economic independence across underserved communities in India.",
-    heroBg: "/images/hero-img-bg-landing.png",
+    heroBg: "/images/hero-landing-page-image1.svg",
     personImg: "/images/hero-img01.png",
   },
   {
@@ -28,7 +28,7 @@ const SLIDES = [
     title: "One Community at a Time",
     description:
       "Through education, healthcare, women entrepreneurship, and environmental sustainability initiatives, Akhandjyoti Foundation is building stronger communities, empowering rural families, and driving inclusive social development for a better tomorrow.",
-    heroBg: "/images/hero-img-bg-landing.png",
+   heroBg: "/images/women-hero-landing-page-image.svg",
     personImg: "/images/hero-img01.png",
   },
 ];
@@ -60,7 +60,7 @@ export default function HeroSection() {
 
   return (
     <section className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 mt-2 ">
-      <div className="relative overflow-hidden bg-[#EFF0EA]  rounded-[18px] border-1 border-[#000]/10 flex items-center">
+      <div className="relative overflow-hidden bg-[#EFF0EA] rounded-[18px] border border-[#000]/10 lg:min-h-[500px] flex items-center">
         <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? "opacity-0" : "opacity-100"
           }`}>
           <Image
@@ -70,29 +70,28 @@ export default function HeroSection() {
             className="object-cover object-center rounded-[18px]"
             priority
           />
-          <div className="absolute inset-0 bg-white/40" />
+          <div className="absolute inset-0 bg-white/65" />
         </div>
 
         <div className="relative z-10 w-full flex items-center justify-between px-8 md:px-16 ">
           <div
-            className={`max-w-sm transition-all duration-500 lg:py-16 py-10 ${isTransitioning
+            className={` transition-all duration-500 lg:py-16 py-10 ${isTransitioning
                 ? "opacity-0 translate-y-4"
                 : "opacity-100 translate-y-0"
               }`}
           >
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-1 text-[#000]">
+            <h1 className="text-2xl md:text-5xl font-bold leading-tight mb-1 text-[#000]">
               <span className="text-[#5a9e3a]">{slide.badge}</span>
               <br />
               <span className="text-gray-900">{slide.title}</span>
             </h1>
-            <p className="text-black text-sm md:text-base lg:text-lg mt-3 mb-6 leading-relaxed">
+            <p className="text-black text-sm md:text-base lg:text-lg mt-3 mb-6 leading-relaxed lg:w-[70%]">
               {slide.description}
             </p>
             <button className="bg-[#5a9e3a] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e] transition-colors cursor-pointer">
               Become a Volunteer
             </button>
 
-            {/* Dots */}
             <div className="flex items-center gap-2 mt-6">
               {SLIDES.map((_, i) => (
                 <button
@@ -106,22 +105,6 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-          </div>
-
-
-          <div
-            className={` relative w-[580px] lg:h-[380px] h-auto transition-all duration-500 ${isTransitioning
-                ? "opacity-0 scale-95"
-                : "opacity-100 scale-100"
-              }`}
-          >
-            <Image
-              src={slide.personImg}
-              alt="Hero person"
-              fill
-              className="object-contain object-right-bottom drop-shadow-xl "
-              priority
-            />
           </div>
         </div>
       </div>

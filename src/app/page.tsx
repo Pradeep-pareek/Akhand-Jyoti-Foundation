@@ -14,11 +14,13 @@ export default function Home() {
     <>
       <HeroSection />
       <section className="lg:py-16 py-10 bg-white lg:mt-16 mt-10">
-        <div>
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+               <div>
           <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Trusted Partners</h2>
           <p className="text-center text-black text-sm md:text-base lg:text-lg mt-3">Trusted partnerships, driving meaningful change across communities.</p>
         </div>
         <PartnersSlider />
+        </div>
       </section>
       <section className="lg:py-16 py-10 bg-[url('/images/experts-bg-img.png')] bg-cover bg-center bg-no-repeat">
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +94,7 @@ export default function Home() {
             <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women at every phase of life through access to education, healthcare, skill development, and sustainable livelihood opportunities—enabling dignity, independence, and a brighter future.</p>
           </div>
           <div className="mt-6">
-            <Image
+          <Image
             src="/images/empowering-women-img.svg"
               alt="logo image"
               width={700}
@@ -104,7 +106,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white lg:py-16 py-10">
-        <div className="lg:mx-5 xl:mx-10 2xl:mx-0">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <div className="space-y-1">
               <h2 className="text-center lg:text-4xl md:text-3xl text-xl font-bold text-black">What We Do</h2>
@@ -120,7 +122,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white lg:py-16 py-10">
-        <div className="mx-5 xl:mx-10 2xl:mx-0 ">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Impact in Numbers</h2>
             <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Every number tells a story of transformation. From empowering women and creating sustainable livelihoods to advancing education and community development, our impact reflects meaningful change across lives, families, and communities.</p>
@@ -129,13 +131,10 @@ export default function Home() {
         </div>
       </section>
 
-
       <section
         className="bg-cover bg-center lg:py-16 py-10"
-        style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}
-      >
-
-        <div className="mx-5 xl:mx-10 2xl:mx-0">
+        style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-white lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Media Coverage</h2>
             <p className="text-center text-white text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Discover how Akhandjyoti Foundation’s work in women empowerment, education, and community development is being recognized across leading media platforms—sharing stories of impact, inspiration, and positive change across communities in India.</p>

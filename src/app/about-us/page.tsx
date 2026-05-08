@@ -14,9 +14,8 @@ export default function Home() {
         <>
             <HeroSection />
             <section className="bg-white lg:py-16 py-10 mt-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
-
                         <div>
                             <Image
                                 src="/images/about-us-img.png"
@@ -36,7 +35,6 @@ export default function Home() {
                                       At Akhandjyoti Foundation, we empower women, youth, and underserved communities through skill development, education, entrepreneurship, and sustainable livelihood programs. By combining grassroots outreach with professional expertise, we create meaningful opportunities that foster self-reliance, dignity, and long-term community development across India.
                                     </p>
                                 </div>
-
                             </div>
                             <Link
                                 href=""
@@ -54,8 +52,7 @@ export default function Home() {
                 className="bg-cover bg-center lg:py-16 py-10"
                 style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}
             >
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
-
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="">
                         <p className="text-white text-lg font-semibold">Who We Are</p>
                         <h2 className="text-white lg:text-4xl md:text-3xl text-xl font-bold leading-snug md:w-[60%]">
@@ -126,13 +123,12 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 
 
             <section className="bg-white lg:py-16 py-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div>
                         <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-2">
                             Missing and visson
@@ -148,7 +144,6 @@ export default function Home() {
                                 <h3 className="text-black lg:text-2xl text-xl font-bold">Empowering Lives Through Opportunity</h3>
                                 <p className="text-black text-base">Our mission is to empower women, youth, and underserved communities through skill development, education, entrepreneurship support, and sustainable livelihood programs that foster self-reliance, dignity, and long-term community growth.</p>
                             </div>
-
                         </div>
                         <div className="bg-[#E6F1FB] rounded-[12px] border border-[#000]/10 py-6 px-8 space-y-4">
                             <div className="bg-[#3B8BD4] rounded-full w-18 h-18 flex items-center justify-center shrink-0">
@@ -164,7 +159,7 @@ export default function Home() {
                 </div>
             </section>
             <section className="bg-[#F3F5EE] lg:py-16 py-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="bg-[#81BA45]/30 rounded-[16px] lg:pt-10 lg:pb-0 pb-6 px-8 flex flex-col lg:flex-row lg:items-start items-center">
                         <div>
                             <Image

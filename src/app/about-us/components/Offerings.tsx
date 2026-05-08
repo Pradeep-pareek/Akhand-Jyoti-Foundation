@@ -47,7 +47,7 @@ const offerings = [
 export default function ChairmanQuoteSection() {
     return (
         <section className="bg-[#FFFFFF] lg:py-16 py-10">
-            <div className=" px-5 xl:px-10 2xl:px-0">
+            <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 md:mb-14">
                     <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-3">
                         Our Offerings

@@ -16,7 +16,7 @@ export default function Home() {
         <>
             <HeroSection />
             <section className="bg-white lg:py-16 py-10">
-                <div className="mx-5 xl:mx-10 2xl:mx-0">
+                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 lg:gap-16">
                         <div>
                             <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug">Get in touch</h2>
