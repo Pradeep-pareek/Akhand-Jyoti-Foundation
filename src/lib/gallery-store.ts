@@ -11,7 +11,7 @@ export interface GalleryItem {
 }
 
 // Path to the folder where images are stored
-export const IMAGES_DIR = "C:\\inetpub\\lelifepay.com\\Website\\Api-Sample-Data\\akhandjyoti";
+export const IMAGES_DIR = "C:\\inetpub\\lelifepay.com\\Api-Sample-Data\\akhandjyoti";
 
 // Path to the JSON file used as a simple database
 const DATA_FILE = path.join(IMAGES_DIR, "data", "gallery.json");
