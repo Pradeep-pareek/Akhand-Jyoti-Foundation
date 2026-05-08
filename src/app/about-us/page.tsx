@@ -62,11 +62,11 @@ export default function Home() {
                     <div className="grid lg:grid-cols-2 grid-cols-1 mt-8 gap-8">
                         <div>
                             <Image
-                                src="/images/who-we-are.png"
+                                src="/images/wo-we-are-img.png"
                                 alt="logo image"
                                 width={300}
                                 height={300}
-                                className="w-full mx-auto"
+                                className="w-full mx-auto rounded-xl"
                             />
                         </div>
                         <div>
@@ -202,7 +202,6 @@ export default function Home() {
                         </h2>
                         <p className="text-center text-black lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Behind every initiative is a passionate team of dedicated professionals, field experts, and changemakers working tirelessly to empower women, strengthen communities, and create lasting social impact through education, skill development, and sustainable livelihood programs across India.</p>
                     </div>
-
                     <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5 mt-10">
                         <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
                             <div className="h-[90px] w-[90px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
