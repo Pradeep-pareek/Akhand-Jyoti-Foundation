@@ -4,40 +4,17 @@ import Image from "next/image";
 export default function Home() {
     return (
         <>
-            {/*
-                PAGE STRUCTURE
-                ══════════════════════════════════════════════════════════════
-                The outermost div is bg-white — covers 100% of the viewport.
-                The hero section sits on top and paints over the white with
-                the bg image (using an absolute div that bleeds across both
-                grid columns). So:
-                  • Hero row  → bg image (full width) ✓
-                  • Below hero → white, truly full viewport width ✓
-                  • Form       → sticky, single instance, right column ✓
-                  • Mobile     → stacked, form inline inside hero ✓
-            */}
             <div className="bg-white">
                 <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
 
-                    {/* ── 2-col grid: left = hero+about | right = sticky form ── */}
                     <div className="lg:grid lg:grid-cols-[1fr_390px] xl:grid-cols-[1fr_420px] lg:gap-0 lg:items-start mt-2">
 
-                        {/* LEFT COLUMN */}
                         <div>
-
-                            {/* ── HERO ── */}
                             <div className="relative z-10">
-                                {/*
-                                    Hero bg image: absolutely positioned so it stretches
-                                    rightward across the form column too, giving a true
-                                    full-width hero image on desktop.
-                                    On mobile it fills the hero div naturally.
-                                */}
                                 <div
                                     className="absolute inset-0 lg:right-[-390px] xl:right-[-420px] rounded-[18px] border border-black/10 bg-cover bg-center -z-10"
                                     style={{ backgroundImage: "url('/images/donation-hero-img.png')" }}
                                 />
-
                                 <div className="px-6 lg:px-10 pt-10 lg:pt-14 pb-10 lg:pb-14">
                                     <span className="bg-[#E8F5ED] inline-flex py-1.5 px-5 rounded-full items-center gap-2 mb-4">
                                         <Image src="/images/making-impact-icon.png" alt="impact icon" width={18} height={18} />
@@ -56,14 +33,12 @@ export default function Home() {
                                         Contact us
                                     </button>
 
-                                    {/* Form — mobile/tablet inline inside hero */}
                                     <div className="lg:hidden w-full max-w-[440px] mx-auto mt-8">
                                         <Form />
                                     </div>
                                 </div>
                             </div>
 
-                            {/* ── ABOUT — sits on the outer bg-white, no extra bg needed ── */}
                             <div className="lg:py-16 py-10">
                                 <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug mb-4">
                                     Your Support Can Build{" "}
