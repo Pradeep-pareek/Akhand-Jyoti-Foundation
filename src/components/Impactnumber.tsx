@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import CountUp from "react-countup";
 
-const statsData = [
+const stats = [
     {
         id: 1,
         value: 635,
@@ -51,7 +51,16 @@ const statsData = [
 
 export default function StatsSection() {
     const [startCount, setStartCount] = useState(false);
+    const [statsData, setstatsData] = useState(stats);
     const sectionRef = useRef(null);
+    useEffect(() => {
+        const fetchData = async () => {
+            const Data = await fetch("/api/impact-numbers").then((res) => res.json());
+            console.log(Data.data);
+            setstatsData(Data.data);
+        };
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -73,13 +82,13 @@ export default function StatsSection() {
     return (
         <div ref={sectionRef} className="mt-10">
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 md:gap-8 gap-5">
-                {statsData.slice(0, 4).map((item) => (
+                {statsData?.slice(0, 4).map((item) => (
                     <Card key={item.id} item={item} startCount={startCount} />
                 ))}
             </div>
 
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-5 mt-8">
-                {statsData.slice(4).map((item) => (
+                {statsData?.slice(4).map((item) => (
                     <Card key={item.id} item={item} startCount={startCount} />
                 ))}
             </div>

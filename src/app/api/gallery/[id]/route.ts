@@ -50,6 +50,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
       description: body.description?.trim() ?? existing.description,
       images: body.images ?? existing.images,
       updatedAt: new Date().toISOString(),
+      eventDate: body.eventDate || existing.eventDate,
     };
 
     items[index] = updated;

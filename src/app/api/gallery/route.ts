@@ -23,7 +23,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { title, description, images = [] } = body as Partial<GalleryItem>;
+    const { title, description, images = [], eventDate } = body as Partial<GalleryItem>;
 
     if (!title || !description) {
       return NextResponse.json(
@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
       title: title.trim(),
       description: description.trim(),
       images: images as string[],
+      eventDate: eventDate || null,
       createdAt: now,
       updatedAt: now,
     };

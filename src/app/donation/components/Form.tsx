@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000];
 const MIN_AMOUNT = 100;
-const MAX_AMOUNT = 50000;
+const MAX_AMOUNT = 20000;
 
 function formatINR(amount: number) {
     return new Intl.NumberFormat("en-IN").format(amount);
@@ -215,12 +215,8 @@ export default function DonationCard() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                        <button className="flex-1 py-3 rounded-2xl font-bold text-white text-sm bg-gradient-to-br from-[#7BBE4A] to-[#5a9e2f] shadow-md hover:shadow-lg">
-                            Donate Once
-                        </button>
-
-                        <button className="flex-1 py-3 rounded-2xl font-bold text-[#2d5a14] text-sm border-2 border-[#7BBE4A] bg-transparent hover:bg-[#eaf4df]">
-                            Donate Monthly
+                        <button className="flex-1 mx-5 py-3 rounded-2xl font-bold text-white text-sm bg-gradient-to-br from-[#7BBE4A] to-[#5a9e2f] shadow-md hover:shadow-lg">
+                            Pay Now
                         </button>
                     </div>
 

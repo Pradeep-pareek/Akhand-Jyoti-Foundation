@@ -1,5 +1,6 @@
 "use client";
 
+import { RichTextEditor } from "@/app/components/RichTextEditor";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 type ImageEntry = {
@@ -11,6 +12,7 @@ type ImageEntry = {
 type GalleryItem = {
   id: number;
   title: string;
+  eventDate: string | null;
   description: string;
   images: string[]; // full URLs: /api/gallery/image/<filename>
   createdAt?: string;
@@ -23,6 +25,7 @@ export default function GalleryPage() {
   const [isFetching, setIsFetching] = useState(true);
 
   const [title, setTitle] = useState("");
+  const [eventDate, setEventDate] = useState("");
   const [description, setDescription] = useState("");
   const [imageEntries, setImageEntries] = useState<ImageEntry[]>([]);
   const [editingItem, setEditingItem] = useState<GalleryItem | null>(null);
@@ -125,6 +128,7 @@ export default function GalleryPage() {
         const body: Record<string, unknown> = {
           title: title.trim(),
           description: description.trim(),
+          eventDate: eventDate || null,
         };
         // Only replace images if new ones were uploaded
         if (uploadedFilenames.length > 0) {
@@ -151,6 +155,7 @@ export default function GalleryPage() {
             title: title.trim(),
             description: description.trim(),
             images: uploadedFilenames,
+            eventDate: eventDate || null,
           }),
         });
         const postJson = await postRes.json();
@@ -174,6 +179,7 @@ export default function GalleryPage() {
   const handleEdit = (item: GalleryItem) => {
     setTitle(item.title);
     setDescription(item.description);
+    setEventDate(item.eventDate || "");
     setImageEntries([]);
     setEditingItem(item);
     setActiveTab("add");
@@ -235,21 +241,19 @@ export default function GalleryPage() {
           <div className="flex gap-1 bg-[#e8f5e2] rounded-full p-1 self-start sm:self-auto">
             <button
               onClick={() => { setActiveTab("add"); if (!editingItem) resetForm(); }}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                activeTab === "add"
-                  ? "bg-[#6ab04c] text-white shadow-md"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${activeTab === "add"
+                ? "bg-[#6ab04c] text-white shadow-md"
+                : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               {editingItem ? "✏️ Editing" : "+ Add Item"}
             </button>
             <button
               onClick={() => setActiveTab("list")}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                activeTab === "list"
-                  ? "bg-[#6ab04c] text-white shadow-md"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${activeTab === "list"
+                ? "bg-[#6ab04c] text-white shadow-md"
+                : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               🖼 Gallery ({items.length})
             </button>
@@ -269,30 +273,40 @@ export default function GalleryPage() {
             </div>
 
             {/* Title */}
-            <div className="mb-5">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">
-                Title <span className="text-red-400">*</span>
-              </label>
-              <input
-                className="w-full px-4 py-2.5 bg-[#f4f7f0] border border-[#d4e8c4] rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6ab04c] focus:border-transparent focus:bg-white transition-all"
-                placeholder="e.g. Skill Development Workshop 2024"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+            <div className="mb-5 grid grid-cols-12 gap-3">
+              <div className="col-span-9">
+
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">
+                  Title <span className="text-red-400">*</span>
+                </label>
+                <input
+                  className="w-full px-4 py-2.5 bg-[#f4f7f0] border border-[#d4e8c4] rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6ab04c] focus:border-transparent focus:bg-white transition-all"
+                  placeholder="e.g. Skill Development Workshop 2024"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="col-span-3">
+
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">
+                  Event Date <span className="text-red-400">*</span>
+                </label>
+                <input
+                  className="w-full px-4 py-2.5 bg-[#f4f7f0] border border-[#d4e8c4] rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6ab04c] focus:border-transparent focus:bg-white transition-all"
+                  placeholder="e.g. Skill Development Workshop 2024"
+                  value={eventDate}
+                  onChange={(e) => setEventDate(e.target.value)}
+                  type="date"
+                />
+              </div>
             </div>
 
             {/* Description */}
-            <div className="mb-6">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">
-                Description
-              </label>
-              <textarea
-                className="w-full px-4 py-2.5 bg-[#f4f7f0] border border-[#d4e8c4] rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6ab04c] focus:border-transparent focus:bg-white transition-all resize-none min-h-[90px]"
-                placeholder="Describe what this gallery item represents…"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
+            <RichTextEditor
+              value={description}
+              onChange={(val) => setDescription(val)}
+              placeholder="Describe what this gallery item represents…"
+            />
 
             {/* Images Upload */}
             <div className="mb-7">

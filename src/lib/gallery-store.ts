@@ -6,13 +6,14 @@ export interface GalleryItem {
   title: string;
   description: string;
   images: string[]; // stored as filenames, e.g. ["photo1.jpg"]
+  eventDate: string | null;
   createdAt: string;
   updatedAt: string;
 }
 
 // Path to the folder where images are stored
-export const IMAGES_DIR = "C:\\inetpub\\lelifepay.com\\Api-Sample-Data\\akhandjyoti";
-
+export const IMAGES_DIR = process.env.NODE_ENV === "development" ? path.join(process.cwd(), "akhandjyoti")
+  : "C:\\inetpub\\lelifepay.com\\Api-Sample-Data\\akhandjyoti";
 // Path to the JSON file used as a simple database
 const DATA_FILE = path.join(IMAGES_DIR, "data", "gallery.json");
 
