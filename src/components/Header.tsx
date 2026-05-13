@@ -36,41 +36,67 @@ const Header = () => {
 
   return (
     <header className="w-full max-w-[1320px] mx-auto md:px-6 lg:px-8">
-      <div className="bg-[#81BA45] md:rounded-[18px] shadow-md top-0 z-50 lg:mt-2 sticky">
+      <div className="bg-[#fff] md:rounded-[18px] shadow-md top-0 z-50 lg:mt-2 py-2">
         <div className="flex items-center justify-between md:py-0 py-3 lg:px-10 px-5">
 
           <Link href="/" className="text-2xl font-bold text-[#f70d28] py-1">
             <Image
-              src="/images/logo-image.png"
+              src="/images/logo-img.png"
               alt="logo image"
-              width={85}
-              height={85}
+              width={75}
+              height={75}
             />
           </Link>
-
-          {/* Desktop */}
           <div className="hidden md:flex gap-6 items-center py-2">
             <nav className="flex space-x-4 items-center">
 
               {!isAdminRoute ? (
                 <>
-                  <Link href="/" className="text-[#fff] text-base font-medium">
+                  <Link
+                    href="/"
+                    className={`text-base font-medium ${pathname === "/" ? "text-[#81BA45]" : "text-[#000]"
+                      }`}
+                  >
                     Home
                   </Link>
 
-                  <Link href="/about-us" className="text-[#fff] text-base font-medium">
+                  <Link
+                    href="/about-us"
+                    className={`text-base font-medium ${pathname === "/about-us"
+                        ? "text-[#81BA45]"
+                        : "text-[#000]"
+                      }`}
+                  >
                     About Us
                   </Link>
 
-                  <Link href="/our-programs" className="text-[#fff] text-base font-medium">
+                  <Link
+                    href="/our-programs"
+                    className={`text-base font-medium ${pathname === "/our-programs"
+                        ? "text-[#81BA45]"
+                        : "text-[#000]"
+                      }`}
+                  >
                     Our Programs
                   </Link>
 
-                  <Link href="/gallery" className="text-[#fff] text-base font-medium">
+                  <Link
+                    href="/gallery"
+                    className={`text-base font-medium ${pathname === "/gallery"
+                        ? "text-[#81BA45]"
+                        : "text-[#000]"
+                      }`}
+                  >
                     Gallery
                   </Link>
 
-                  <Link href="/contact-us" className="text-[#fff] text-base font-medium">
+                  <Link
+                    href="/contact-us"
+                    className={`text-base font-medium ${pathname === "/contact-us"
+                        ? "text-[#81BA45]"
+                        : "text-[#000]"
+                      }`}
+                  >
                     Contact Us
                   </Link>
                 </>
@@ -100,7 +126,7 @@ const Header = () => {
             </nav>
 
             {!isAdminRoute ? (
-              <button className="bg-[#FFFFFF] rounded-full px-6 py-2 text-black text-base font-normal cursor-pointer">
+              <button className="bg-[#81BA45] rounded-full px-6 py-2 text-[#fff] text-base font-normal cursor-pointer">
                 <Link className="flex gap-1" href={"/donation"}>
                   <IconHeartFilled className="text-red-500 text-base" />
                   Donation
@@ -117,7 +143,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button className="md:hidden text-white" onClick={toggleMenu}>
+          <button className="md:hidden text-black" onClick={toggleMenu}>
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -132,9 +158,8 @@ const Header = () => {
 
         {/* Mobile Sidebar */}
         <aside
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-            isOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex justify-end px-4 py-4">
             <button

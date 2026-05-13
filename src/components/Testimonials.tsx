@@ -65,7 +65,7 @@ function Avatar({ name }: { name: string }) {
 
 function Card({ item }: any) {
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-md flex flex-col gap-3">
+    <div className="bg-white rounded-2xl p-5 shadow-md flex flex-col gap-3 border border-[#000]/20">
       <p className="text-sm text-gray-700 leading-relaxed">{item.text}</p>
       <StarRating rating={item.rating} />
       <div className="flex items-center gap-3 mt-1">
@@ -99,22 +99,23 @@ export default function TestimonialsSlider() {
   const nextIndex = mod(current + 1, total);
 
   return (
-    <section className="bg-[#f0ebe4] py-16 px-6">
+    <section className="bg-[#fff] py-16 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
 
         <div className="w-full md:w-[40%] relative h-[420px] overflow-hidden">
 
-          <div className="absolute top-0 w-full opacity-60 scale-95 blur-[1px]">
+          <div className="absolute top-0 w-full opacity-60 scale-95  ">
             <Card item={testimonialsData[prevIndex]} />
           </div>
 
-          <div className="absolute top-1/2 -translate-y-1/2 w-full z-10">
+          <div className="absolute top-1/2 -translate-y-1/2 w-full z-10 ">
             <Card item={testimonialsData[current]} />
           </div>
 
-          <div className="absolute bottom-0 w-full opacity-60 scale-95 blur-[1px]">
+          <div className="absolute bottom-0 w-full opacity-60 scale-95">
             <Card item={testimonialsData[nextIndex]} />
           </div>
+          
         </div>
         <div className="w-full md:w-[60%]">
           <div className="space-y-2">

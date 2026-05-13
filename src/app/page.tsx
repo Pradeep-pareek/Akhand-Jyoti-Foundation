@@ -13,7 +13,44 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <section className="lg:py-16 py-10 bg-white lg:mt-16 mt-10">
+      <section className="bg-white lg:py-16 py-10">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div>
+            <div className="space-y-1">
+              <h2 className="text-center lg:text-4xl md:text-3xl text-xl font-bold text-black">What We Do</h2>
+              <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">We create meaningful social impact through initiatives in education, women empowerment, skill development, and sustainable community transformation.</p>
+            </div>
+            <Whatwedoslider />
+          </div>
+        </div>
+      </section>
+      <section className=" lg:py-16 py-10 ">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-1">
+            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Empowering Women Across Every Stage of Life</h2>
+            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women at every phase of life through access to education, healthcare, skill development, and sustainable livelihood opportunities—enabling dignity, independence, and a brighter future.</p>
+          </div>
+          <div className="mt-6">
+          <Image
+            src="/images/empowering-women-img.svg"
+              alt="logo image"
+              width={700}
+              height={700}
+              className="mx-auto z-10 relative"
+            />
+          </div>
+        </div>
+      </section>
+        <section className="bg-white lg:py-16 py-10">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-1">
+            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Impact in Numbers</h2>
+            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Every number tells a story of transformation. From empowering women and creating sustainable livelihoods to advancing education and community development, our impact reflects meaningful change across lives, families, and communities.</p>
+          </div>
+          <Impactnumber />
+        </div>
+      </section>
+       <section className="lg:py-16 py-10">
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                <div>
           <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Trusted Partners</h2>
@@ -22,7 +59,7 @@ export default function Home() {
         <PartnersSlider />
         </div>
       </section>
-      <section className="lg:py-16 py-10 bg-[url('/images/experts-bg-img.png')] bg-cover bg-center bg-no-repeat">
+      {/* <section className="lg:py-16 py-10 bg-[url('/images/experts-bg-img.png')] bg-cover bg-center bg-no-repeat">
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold">Guided by Experts</h2>
@@ -85,53 +122,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="bg-white lg:py-16 py-10 empowering-women">
-        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-1">
-            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Empowering Women Across Every Stage of Life</h2>
-            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women at every phase of life through access to education, healthcare, skill development, and sustainable livelihood opportunities—enabling dignity, independence, and a brighter future.</p>
-          </div>
-          <div className="mt-6">
-          <Image
-            src="/images/empowering-women-img.svg"
-              alt="logo image"
-              width={700}
-              height={700}
-              className="mx-auto z-10 relative"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white lg:py-16 py-10">
-        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <div className="space-y-1">
-              <h2 className="text-center lg:text-4xl md:text-3xl text-xl font-bold text-black">What We Do</h2>
-              <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">We create meaningful social impact through initiatives in education, women empowerment, skill development, and sustainable community transformation.</p>
-            </div>
-            <Whatwedoslider />
-          </div>
-        </div>
-      </section>
-
-      <section>
+      </section> */}
+       <section>
         <Testimonials />
       </section>
-
-      <section className="bg-white lg:py-16 py-10">
-        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-1">
-            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Impact in Numbers</h2>
-            <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Every number tells a story of transformation. From empowering women and creating sustainable livelihoods to advancing education and community development, our impact reflects meaningful change across lives, families, and communities.</p>
-          </div>
-          <Impactnumber />
-        </div>
-      </section>
-
-      <section
+        <section
         className="bg-cover bg-center lg:py-16 py-10"
         style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,6 +137,16 @@ export default function Home() {
           <Medianews />
         </div>
       </section>
+
+      
+
+      
+
+     
+
+    
+
+    
     </>
   );
 }

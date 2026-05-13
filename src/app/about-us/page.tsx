@@ -62,7 +62,7 @@ export default function Home() {
                     <div className="grid lg:grid-cols-2 grid-cols-1 mt-8 gap-8">
                         <div>
                             <Image
-                                src="/images/wo-we-are-img.png"
+                                src="/images/wo-we-are-image.png"
                                 alt="logo image"
                                 width={300}
                                 height={300}
@@ -131,7 +131,7 @@ export default function Home() {
                 <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div>
                         <h2 className="text-black lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-2">
-                            Missing and visson
+                            Mission and Vision
                         </h2>
                         <p className="text-center text-black md:w-[60%] mx-auto text-sm md:text-base lg:text-lg">Creating opportunities that empower women, strengthen communities, and build sustainable livelihoods through skill development, education, and inclusive social impact initiatives across India.</p>
                     </div>
