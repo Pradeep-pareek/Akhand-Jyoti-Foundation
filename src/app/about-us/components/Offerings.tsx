@@ -65,14 +65,13 @@ export default function ChairmanQuoteSection() {
                             <div className={`absolute top-0 left-6 md:left-8 w-10 h-[3px] rounded-full ${card.accentColor}`} />
                             <div className="flex items-center justify-between pt-4">
                                 <span
-                                    className={`text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full ${card.tagColor}`}>
+                                    className={`text-sm font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full ${card.tagColor}`}>
                                     {card.tag}
                                 </span>
                                 <span className="text-5xl md:text-6xl font-bold text-gray-100 leading-none select-none">
                                     {card.number}
                                 </span>
                             </div>
-
                             <h3 className="text-gray-900 text-xl md:text-2xl font-bold leading-snug">
                                 {card.title}
                             </h3>

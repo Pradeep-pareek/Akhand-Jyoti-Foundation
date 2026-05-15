@@ -164,3 +164,45 @@ html {
 }
 
 
+.m-card-box::after{
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100px;
+  background-color: #81BA45;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.m-card-box::before{
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 6px;
+  background-color: #81BA45;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.v-card-box::after{
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100px;
+  background-color: #81BA45;
+  top: 0px;
+ right: 0px;
+  z-index: 1;
+}
+
+.v-card-box::before{
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 6px;
+  background-color: #81BA45;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+}
