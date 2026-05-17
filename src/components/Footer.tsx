@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <footer className="bg-[#000] text-white -mt-10 pt-4">
+      <footer className="bg-[#2E5D34] text-white -mt-10 pt-4">
         <div className="max-w-6xl mx-auto px-6 md:px-8 pt-16 pb-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
             <div className="md:col-span-1 space-y-4">

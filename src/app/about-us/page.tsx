@@ -200,45 +200,44 @@ export default function Home() {
             <section className="bg-[#F5F5F5] lg:py-16 py-10">
                 <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div>
-                        <h4 className="text-[#74AA3A] text-center font-semibold text-base">Our Team</h4>
+                        <h4 className="text-[#74AA3A] text-center font-semibold text-lg">Our Team</h4>
                         <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
                             The People Powering Our Mission
                         </h2>
                         <p className="text-center text-black lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Behind every initiative is a passionate team of dedicated professionals, field experts, and changemakers working tirelessly to empower women, strengthen communities, and create lasting social impact through education, skill development, and sustainable livelihood programs across India.</p>
                     </div>
-                    <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5 mt-10">
+                    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-10">
                         <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
-                            <div className="h-[90px] w-[90px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
+                            <div className="h-[110px] w-[110px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
                                 <Image
-                                    src="/images/team-mem-img.png"
+                                    src="/images/team-member-111.png"
                                     alt="logo image"
-                                    width={80}
-                                    height={80}
+                                    width={100}
+                                    height={100}
                                     className="object-contain"
                                 />
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-center text-black">Rahul Mehta</h3>
-                                <p className="text-center text-base text-black">Financial Officer</p>
+                                <h3 className="text-xl font-semibold text-center text-black">Shyama Geeta Pandey</h3>
+                                <p className="text-center text-base text-black">Program Executive</p>
                             </div>
                             <div className="flex justify-center">
                                 <span className="text-[#1D9E75] bg-[#E1F5EE] px-4 py-1 rounded-full">Board Member</span>
                             </div>
-
                         </div>
                         <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
-                            <div className="h-[90px] w-[90px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
+                              <div className="h-[110px] w-[110px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
                                 <Image
-                                    src="/images/team-mem-img.png"
+                                    src="/images/team-member-22.png"
                                     alt="logo image"
-                                    width={80}
-                                    height={80}
+                                    width={100}
+                                    height={100}
                                     className="object-contain"
                                 />
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-center text-black">Rahul Mehta</h3>
-                                <p className="text-center text-base text-black">Financial Officer</p>
+                                <h3 className="text-xl font-semibold text-center text-black">Amit Kumr Goel</h3>
+                                <p className="text-center text-base text-black">Social Impact Consultant</p>
                             </div>
                             <div className="flex justify-center">
                                 <span className="text-[#534AB7] bg-[#EEEDFE] px-4 py-1 rounded-full">Board Member</span>
@@ -246,40 +245,21 @@ export default function Home() {
 
                         </div>
                         <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
-                            <div className="h-[90px] w-[90px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
+                            <div className="h-[110px] w-[110px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
                                 <Image
-                                    src="/images/team-mem-img.png"
+                                    src="/images/team-member-33.png"
                                     alt="logo image"
-                                    width={80}
-                                    height={80}
+                                    width={100}
+                                    height={100}
                                     className="object-contain"
                                 />
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-center text-black">Rahul Mehta</h3>
-                                <p className="text-center text-base text-black">Financial Officer</p>
+                                <h3 className="text-xl font-semibold text-center text-black">Deepa Chaudhary </h3>
+                                <p className="text-center text-base text-black">Operations Head</p>
                             </div>
                             <div className="flex justify-center">
                                 <span className="text-[#185FA5] bg-[#E6F1FB] px-4 py-1 rounded-full">Board Member</span>
-                            </div>
-
-                        </div>
-                        <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
-                            <div className="h-[90px] w-[90px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
-                                <Image
-                                    src="/images/team-mem-img.png"
-                                    alt="logo image"
-                                    width={80}
-                                    height={80}
-                                    className="object-contain"
-                                />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-center text-black">Rahul Mehta</h3>
-                                <p className="text-center text-base text-black">Financial Officer</p>
-                            </div>
-                            <div className="flex justify-center">
-                                <span className="text-[#1D9E75] bg-[#E1F5EE] px-4 py-1 rounded-full">Board Member</span>
                             </div>
 
                         </div>

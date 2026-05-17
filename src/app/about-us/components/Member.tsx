@@ -4,25 +4,21 @@ import Image from "next/image";
 
 const boardMembers = [
   {
-    name: "Dr. Neha Sharma",
+    name: "Saikat Mukherjee",
     role: "Founder & Chairman",
-    image: "/images/member-img.png",
+    image: "/images/director-image-11.png",
   },
   {
-    name: "Dr. Neha Sharma",
+    name: "Varun Jalota",
     role: "Founder & Chairman",
-    image: "/images/member-img.png",
+    image: "/images/director-image-22.png",
   },
   {
-    name: "Dr. Neha Sharma",
+    name: "Mousumi Mukherjee",
     role: "Founder & Chairman",
-    image: "/images/member-img.png",
+    image: "/images/director-image-33.png",
   },
-  {
-    name: "Dr. Neha Sharma",
-    role: "Founder & Chairman",
-    image: "/images/member-img.png",
-  },
+ 
 ];
 
 export default function BoardMembers() {
@@ -30,7 +26,7 @@ export default function BoardMembers() {
     <section
       className="bg-cover bg-center lg:py-16 py-10"
       style={{ backgroundImage: "url('/images/green-rectangle-bg.png')" }}>
-      <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1020px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-2">
           <h2 className="text-white lg:text-4xl md:text-3xl text-2xl font-bold leading-snug text-center mb-3">
             Meet Our Board Members
@@ -38,7 +34,7 @@ export default function BoardMembers() {
           <p className="text-center text-white lg:w-[70%] mx-auto text-sm md:text-base lg:text-lg">Our board brings together experienced leaders, industry experts, and visionaries united by a shared commitment to women empowerment, skill development, education, and sustainable community development across India.</p>
         </div>
 
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-8 gap-4  ">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-8 gap-4  ">
           {boardMembers.map((member) => (
             <div
               key={member.name}
@@ -57,7 +53,7 @@ export default function BoardMembers() {
               <p className="font-playfair text-[17px] font-bold text-gray-900 text-center leading-snug mb-1">
                 {member.name}
               </p>
-              <p className="text-[13px] font-medium text-gray-400 text-center">
+              <p className="text-[16px] font-medium text-gray-400 text-center">
                 {member.role}
               </p>
             </div>
