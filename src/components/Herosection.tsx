@@ -58,7 +58,7 @@ export default function HeroSection() {
   const slide = SLIDES[current];
 
   return (
-    <section className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 mt-2 pb-4  ">
+    <section className="w-full  mx-auto px-4 sm:px-6 lg:px-8 mt-2 pb-4  ">
       <div className="relative overflow-hidden bg-[#000] rounded-[18px] border border-[#000]/10 lg:min-h-[500px] flex items-center bg-[#fff]">
         <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? "opacity-0" : "opacity-100"
           }`}>

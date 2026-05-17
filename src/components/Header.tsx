@@ -35,13 +35,13 @@ const Header = () => {
 
 
   return (
-    <header className="w-full max-w-[1320px] mx-auto md:px-6 lg:px-8">
+    <header className="w-full mx-auto md:px-6 lg:px-8">
       <div className="bg-[#fff] md:rounded-[18px] shadow-md top-0 z-50 lg:mt-2 py-2">
         <div className="flex items-center justify-between md:py-0 py-3 lg:px-10 px-5">
 
           <Link href="/" className="text-2xl font-bold text-[#f70d28] py-1">
             <Image
-              src="/images/logo-img.png"
+              src="/images/logo-img.svg"
               alt="logo image"
               width={75}
               height={75}
