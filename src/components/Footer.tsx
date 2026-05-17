@@ -94,16 +94,16 @@ export default function Footer() {
                   Quick Links
                 </h3>
                 <ul className="space-y-2 text-start">
-                  {quickLinks.map((link) => (
+                  {quickLinks.map((link) => 
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-gray-400 text-center text-base hover:text-[#81BA45] transition-colors"
+                        className="text-white text-center text-base hover:text-[#81BA45] transition-colors"
                       >
                         {link}
                       </a>
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function Footer() {
                 <div className="flex gap-2 items-center">
                   <span><IconMapPin stroke={2} /></span>
                   <a href="#"
-                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
+                    className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
                     C-4B/307-A-GF. Pocket 13. Janakpuri. NEW DELHI South West New Delhi – 110058
                   </a>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <div className="flex gap-2 items-center">
                   <IconMail stroke={2} />
                   <a href="#"
-                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
+                    className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
                     akhandjyotifoundation@gmail.com
                   </a>
@@ -135,7 +135,7 @@ export default function Footer() {
                 <div className="flex gap-2 items-center">
                   <IconPhoneCall stroke={2} />
                   <a href="#"
-                    className="text-gray-400 text-base hover:text-[#81BA45] transition-colors"
+                    className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
                     8800452255
                   </a>
@@ -144,7 +144,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-[#333] py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[13px] text-gray-500">
+          <div className="border-t border-[#fff]/40 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[13px] text-[#fff]/60">
             <span>
               © {new Date().getFullYear()} Akhand Jyoti Foundation. All Rights Reserved.
             </span>
