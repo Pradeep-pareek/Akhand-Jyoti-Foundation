@@ -104,20 +104,20 @@ const Header = () => {
                 <>
                   <Link
                     href="/admin/gallery"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Gallery Admin
                   </Link>
 
                   <Link
                     href="/admin/Impactnumbers"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Impact Numbers
                   </Link>
                   <Link
                     href="/admin/change-password"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Change Password
                   </Link>
