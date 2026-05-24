@@ -1,8 +1,36 @@
+
 import { NextRequest, NextResponse } from "next/server";
 import { getDbPool, sql } from "@/lib/db";
 import { verifyPayUResponseHash, PAYU_CONFIG } from "@/lib/payu";
 
+// Helper — never returns null, uses request origin as fallback
+function getAppUrl(req: NextRequest): string {
+  const envUrl = process.env.NEXT_PUBLIC_APP_URL;
+  if (envUrl && envUrl !== "null" && envUrl !== "") {
+    try {
+      // Validate envUrl
+      new URL(envUrl.startsWith("http") ? envUrl : `https://${envUrl}`);
+      return envUrl.replace(/\/$/, "");
+    } catch (e) {
+      console.warn("[payment/failure] Invalid NEXT_PUBLIC_APP_URL:", envUrl);
+    }
+  }
+  // Fallback: derive from the incoming request URL itself
+  try {
+    const url = new URL(req.url);
+    return `${url.protocol}//${url.host}`;
+  } catch (e) {
+    console.error("[payment/failure] Could not determine appUrl from request", req.url);
+    return "/"; // fallback to root
+  }
+}
+
 export async function POST(req: NextRequest) {
+  const appUrl = getAppUrl(req);
+  if (!appUrl || appUrl === "null") {
+    console.error("[payment/failure] appUrl is invalid:", appUrl);
+    return NextResponse.json({ error: "Server misconfiguration: invalid appUrl" }, { status: 500 });
+  }
   try {
     const formData = await req.formData();
     const params: Record<string, string> = {};
@@ -10,8 +38,7 @@ export async function POST(req: NextRequest) {
       params[key] = value.toString();
     });
 
-    const { txnid, mihpayid, status, bank_ref_num, bankcode, error, error_Message } =
-      params;
+    const { txnid, mihpayid, status, bank_ref_num, bankcode, error, error_Message } = params;
 
     // --- Verify hash ---
     const isHashValid = verifyPayUResponseHash(params, PAYU_CONFIG.SALT);
@@ -36,20 +63,18 @@ export async function POST(req: NextRequest) {
       .input("remarks", sql.NVarChar(sql.MAX), `PayU status: ${status}`)
       .execute("sp_updateOrder");
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
     const reason = encodeURIComponent(error_Message || error || "Payment was not completed");
-
     return NextResponse.redirect(
-      `${appUrl}/payment/failure?txnid=${txnid || ""}&reason=${reason}`
+      `${appUrl}/payment/failure?txnid=${txnid || ""}&reason=${reason}`,
+      303
     );
   } catch (err) {
     console.error("[payment/failure] Error:", err);
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    return NextResponse.redirect(`${appUrl}/payment/failure?reason=server_error`);
+    return NextResponse.redirect(`${appUrl}/payment/failure?reason=server_error`, 303);
   }
 }
 
-export async function GET() {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  return NextResponse.redirect(`${appUrl}/payment/failure?reason=invalid_request`);
+export async function GET(req: NextRequest) {
+  const appUrl = getAppUrl(req);
+  return NextResponse.redirect(`${appUrl}/payment/failure?reason=invalid_request`, 303);
 }
