@@ -49,9 +49,17 @@ export function buildCertificateHTML(txn: Record<string, unknown>): string {
             <link
                 href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
                 rel="stylesheet">
+                <script>
+                    window.onload = function () {
+                        window.print();
+                    };
+                </script>
             <style>
                 * { margin: 0; padding: 0; box-sizing: border-box; }
-
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
                 body {
                 font-family: 'Manrope', sans-serif;
                 width: 794px;
@@ -59,6 +67,9 @@ export function buildCertificateHTML(txn: Record<string, unknown>): string {
                 background: #FAFFF7;
                 color: #1a1a1a;
                 position: relative;
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
                 }
 
                 /* ── Page border decorations ── */

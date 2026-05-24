@@ -9,6 +9,7 @@ interface Donation {
     donor_name: string;
     donor_email: string;
     donor_phone: string;
+    donor_pan: string;
     amount: number;
     payment_status: string;
     payu_payment_id: string;
@@ -23,7 +24,18 @@ interface Filters { status: string; search: string; dateFrom: string; dateTo: st
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const fINR = (n: number) => new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(n);
-const fDate = (s: string) => new Date(s)?.toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+const fDate = (s: string) => {
+    const d = new Date(s);
+
+    return d.toLocaleString("en-IN", {
+        timeZone: "UTC",
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+};
 
 const STATUS_STYLE: Record<string, string> = {
     SUCCESS: "bg-green-100 text-green-800 border-green-200",
@@ -35,7 +47,7 @@ const STATUS_STYLE: Record<string, string> = {
     VERIFICATION_FAILED: "bg-purple-100 text-purple-800 border-purple-200",
 };
 const STATUS_OPTIONS = ["ALL", "SUCCESS", "FAILED", "INITIATED", "PENDING", "CANCELLED", "HASH_MISMATCH"];
-const PAGE_SIZES = [2, 10, 20, 50, 100];
+const PAGE_SIZES = [10, 20, 50, 100];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function AdminDonationsPage() {
@@ -45,12 +57,21 @@ export default function AdminDonationsPage() {
     const [loading, setLoading] = useState(true);
     const [exporting, setExporting] = useState(false);
     const [certLoading, setCertLoading] = useState<string | null>(null);
+    const formatIndianDate = (date: Date) => {
+        return date.toLocaleDateString("en-CA", {
+            timeZone: "Asia/Kolkata",
+        });
+    };
 
+    const today = new Date();
+
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(today.getDate() - 7);
     const [filters, setFilters] = useState<Filters>({
         status: "ALL",
         search: "",
-        dateFrom: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().slice(0, 10),
-        dateTo: new Date().toISOString().slice(0, 10),
+        dateFrom: formatIndianDate(sevenDaysAgo),
+        dateTo: formatIndianDate(today),
         amountMin: "",
         amountMax: ""
     });
@@ -143,24 +164,39 @@ export default function AdminDonationsPage() {
         }
     };
 
-    // ── Certificate download ───────────────────────────────────────────
     const handleCert = async (txnId: string) => {
         setCertLoading(txnId);
+
         try {
-            const res = await fetch(`/api/admin/certificate?txnid=${txnId}`);
-            if (!res.ok) { alert("Certificate generation failed."); return; }
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `80G-${txnId}.pdf`;
-            a.click();
-            URL.revokeObjectURL(url);
+            const res = await fetch(
+                `/api/admin/certificate?txnid=${txnId}`
+            );
+
+            if (!res.ok) {
+                alert("Certificate generation failed.");
+                return;
+            }
+
+            const html = await res.text();
+
+            const printWindow = window.open("", "_blank");
+
+            if (!printWindow) {
+                alert("Popup blocked");
+                return;
+            }
+
+            printWindow.document.open();
+            printWindow.document.write(html);
+            printWindow.document.close();
+
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong");
         } finally {
             setCertLoading(null);
         }
     };
-
     // ── Pagination range ───────────────────────────────────────────────
     const pageRange = () => {
         const { page, totalPages } = pagination;

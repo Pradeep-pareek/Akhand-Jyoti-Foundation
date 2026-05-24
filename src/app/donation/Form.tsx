@@ -19,11 +19,11 @@ export default function DonationCard() {
     const [error, setError] = useState("");
 
     const [formData, setFormData] = useState({
-        "name": "Mohit tater",
-        "phone": "8279202499",
-        "email": "mohittater815@gmail.com",
-        "pan": "CIRPT8256Q",
-        "city": "JAIPUR"
+        "name": "",
+        "phone": "",
+        "email": "",
+        "pan": "",
+        "city": ""
     });
 
     const inputRef = useRef<HTMLInputElement>(null);

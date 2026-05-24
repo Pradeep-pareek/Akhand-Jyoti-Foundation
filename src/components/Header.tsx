@@ -43,8 +43,8 @@ const Header = () => {
             <Image
               src="/images/logo-img.svg"
               alt="logo image"
-              width={75}
-              height={75}
+              width={50}
+              height={50}
             />
           </Link>
           <div className="hidden md:flex gap-6 items-center py-2">
@@ -199,6 +199,12 @@ const Header = () => {
                 <Link href="/contact-us" className="block text-gray-700" onClick={closeMenu}>
                   Contact Us
                 </Link>
+                <button className="bg-[#81BA45] rounded-full px-6 py-2 text-[#fff] text-base font-normal cursor-pointer">
+                  <Link className="flex gap-1" href={"/donation"}>
+                    <IconHeartFilled className="text-red-500 text-base" />
+                    Donation
+                  </Link>
+                </button>
               </>
             ) : (
               <>

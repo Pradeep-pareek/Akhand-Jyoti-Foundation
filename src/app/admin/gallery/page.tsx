@@ -114,7 +114,7 @@ export default function GalleryPage() {
         const formData = new FormData();
         imageEntries.forEach((entry) => formData.append("images", entry.file));
 
-        const uploadRes = await fetch("/api/gallery/upload", {
+        const uploadRes = await fetch("/api/admin/gallery/upload", {
           method: "POST",
           body: formData,
         });
@@ -135,7 +135,7 @@ export default function GalleryPage() {
           body.images = uploadedFilenames;
         }
 
-        const putRes = await fetch(`/api/gallery/${editingItem.id}`, {
+        const putRes = await fetch(`/api/admin/gallery/${editingItem.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -148,7 +148,7 @@ export default function GalleryPage() {
         showSuccess("Gallery item updated!");
       } else {
         // 2b. Create new item
-        const postRes = await fetch("/api/gallery", {
+        const postRes = await fetch("/api/admin/gallery", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -189,7 +189,7 @@ export default function GalleryPage() {
 
   const handleDelete = async (id: number) => {
     try {
-      const res = await fetch(`/api/gallery/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/gallery/${id}`, { method: "DELETE" });
       const json = await res.json();
       if (!json.success) throw new Error(json.error || "Delete failed");
       setItems((prev) => prev.filter((i) => i.id !== id));

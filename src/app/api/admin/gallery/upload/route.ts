@@ -3,7 +3,7 @@ import { IMAGES_DIR } from "@/lib/gallery-store";
 import fs from "fs";
 import path from "path";
 
-// ─── POST /api/gallery/upload ────────────────────────────────────────────────
+// ─── POST /api/admin/gallery/upload ────────────────────────────────────────────────
 // Accepts multipart/form-data with one or more files under the key "images"
 // Returns the saved filenames to be stored in the gallery item.
 export async function POST(req: NextRequest) {
