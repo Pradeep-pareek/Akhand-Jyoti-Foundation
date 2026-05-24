@@ -7,11 +7,11 @@ export function middleware(request: NextRequest) {
     if (!token && request.nextUrl.pathname === '/admin/login') {
         return NextResponse.next()
     }
-    if (!token && request.nextUrl.pathname.startsWith('/admin')) {
+    if (!token && (request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/api/admin'))) {
         return NextResponse.redirect(new URL('/admin/login', request.url))
     }
     if (token && request.nextUrl.pathname === '/admin/login') {
-        return NextResponse.redirect(new URL("/admin/gallery", request.url));
+        return NextResponse.redirect(new URL("/admin/donations", request.url));
     }
 }
 

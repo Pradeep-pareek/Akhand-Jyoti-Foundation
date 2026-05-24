@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
       .input("donor_name", sql.NVarChar(200), name)
       .input("donor_email", sql.NVarChar(200), email)
       .input("donor_phone", sql.NVarChar(20), phone)
+      .input("donor_pan", sql.NVarChar(20), pan ? pan.toUpperCase() : null)
       .input("amount", sql.Decimal(18, 2), parsedAmount)
       .input("product_info", sql.NVarChar(255), "Donation - AkhandJyoti Foundation")
       .input("success_url", sql.NVarChar(500), successUrl)

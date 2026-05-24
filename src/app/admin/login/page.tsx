@@ -24,7 +24,7 @@ export default function LoginPage() {
         body: JSON.stringify(form),
       });
       if (res.ok) {
-        router.push("/admin/gallery");
+        router.push("/admin/donations");
       } else {
         setError("Invalid username or password. Please try again.");
       }

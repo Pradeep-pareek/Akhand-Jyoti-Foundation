@@ -63,8 +63,8 @@ const Header = () => {
                   <Link
                     href="/about-us"
                     className={`text-base font-medium ${pathname === "/about-us"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     About Us
@@ -73,8 +73,8 @@ const Header = () => {
                   <Link
                     href="/our-programs"
                     className={`text-base font-medium ${pathname === "/our-programs"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Our Programs
@@ -83,8 +83,8 @@ const Header = () => {
                   <Link
                     href="/gallery"
                     className={`text-base font-medium ${pathname === "/gallery"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Gallery
@@ -93,8 +93,8 @@ const Header = () => {
                   <Link
                     href="/contact-us"
                     className={`text-base font-medium ${pathname === "/contact-us"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Contact Us
@@ -114,6 +114,12 @@ const Header = () => {
                     className="text-[#111] text-base font-medium"
                   >
                     Impact Numbers
+                  </Link>
+                  <Link
+                    href="/admin/donations"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Donations
                   </Link>
                   <Link
                     href="/admin/change-password"
@@ -210,6 +216,20 @@ const Header = () => {
                   onClick={closeMenu}
                 >
                   Impact Numbers
+                </Link>
+                <Link
+                  href="/admin/donations"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Donations
+                </Link>
+                <Link
+                  href="/admin/change-password"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Change Password
                 </Link>
 
                 <button

@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  serverExternalPackages: ["puppeteer"],
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
