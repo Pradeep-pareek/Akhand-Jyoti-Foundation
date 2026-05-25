@@ -46,7 +46,9 @@ const STATUS_STYLE: Record<string, string> = {
     HASH_MISMATCH: "bg-orange-100 text-orange-800 border-orange-200",
     VERIFICATION_FAILED: "bg-purple-100 text-purple-800 border-purple-200",
 };
-const STATUS_OPTIONS = ["ALL", "SUCCESS", "FAILED", "INITIATED", "PENDING", "CANCELLED", "HASH_MISMATCH"];
+const STATUS_OPTIONS = ["ALL", "SUCCESS", "FAILED", "INITIATED", "PENDING", "CANCELLED", "HASH_MISMATCH",
+    "BOUNCED", "DROPPED"
+];
 const PAGE_SIZES = [10, 20, 50, 100];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -62,9 +64,43 @@ export default function AdminDonationsPage() {
             timeZone: "Asia/Kolkata",
         });
     };
-
+    const [verifyingTxn, setVerifyingTxn] = useState<string | null>(null);
     const today = new Date();
+    const handleVerifyPayment = async (txnId: string) => {
+        setVerifyingTxn(txnId);
 
+        try {
+            const res = await fetch(`/api/admin/verify-payment?txnid=${txnId}`, {
+                method: "POST",
+            });
+            const data = await res.json();
+            if (!data.success) {
+                alert(data.message || "Verification failed");
+                return;
+            }
+            // update row instantly without refresh
+            setDonations(prev =>
+                prev.map(d =>
+                    d.txn_id === txnId
+                        ? {
+                            ...d,
+                            payment_status: data.payment_status || d.payment_status,
+                            payu_payment_id:
+                                data.payu_payment_id || d.payu_payment_id,
+                            bank_ref_num:
+                                data.bank_ref_num || d.bank_ref_num,
+                        }
+                        : d
+                )
+            );
+
+        } catch (err) {
+            console.error(err);
+            alert("Verification failed");
+        } finally {
+            setVerifyingTxn(null);
+        }
+    };
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(today.getDate() - 7);
     const [filters, setFilters] = useState<Filters>({
@@ -449,6 +485,24 @@ export default function AdminDonationsPage() {
                                                                 </svg>
                                                             )}
                                                             80G PDF
+                                                        </button>
+                                                    ) : ["PENDING", "INITIATED"].includes(d.payment_status) ? (
+                                                        <button
+                                                            onClick={() => handleVerifyPayment(d.txn_id)}
+                                                            disabled={verifyingTxn === d.txn_id}
+                                                            className="flex items-center gap-1 bg-yellow-100 hover:bg-yellow-200 text-yellow-800 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-60 whitespace-nowrap"
+                                                        >
+                                                            {verifyingTxn === d.txn_id ? (
+                                                                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
+                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                                                </svg>
+                                                            ) : (
+                                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6" />
+                                                                </svg>
+                                                            )}
+                                                            Verify
                                                         </button>
                                                     ) : (
                                                         <span className="text-gray-200 text-xs">—</span>
