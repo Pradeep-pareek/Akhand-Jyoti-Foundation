@@ -119,6 +119,18 @@ const Header = () => {
                     Impact Numbers
                   </Link>
                   <Link
+                    href="/admin/our-programs"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Our-Programs
+                  </Link>
+                  <Link
+                    href="/admin/contact-us"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Contact Us
+                  </Link>
+                  <Link
                     href="/admin/donations"
                     className="text-[#111] text-base font-medium"
                   >
@@ -225,6 +237,20 @@ const Header = () => {
                   onClick={closeMenu}
                 >
                   Impact Numbers
+                </Link>
+                <Link
+                  href="/admin/our-programs"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Our-Programs
+                </Link>
+                <Link
+                  href="/admin/contact-us"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Contact Us
                 </Link>
                 <Link
                   href="/admin/donations"

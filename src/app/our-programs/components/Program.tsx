@@ -3,13 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArtsSection, IoclSection, SensitizingSection, SlumSection } from "@/app/admin/our-programs/page";
+type Props = {
+    sections?: Record<string, SectionData> | null;
+};
+type SectionData = IoclSection | SlumSection | ArtsSection | SensitizingSection;
 
-const SensitizingSection = () => {
-    const images = [
-        "/images/sensitizing-society.png",
-        "/images/skills-industry-img.png",
-        "/images/arts-culture-img.png",
-    ];
+export function Program({ sections }: Props) {
+    const sensitizing = sections?.sensitizing_section as SensitizingSection;
+
+    const images =
+        sensitizing?.images?.length
+            ? sensitizing.images
+            : [
+                "/images/sensitizing-society.png",
+                "/images/skills-industry-img.png",
+                "/images/arts-culture-img.png",
+            ];
 
     const [currentImage, setCurrentImage] = useState(0);
     const [fade, setFade] = useState(true);
@@ -46,21 +56,20 @@ const SensitizingSection = () => {
 
                     <div className="space-y-4">
                         <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold">
-                            Sensitizing Society on Menstrual Hygiene
+                            {sensitizing?.heading}
                         </h2>
                         <div className="space-y-1">
                             <p className="text-black">
-                                Menstruation remains a sensitive and often stigmatized topic in the lives of adolescents.
+                                {sensitizing?.description1}
                             </p>
                             <p className="text-black">
-                                Project Swecha empowers girls with knowledge and hygiene support. Our diverse range of services empowers clients to cultivate and enhance their skill sets while maintaining high standards of quality, transparency, authenticity, and productivity. With a team of experienced professionals, we specialize in skill development, social development, corporate training,
-                                assessments, ground connect activities, and self-employment models. Our expertise and experience allow us to deliver comprehensive solutions in these areas, catering to the unique needs and goals of our clients.
+                                {sensitizing?.description2}
                             </p>
                         </div>
                         <Link
-                            href="#"
+                            href={sensitizing?.cta_href || "#"}
                             className="inline-flex items-center bg-[#81BA45] rounded-full px-10 py-2.5 text-white font-semibold">
-                            Stand With Her
+                            {sensitizing?.cta_label}
                         </Link>
                     </div>
                 </div>
@@ -69,4 +78,4 @@ const SensitizingSection = () => {
     );
 };
 
-export default SensitizingSection;
+export default Program;

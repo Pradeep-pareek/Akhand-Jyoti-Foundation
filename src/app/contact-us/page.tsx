@@ -1,3 +1,4 @@
+"use client";
 import HeroSection from "./components/Herosection";
 // import Chairman from "./components/Offerings";
 import Offerings from "./components/Offerings";
@@ -10,8 +11,47 @@ import Link from "next/link";
 import { IconHeartFilled } from "@tabler/icons-react";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
+
+    const [form, setForm] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+    const [loader, setLoader] = useState(false);
+    const submitForm = async () => {
+        setLoader(true);
+        const response = await fetch("/api/contact-us", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            alert("Message sent successfully");
+
+            setForm({
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                message: "",
+            });
+
+        } else {
+            alert(data.message);
+        }
+        setLoader(false);
+    };
     return (
         <>
             <HeroSection />
@@ -29,6 +69,13 @@ export default function Home() {
                                     <input
                                         type="text"
                                         placeholder="First name"
+                                        value={form.firstName}
+                                        onChange={(e) =>
+                                            setForm({
+                                                ...form,
+                                                firstName: e.target.value
+                                            })
+                                        }
                                         className="bg-white border border-[#D0D5DD] text-[#000] rounded-xl px-4 py-2.5 text-base outline-none focus:border-[#81BA45] w-full"
                                     />
                                 </div>
@@ -36,6 +83,13 @@ export default function Home() {
                                     <label className="text-[#000] font-medium text-base">Last name</label>
                                     <input
                                         type="text"
+                                        value={form.lastName}
+                                        onChange={(e) =>
+                                            setForm({
+                                                ...form,
+                                                lastName: e.target.value
+                                            })
+                                        }
                                         placeholder="Last name"
                                         className="bg-white border border-[#D0D5DD] text-[#000] rounded-xl px-4 py-2.5 text-base outline-none focus:border-[#81BA45] w-full"
                                     />
@@ -45,6 +99,13 @@ export default function Home() {
                                 <label className="text-[#000] font-medium text-base">Email</label>
                                 <input
                                     type="email"
+                                    value={form.email}
+                                    onChange={(e) =>
+                                        setForm({
+                                            ...form,
+                                            email: e.target.value
+                                        })
+                                    }
                                     placeholder="you@company.com"
                                     className="bg-white border border-[#D0D5DD] text-[#000] rounded-xl px-4 py-2.5 text-base outline-none focus:border-[#81BA45] w-full"
                                 />
@@ -61,7 +122,16 @@ export default function Home() {
                                     </div>
                                     <input
                                         type="tel"
-                                        placeholder="+91 9876543210"
+                                        value={form.phone}
+                                        onChange={(e) => {
+                                            if (isNaN(Number(e.target.value))) return;
+                                            setForm({
+                                                ...form,
+                                                phone: e.target.value?.slice(0, 10)
+                                            })
+                                        }
+                                        }
+                                        placeholder="9999999999"
                                         className="flex-1 px-4 py-2.5  text-base outline-none bg-transparent"
                                     />
                                 </div>
@@ -70,6 +140,13 @@ export default function Home() {
                                 <label className="text-base font-medium text-[#000]">Message</label>
                                 <textarea
                                     placeholder="Leave us a message..."
+                                    value={form.message}
+                                    onChange={(e) =>
+                                        setForm({
+                                            ...form,
+                                            message: e.target.value?.slice(0, 300)
+                                        })
+                                    }
                                     rows={4}
                                     className="bg-white text-[#000] border border-[#D0D5DD] rounded-xl px-4 py-2.5 text-base outline-none focus:border-[#81BA45] resize-none w-full"
                                 />
@@ -85,8 +162,12 @@ export default function Home() {
                                     You agree to our friendly privacy policy.
                                 </label>
                             </div>
-                            <button className="w-full bg-[#81BA45] text-white font-semibold rounded-xl py-3 cursor-pointer text-lg transition">
-                                Send Message
+                            <button
+                                disabled={loader}
+                                onClick={submitForm}
+                                className={`w-full bg-[#81BA45] ${loader ? 'cursor-not-allowed' : 'hover:bg-[#6a9d3a]'} text-white font-semibold rounded-xl py-3 cursor-pointer text-lg transition}`}
+                            >
+                                {loader ? "Sending..." : "Send Message"}
                             </button>
                         </div>
                         <div>

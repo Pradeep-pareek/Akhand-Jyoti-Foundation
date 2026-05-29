@@ -14,6 +14,7 @@ import Image from "next/image";
 // import { IconMapPin } from '@tabler/icons-react';
 import { IconPhoneCall } from '@tabler/icons-react';
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 // import { IconMail } from '@tabler/icons-react';
 
 export default function Footer() {
@@ -50,14 +51,18 @@ export default function Footer() {
               </p>
             </div>
             <button className="bg-white text-gray-900 py-2.5 px-7 rounded-full text-base font-semibold inline-flex items-center gap-1 hover:bg-gray-100 transition-colors cursor-pointer">
+              <Link className="flex gap-1" href={"/contact-us"}>
               Contact us <IconChevronsRight size={20} stroke={2.5} />
+              </Link>
             </button>
           </div>
 
           <div className="relative z-10 shrink-0">
             <button className="bg-white text-gray-900 py-2.5 px-7 rounded-full text-base font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer">
-              <IconHeartFilled size={18} className="text-red-500" />
-              Donate Now
+              <Link className="flex gap-1" href={"/donation"}>
+                <IconHeartFilled className="text-red-500 text-base" />
+                Donate Now
+              </Link>
             </button>
           </div>
         </div>
