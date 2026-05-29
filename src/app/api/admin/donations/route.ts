@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
 
         const result: any = await request.query(`
       SELECT
-        transaction_id, txn_id, donor_name, donor_email, donor_phone,
+        transaction_id, txn_id, donor_name, donor_email, donor_phone,donor_pan,
         amount, payment_status, payu_payment_id, bank_ref_num,
         gateway_response_message, created_at, updated_at
       FROM ajf_transaction ${where}

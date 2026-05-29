@@ -1,3 +1,4 @@
+"use client"
 import {
   IconChevronsRight,
   IconHeartFilled,
@@ -12,10 +13,12 @@ import {
 import Image from "next/image";
 // import { IconMapPin } from '@tabler/icons-react';
 import { IconPhoneCall } from '@tabler/icons-react';
+import { usePathname } from "next/navigation";
 // import { IconMail } from '@tabler/icons-react';
 
 export default function Footer() {
   const quickLinks = ["Home", "About Us", "What We Do", "Programs", "Contact Us"];
+  const pathname = usePathname();
 
   const socialLinks = [
     { Icon: IconBrandWhatsapp, label: "WhatsApp", href: "#" },
@@ -29,7 +32,10 @@ export default function Footer() {
     { Icon: IconMail, label: "Email", href: "mailto:info@ajf.org" },
     { Icon: IconMapPin, label: "Location", href: "#" },
   ];
-
+  const isReceiptRoute = pathname.startsWith("/receipt/");
+  if (isReceiptRoute) {
+    return null;
+  }
   return (
     <section className="relative lg:pt-16 pt-10 bg-white">
       <div className="relative z-10 mx-5 xl:mx-10 2xl:mx-auto 2xl:max-w-6xl">
@@ -37,7 +43,7 @@ export default function Footer() {
           <div className="space-y-5 relative z-10">
             <div className="space-y-2">
               <h2 className="text-white text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide">
-               Want to Know More?
+                Want to Know More?
               </h2>
               <p className="text-[#fff] text-sm md:text-base  max-w-lg leading-relaxed">
                 Discover how Akhandjyoti Foundation is empowering women, strengthening communities, and creating sustainable social impact—and learn how you can become a part of this journey of change.
@@ -94,7 +100,7 @@ export default function Footer() {
                   Quick Links
                 </h3>
                 <ul className="space-y-2 text-start">
-                  {quickLinks.map((link) => 
+                  {quickLinks.map((link) =>
                     <li key={link}>
                       <a
                         href="#"

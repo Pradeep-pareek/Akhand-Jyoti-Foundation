@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDbPool, sql } from "@/lib/db";
 import { verifyPayUResponseHash, PAYU_CONFIG } from "@/lib/payu";
+import type { DonationEmailPayload } from "@/app/api/send-donation-email/route";
 
 // Helper — never returns null, uses request origin as fallback
 function getAppUrl(req: NextRequest): string {
@@ -24,6 +25,31 @@ function getAppUrl(req: NextRequest): string {
   }
 }
 
+/**
+ * Fire-and-forget helper: calls the internal /api/send-donation-email route.
+ * Any failure is logged but NEVER bubbles up to break the payment redirect.
+ */
+async function triggerDonationEmail(
+  appUrl: string,
+  payload: DonationEmailPayload
+): Promise<void> {
+  try {
+    const res = await fetch(`${appUrl}/api/send-donation-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      console.error("[payment/success] Email API responded with error:", res.status, body);
+    } else {
+      console.log("[payment/success] Donation email triggered for txnid:", payload.txnid);
+    }
+  } catch (err) {
+    console.error("[payment/success] Failed to call email API:", err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   const appUrl = getAppUrl(req);
   if (!appUrl || appUrl === "null") {
@@ -39,6 +65,7 @@ export async function POST(req: NextRequest) {
     });
 
     const { txnid, mihpayid, status, amount, bank_ref_num, bankcode, error, error_Message } = params;
+    const { email: donorEmail, firstname: donorFirstName, lastname: donorLastName } = params;
 
     const isHashValid = verifyPayUResponseHash(params, PAYU_CONFIG.SALT);
 
@@ -69,6 +96,21 @@ export async function POST(req: NextRequest) {
       .execute("sp_updateOrder");
 
     if (finalStatus === "SUCCESS") {
+      // ── Send donation confirmation email (non-blocking) ───────────────────
+      if (donorEmail) {
+        const donorName = [donorFirstName, donorLastName].filter(Boolean).join(" ").trim();
+        triggerDonationEmail(appUrl, {
+          toEmail: donorEmail,
+          toName: donorName,
+          txnid,
+          amount,
+          mihpayid,
+        });
+      } else {
+        console.warn("[payment/success] No donor email in PayU params; skipping email for txnid:", txnid);
+      }
+      // ─────────────────────────────────────────────────────────────────────
+
       return NextResponse.redirect(
         `${appUrl}/payment/success?txnid=${txnid}&amount=${amount}&mihpayid=${mihpayid}`,
         303

@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
 export const PAYU_CONFIG = {
+  IS_PRODUCTION: process.env.NODE_ENV === "production",
   KEY: process.env.PAYU_MERCHANT_KEY!,
   SALT: process.env.PAYU_MERCHANT_SALT!,
   BASE_URL: process.env.PAYU_BASE_URL || "https://test.payu.in/_payment",

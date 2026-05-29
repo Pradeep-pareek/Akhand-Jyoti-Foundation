@@ -33,7 +33,10 @@ const Header = () => {
     router.refresh();
   };
 
-
+  const isReceiptRoute = pathname.startsWith("/receipt/");
+  if (isReceiptRoute) {
+    return null;
+  }
   return (
     <header className="w-full mx-auto md:px-6 lg:px-8">
       <div className="bg-[#fff] md:rounded-[18px] shadow-md top-0 z-50 lg:mt-2 py-2">

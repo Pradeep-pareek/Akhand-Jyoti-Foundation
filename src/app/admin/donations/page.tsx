@@ -51,6 +51,48 @@ const STATUS_OPTIONS = ["ALL", "SUCCESS", "FAILED", "INITIATED", "PENDING", "CAN
 ];
 const PAGE_SIZES = [10, 20, 50, 100];
 
+type ToastType = "success" | "error" | "info";
+interface Toast { id: number; message: string; type: ToastType; }
+
+function ToastContainer({ toasts, onRemove }: { toasts: Toast[]; onRemove: (id: number) => void }) {
+    return (
+        <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none">
+            {toasts.map(t => (
+                <div
+                    key={t.id}
+                    className={`flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-sm font-medium pointer-events-auto
+                        animate-[slideIn_0.2s_ease-out]
+                        ${t.type === "success" ? "bg-[#2D7A4F] text-white"
+                            : t.type === "error" ? "bg-red-600 text-white"
+                                : "bg-gray-800 text-white"}`}
+                >
+                    {t.type === "success" && (
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                    )}
+                    {t.type === "error" && (
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    )}
+                    {t.type === "info" && (
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    )}
+                    <span>{t.message}</span>
+                    <button onClick={() => onRemove(t.id)} className="ml-1 opacity-70 hover:opacity-100">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function AdminDonationsPage() {
     const [donations, setDonations] = useState<Donation[]>([]);
@@ -59,50 +101,38 @@ export default function AdminDonationsPage() {
     const [loading, setLoading] = useState(true);
     const [exporting, setExporting] = useState(false);
     const [certLoading, setCertLoading] = useState<string | null>(null);
-    const formatIndianDate = (date: Date) => {
-        return date.toLocaleDateString("en-CA", {
-            timeZone: "Asia/Kolkata",
-        });
-    };
-    const [verifyingTxn, setVerifyingTxn] = useState<string | null>(null);
+
+    // Per-row action loading states
+    const [emailLoading, setEmailLoading] = useState<string | null>(null);
+    const [reverifyLoading, setReverifyLoading] = useState<string | null>(null);
+
+    // PAN update modal
+    const [panModal, setPanModal] = useState<{ txnId: string; txn_id: string; currentPan: string; donorName: string } | null>(null);
+    const [panInput, setPanInput] = useState("");
+    const [panLoading, setPanLoading] = useState(false);
+    const [panError, setPanError] = useState<string | null>(null);
+
+    // Toast notifications
+    const [toasts, setToasts] = useState<Toast[]>([]);
+    const toastId = useRef(0);
+
+    const addToast = useCallback((message: string, type: ToastType = "info") => {
+        const id = ++toastId.current;
+        setToasts(t => [...t, { id, message, type }]);
+        setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 4000);
+    }, []);
+
+    const removeToast = useCallback((id: number) => {
+        setToasts(t => t.filter(x => x.id !== id));
+    }, []);
+
+    const formatIndianDate = (date: Date) =>
+        date.toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+
     const today = new Date();
-    const handleVerifyPayment = async (txnId: string) => {
-        setVerifyingTxn(txnId);
-
-        try {
-            const res = await fetch(`/api/admin/verify-payment?txnid=${txnId}`, {
-                method: "POST",
-            });
-            const data = await res.json();
-            if (!data.success) {
-                alert(data.message || "Verification failed");
-                return;
-            }
-            // update row instantly without refresh
-            setDonations(prev =>
-                prev.map(d =>
-                    d.txn_id === txnId
-                        ? {
-                            ...d,
-                            payment_status: data.payment_status || d.payment_status,
-                            payu_payment_id:
-                                data.payu_payment_id || d.payu_payment_id,
-                            bank_ref_num:
-                                data.bank_ref_num || d.bank_ref_num,
-                        }
-                        : d
-                )
-            );
-
-        } catch (err) {
-            console.error(err);
-            alert("Verification failed");
-        } finally {
-            setVerifyingTxn(null);
-        }
-    };
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(today.getDate() - 7);
+
     const [filters, setFilters] = useState<Filters>({
         status: "ALL",
         search: "",
@@ -112,7 +142,6 @@ export default function AdminDonationsPage() {
         amountMax: ""
     });
     const [appliedFilters, setAppliedFilters] = useState<Filters>(filters);
-
     const searchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     // ── Fetch ──────────────────────────────────────────────────────────
@@ -147,16 +176,12 @@ export default function AdminDonationsPage() {
         setAppliedFilters(f);
         fetchDonations(f, 1, ps);
     };
-
     const handleApply = () => apply(filters);
-
     const handleClear = () => {
         const empty: Filters = { status: "ALL", search: "", dateFrom: "", dateTo: "", amountMin: "", amountMax: "" };
         setFilters(empty);
         apply(empty);
     };
-
-    // Debounce search input
     const handleSearchChange = (val: string) => {
         setFilters(f => ({ ...f, search: val }));
         if (searchTimeout.current) clearTimeout(searchTimeout.current);
@@ -166,12 +191,10 @@ export default function AdminDonationsPage() {
             fetchDonations(updated, 1, pagination.pageSize);
         }, 500);
     };
-
     const handlePageSize = (ps: number) => {
         setPagination(p => ({ ...p, pageSize: ps }));
         fetchDonations(appliedFilters, 1, ps);
     };
-
     const handlePage = (p: number) => fetchDonations(appliedFilters, p, pagination.pageSize);
 
     // ── Excel export ───────────────────────────────────────────────────
@@ -187,7 +210,7 @@ export default function AdminDonationsPage() {
                 ...(appliedFilters.amountMax && { amountMax: appliedFilters.amountMax }),
             });
             const res = await fetch(`/api/admin/export?${p}`);
-            if (!res.ok) { alert("Export failed. Please try again."); return; }
+            if (!res.ok) { addToast("Export failed. Please try again.", "error"); return; }
             const blob = await res.blob();
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -200,39 +223,129 @@ export default function AdminDonationsPage() {
         }
     };
 
+    // ── 80G Certificate ────────────────────────────────────────────────
     const handleCert = async (txnId: string) => {
         setCertLoading(txnId);
-
         try {
-            const res = await fetch(
-                `/api/admin/certificate?txnid=${txnId}`
-            );
-
-            if (!res.ok) {
-                alert("Certificate generation failed.");
-                return;
-            }
-
+            const res = await fetch(`/api/admin/certificate?txnid=${txnId}`);
+            if (!res.ok) { addToast("Certificate generation failed.", "error"); return; }
             const html = await res.text();
-
             const printWindow = window.open("", "_blank");
-
-            if (!printWindow) {
-                alert("Popup blocked");
-                return;
-            }
-
+            if (!printWindow) { addToast("Popup blocked. Please allow popups.", "error"); return; }
             printWindow.document.open();
             printWindow.document.write(html);
             printWindow.document.close();
-
         } catch (err) {
             console.error(err);
-            alert("Something went wrong");
+            addToast("Something went wrong generating the certificate.", "error");
         } finally {
             setCertLoading(null);
         }
     };
+
+    // ── Send Email ─────────────────────────────────────────────────────
+    const handleSendEmail = async (d: Donation) => {
+        if (!d.donor_email) {
+            addToast("No email address found for this donor.", "error");
+            return;
+        }
+        setEmailLoading(d.txn_id);
+        try {
+            const res = await fetch("/api/send-donation-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    toEmail: d.donor_email,
+                    toName: d.donor_name,
+                    txnid: d.txn_id,
+                    amount: d.amount.toString(),
+                    mihpayid: d.payu_payment_id || d.txn_id,
+                    certificate: true
+                }),
+            });
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data?.error ?? "Failed to send email");
+            }
+            addToast(`Email sent to ${d.donor_email}`, "success");
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : "Unknown error";
+            addToast(`Email failed: ${msg}`, "error");
+        } finally {
+            setEmailLoading(null);
+        }
+    };
+
+    // ── Reverify Payment ───────────────────────────────────────────────
+    const handleReverify = async (d: Donation) => {
+        setReverifyLoading(d.txn_id);
+        try {
+            const res = await fetch("/api/admin/reverify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ txnid: d.txn_id }),
+            });
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data?.error ?? "Reverification failed");
+            }
+            const data = await res.json();
+            addToast(
+                data.newStatus === "SUCCESS"
+                    ? `✓ Payment verified as SUCCESS for ${d.txn_id}`
+                    : `Status updated to ${data.newStatus} for ${d.txn_id}`,
+                data.newStatus === "SUCCESS" ? "success" : "info"
+            );
+            // Refresh current page to show updated status
+            fetchDonations(appliedFilters, pagination.page, pagination.pageSize);
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : "Unknown error";
+            addToast(`Reverify failed: ${msg}`, "error");
+        } finally {
+            setReverifyLoading(null);
+        }
+    };
+
+    // ── Update PAN ─────────────────────────────────────────────────────
+    const openPanModal = (d: Donation) => {
+        setPanInput(d.donor_pan || "");
+        setPanError(null);
+        setPanModal({ txnId: String(d.transaction_id), txn_id: d.txn_id, currentPan: d.donor_pan || "", donorName: d.donor_name });
+    };
+
+    const handleUpdatePan = async () => {
+        if (!panModal) return;
+        const pan = panInput.trim().toUpperCase();
+
+        // Validate PAN format: 5 letters, 4 digits, 1 letter
+        if (pan && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(pan)) {
+            setPanError("Invalid PAN format. Expected: ABCDE1234F");
+            return;
+        }
+
+        setPanLoading(true);
+        setPanError(null);
+        try {
+            const res = await fetch("/api/admin/update-pan", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ txnid: panModal.txn_id, pan }),
+            });
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data?.error ?? "Failed to update PAN");
+            }
+            addToast(`PAN updated for ${panModal.donorName}`, "success");
+            setPanModal(null);
+            fetchDonations(appliedFilters, pagination.page, pagination.pageSize);
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : "Unknown error";
+            setPanError(msg);
+        } finally {
+            setPanLoading(false);
+        }
+    };
+
     // ── Pagination range ───────────────────────────────────────────────
     const pageRange = () => {
         const { page, totalPages } = pagination;
@@ -245,6 +358,8 @@ export default function AdminDonationsPage() {
     // ─────────────────────────────────────────────────────────────────────────
     return (
         <div className="min-h-screen bg-[#F0F7EB] font-sans">
+            <ToastContainer toasts={toasts} onRemove={removeToast} />
+
             <div className="max-w-[1440px] mx-auto px-4 sm:px-5 py-5 space-y-4">
 
                 {/* ── Summary cards ── */}
@@ -274,7 +389,6 @@ export default function AdminDonationsPage() {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
-                        {/* Search — debounced */}
                         <div className="lg:col-span-2">
                             <label className="text-[11px] text-gray-400 mb-1 block font-medium">Search</label>
                             <div className="relative">
@@ -290,8 +404,6 @@ export default function AdminDonationsPage() {
                                 />
                             </div>
                         </div>
-
-                        {/* Status */}
                         <div>
                             <label className="text-[11px] text-gray-400 mb-1 block font-medium">Status</label>
                             <select
@@ -302,8 +414,6 @@ export default function AdminDonationsPage() {
                                 {STATUS_OPTIONS.map(s => <option key={s}>{s}</option>)}
                             </select>
                         </div>
-
-                        {/* Date range */}
                         <div>
                             <label className="text-[11px] text-gray-400 mb-1 block font-medium">From Date</label>
                             <input type="date" value={filters.dateFrom} onChange={e => setFilters(f => ({ ...f, dateFrom: e.target.value }))}
@@ -314,8 +424,6 @@ export default function AdminDonationsPage() {
                             <input type="date" value={filters.dateTo} onChange={e => setFilters(f => ({ ...f, dateTo: e.target.value }))}
                                 className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#81BA45] text-gray-800" />
                         </div>
-
-                        {/* Amount range */}
                         <div>
                             <label className="text-[11px] text-gray-400 mb-1 block font-medium">Amount (₹)</label>
                             <div className="flex gap-1">
@@ -338,12 +446,10 @@ export default function AdminDonationsPage() {
                             className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-xl transition-colors">
                             Clear
                         </button>
-                        {/* Export Excel */}
                         <button
                             onClick={handleExport}
                             disabled={exporting || pagination.total === 0}
                             className="flex items-center gap-2 bg-[#217346] hover:bg-[#1a5c38] disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-sm"
-                            title={`Export all ${pagination.total} records to Excel`}
                         >
                             {exporting ? (
                                 <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
@@ -368,7 +474,6 @@ export default function AdminDonationsPage() {
                 {/* ── Table card ── */}
                 <div className="bg-white rounded-2xl shadow-sm border border-[#d6e8c8] overflow-hidden">
 
-                    {/* Table toolbar */}
                     <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                         <span className="text-xs text-gray-500">
                             {loading ? "Loading…" : (
@@ -389,13 +494,12 @@ export default function AdminDonationsPage() {
                         </div>
                     </div>
 
-                    {/* Scrollable table — fixed height prevents page freeze */}
                     <div className="overflow-x-auto">
                         <div style={{ minHeight: 400 }}>
                             <table className="w-full text-sm">
                                 <thead className="sticky top-0 z-10">
                                     <tr className="bg-[#2D7A4F]">
-                                        {["#", "Transaction ID", "Donor", "Phone", "Amount", "Status", "PayU Ref", "Date", "Actions"].map(h => (
+                                        {["#", "Transaction ID", "Donor", "Phone", "PAN", "Amount", "Status", "PayU Ref", "Date", "Actions"].map(h => (
                                             <th key={h} className="px-3.5 py-3 text-left text-[11px] font-semibold text-white uppercase tracking-wide whitespace-nowrap">
                                                 {h}
                                             </th>
@@ -404,7 +508,6 @@ export default function AdminDonationsPage() {
                                 </thead>
                                 <tbody>
                                     {loading ? (
-                                        // Skeleton rows — no layout shift, no blank page
                                         Array.from({ length: pagination.pageSize }).map((_, i) => (
                                             <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#FAFFF7]"}>
                                                 {Array.from({ length: 9 }).map((_, j) => (
@@ -446,6 +549,9 @@ export default function AdminDonationsPage() {
                                                 {/* Phone */}
                                                 <td className="px-3.5 py-3 text-xs text-gray-500 whitespace-nowrap">{d.donor_phone || "—"}</td>
 
+                                                {/* Pan */}
+                                                <td className="px-3.5 py-3 text-xs text-gray-500 whitespace-nowrap">{d.donor_pan || "—"}</td>
+
                                                 {/* Amount */}
                                                 <td className="px-3.5 py-3">
                                                     <span className="font-bold text-[#1a3a10] whitespace-nowrap">{fINR(d.amount)}</span>
@@ -466,47 +572,85 @@ export default function AdminDonationsPage() {
                                                 {/* Date */}
                                                 <td className="px-3.5 py-3 text-[11px] text-gray-500 whitespace-nowrap">{fDate(d.created_at)}</td>
 
-                                                {/* Actions */}
+                                                {/* ── Actions ── */}
                                                 <td className="px-3.5 py-3">
-                                                    {d.payment_status === "SUCCESS" ? (
+                                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                                        {d.payment_status === "SUCCESS" ? (
+                                                            <>
+                                                                {/* 80G PDF */}
+                                                                <button
+                                                                    onClick={() => handleCert(d.txn_id)}
+                                                                    disabled={certLoading === d.txn_id}
+                                                                    title="Download 80G Certificate"
+                                                                    className="flex items-center gap-1 bg-[#E8F5ED] hover:bg-[#d1edd9] text-[#2D7A4F] text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-60 whitespace-nowrap"
+                                                                >
+                                                                    {certLoading === d.txn_id ? (
+                                                                        <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
+                                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                                                        </svg>
+                                                                    ) : (
+                                                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                                        </svg>
+                                                                    )}
+                                                                    80G
+                                                                </button>
+
+                                                                {/* Send Email */}
+                                                                <button
+                                                                    onClick={() => handleSendEmail(d)}
+                                                                    disabled={emailLoading === d.txn_id || !d.donor_email}
+                                                                    title={d.donor_email ? `Send confirmation to ${d.donor_email}` : "No email on record"}
+                                                                    className="flex items-center gap-1 bg-blue-50 hover:bg-blue-100 text-blue-700 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                                                                >
+                                                                    {emailLoading === d.txn_id ? (
+                                                                        <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
+                                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                                                        </svg>
+                                                                    ) : (
+                                                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                                        </svg>
+                                                                    )}
+                                                                    Email
+                                                                </button>
+                                                            </>
+                                                        ) : (
+                                                            /* Reverify — shown for all non-SUCCESS statuses */
+                                                            <button
+                                                                onClick={() => handleReverify(d)}
+                                                                disabled={reverifyLoading === d.txn_id}
+                                                                title={`Re-check payment status with PayU for ${d.txn_id}`}
+                                                                className="flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-700 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-60 whitespace-nowrap"
+                                                            >
+                                                                {reverifyLoading === d.txn_id ? (
+                                                                    <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
+                                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                                                    </svg>
+                                                                ) : (
+                                                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                                    </svg>
+                                                                )}
+                                                                Reverify
+                                                            </button>
+                                                        )}
+
+                                                        {/* PAN Update — shown for ALL rows */}
                                                         <button
-                                                            onClick={() => handleCert(d.txn_id)}
-                                                            disabled={certLoading === d.txn_id}
-                                                            className="flex items-center gap-1 bg-[#E8F5ED] hover:bg-[#d1edd9] text-[#2D7A4F] text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-60 whitespace-nowrap"
+                                                            onClick={() => openPanModal(d)}
+                                                            title={d.donor_pan ? `Update PAN (current: ${d.donor_pan})` : "Add PAN number"}
+                                                            className="flex items-center gap-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap"
                                                         >
-                                                            {certLoading === d.txn_id ? (
-                                                                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
-                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                                                                </svg>
-                                                            ) : (
-                                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                                                </svg>
-                                                            )}
-                                                            80G PDF
+                                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                                                            </svg>
+                                                            {d.donor_pan ? "PAN" : "+ PAN"}
                                                         </button>
-                                                    ) : ["PENDING", "INITIATED"].includes(d.payment_status) ? (
-                                                        <button
-                                                            onClick={() => handleVerifyPayment(d.txn_id)}
-                                                            disabled={verifyingTxn === d.txn_id}
-                                                            className="flex items-center gap-1 bg-yellow-100 hover:bg-yellow-200 text-yellow-800 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-60 whitespace-nowrap"
-                                                        >
-                                                            {verifyingTxn === d.txn_id ? (
-                                                                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none">
-                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                                                                </svg>
-                                                            ) : (
-                                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6" />
-                                                                </svg>
-                                                            )}
-                                                            Verify
-                                                        </button>
-                                                    ) : (
-                                                        <span className="text-gray-200 text-xs">—</span>
-                                                    )}
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))
@@ -522,50 +666,144 @@ export default function AdminDonationsPage() {
                             <p className="text-xs text-gray-400">
                                 Page <span className="font-semibold text-gray-700">{pagination.page}</span> of <span className="font-semibold text-gray-700">{pagination.totalPages}</span>
                             </p>
-
                             <div className="flex items-center gap-1">
-                                {/* First */}
                                 <button onClick={() => handlePage(1)} disabled={pagination.page === 1}
-                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500 text-xs">
-                                    «
-                                </button>
-                                {/* Prev */}
+                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500 text-xs">«</button>
                                 <button onClick={() => handlePage(pagination.page - 1)} disabled={pagination.page === 1}
-                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500">
-                                    ‹
-                                </button>
-
+                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500">‹</button>
                                 {pageRange().map((p, i) =>
                                     p === "…" ? (
                                         <span key={`ellipsis-${i}`} className="w-7 h-7 flex items-center justify-center text-gray-400 text-xs">…</span>
                                     ) : (
-                                        <button
-                                            key={p}
-                                            onClick={() => handlePage(p as number)}
+                                        <button key={p} onClick={() => handlePage(p as number)}
                                             className={`w-7 h-7 flex items-center justify-center rounded-lg text-xs font-medium transition-colors
-                        ${p === pagination.page ? "bg-[#2D7A4F] text-white shadow-sm" : "border border-gray-200 hover:bg-gray-50 text-gray-600"}`}
-                                        >
+                                                ${p === pagination.page ? "bg-[#2D7A4F] text-white shadow-sm" : "border border-gray-200 hover:bg-gray-50 text-gray-600"}`}>
                                             {p}
                                         </button>
                                     )
                                 )}
-
-                                {/* Next */}
                                 <button onClick={() => handlePage(pagination.page + 1)} disabled={pagination.page === pagination.totalPages}
-                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500">
-                                    ›
-                                </button>
-                                {/* Last */}
+                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500">›</button>
                                 <button onClick={() => handlePage(pagination.totalPages)} disabled={pagination.page === pagination.totalPages}
-                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500 text-xs">
-                                    »
-                                </button>
+                                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed text-gray-500 text-xs">»</button>
                             </div>
                         </div>
                     )}
                 </div>
 
             </div>
+
+            {/* ── PAN Update Modal ── */}
+            {panModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                        onClick={() => !panLoading && setPanModal(null)}
+                    />
+                    {/* Dialog */}
+                    <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-6 z-10">
+                        {/* Header */}
+                        <div className="flex items-center gap-3 mb-5">
+                            <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
+                                <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="text-sm font-bold text-gray-900">Update PAN Number</h3>
+                                <p className="text-xs text-gray-400 mt-0.5 truncate max-w-[260px]">{panModal.donorName} · {panModal.txn_id}</p>
+                            </div>
+                            <button
+                                onClick={() => !panLoading && setPanModal(null)}
+                                className="ml-auto text-gray-300 hover:text-gray-500 transition-colors"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Current PAN badge */}
+                        {panModal.currentPan && (
+                            <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                <span className="text-xs text-gray-400">Current PAN:</span>
+                                <span className="font-mono text-xs font-semibold text-gray-700 bg-gray-200 px-2 py-0.5 rounded">
+                                    {panModal.currentPan}
+                                </span>
+                            </div>
+                        )}
+
+                        {/* Input */}
+                        <div className="mb-4">
+                            <label className="text-xs font-semibold text-gray-600 mb-1.5 block uppercase tracking-wide">
+                                New PAN Number
+                            </label>
+                            <input
+                                type="text"
+                                value={panInput}
+                                onChange={e => { setPanInput(e.target.value.toUpperCase()); setPanError(null); }}
+                                placeholder="e.g. ABCDE1234F"
+                                maxLength={10}
+                                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-mono
+                                           outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100
+                                           text-gray-800 tracking-widest uppercase placeholder:tracking-normal placeholder:font-sans"
+                            />
+                            {/* Format hint */}
+                            <p className="text-[11px] text-gray-400 mt-1.5">
+                                Format: 5 letters · 4 digits · 1 letter &nbsp;(e.g. ABCDE1234F)
+                            </p>
+                            {/* Error */}
+                            {panError && (
+                                <p className="text-[11px] text-red-500 mt-1.5 flex items-center gap-1">
+                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    {panError}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-2 justify-end">
+                            <button
+                                onClick={() => setPanModal(null)}
+                                disabled={panLoading}
+                                className="px-4 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors disabled:opacity-50"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleUpdatePan}
+                                disabled={panLoading || !panInput.trim()}
+                                className="flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white
+                                           bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-colors
+                                           disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {panLoading ? (
+                                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                    </svg>
+                                ) : (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                )}
+                                {panLoading ? "Saving…" : "Save PAN"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Tailwind keyframe for toast slide-in */}
+            <style>{`
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to   { transform: translateX(0);    opacity: 1; }
+                }
+            `}</style>
         </div>
     );
 }
