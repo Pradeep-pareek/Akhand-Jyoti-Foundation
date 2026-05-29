@@ -69,8 +69,7 @@ export async function POST(req: NextRequest) {
         { status: 404 }
       );
     }
-
-    const newStatus = txnDetails.status?.toUpperCase() === "SUCCESS" ? "SUCCESS" : txnDetails.status?.toUpperCase() || "FAILED";
+    const newStatus = txnDetails.status?.toUpperCase() === "SUCCESS" ? "SUCCESS" : txnDetails.status?.toUpperCase() === "FAILURE" ? "FAILED" : txnDetails.status?.toUpperCase() || "FAILED";
 
     // Update DB
     const pool = await getDbPool();
