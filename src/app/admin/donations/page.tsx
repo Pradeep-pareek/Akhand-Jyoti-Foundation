@@ -224,23 +224,17 @@ export default function AdminDonationsPage() {
     };
 
     // ── 80G Certificate ────────────────────────────────────────────────
-    const handleCert = async (txnId: string) => {
-        setCertLoading(txnId);
+    const handleCert = async (txnid_enc: string) => {
         try {
-            const res = await fetch(`/api/admin/certificate?txnid=${txnId}`);
-            if (!res.ok) { addToast("Certificate generation failed.", "error"); return; }
-            const html = await res.text();
-            const printWindow = window.open("", "_blank");
-            if (!printWindow) { addToast("Popup blocked. Please allow popups.", "error"); return; }
-            printWindow.document.open();
-            printWindow.document.write(html);
-            printWindow.document.close();
+            setCertLoading(txnid_enc);
+            const res = await fetch(`/api/admin/encryptTxnid/`, { method: "POST", body: JSON.stringify({ txn_id: txnid_enc }), headers: { "Content-Type": "application/json" } });
+            const enc_txn_id = await res.json();
+            window.open(`/receipt/${enc_txn_id}`, "_blank");
         } catch (err) {
             console.error(err);
-            addToast("Something went wrong generating the certificate.", "error");
-        } finally {
-            setCertLoading(null);
+            addToast("Unable to open certificate.", "error");
         }
+        setCertLoading(null);
     };
 
     // ── Send Email ─────────────────────────────────────────────────────
