@@ -96,7 +96,7 @@ export default function ReceiptPage({
   //   "created_at": "2026-05-24T15:20:25.813Z",
   //   "updated_at": "2026-05-24T15:21:13.930Z",
   //   "donor_pan": "CIRPT8256Q"
-  // }
+  // };
   const {
     txn_id: receiptNo,
     created_at: date,
@@ -139,7 +139,7 @@ export default function ReceiptPage({
         .save();
     } finally {
       elements.forEach((el) => {
-        (el as HTMLElement).style.marginLeft = "";
+        (el as HTMLElement).style.marginTop = "";
       });
       setDownloadLoading(false)
     }
@@ -151,9 +151,16 @@ export default function ReceiptPage({
 
         <button
           onClick={() => downloadPDF()}
+          disabled={Downloadloading}
           className="bg-[#15803D] text-[#FFF] px-4 py-2 rounded"
         >
           {Downloadloading ? "Downloading..." : "Download PDF"}
+        </button>
+        <button
+          onClick={() => window.print()}
+          className="hidden sm:block bg-[#15803D] text-[#FFF] px-4 py-2 rounded"
+        >
+          Print Receipt
         </button>
 
       </div>
@@ -238,11 +245,11 @@ export default function ReceiptPage({
                   DONATION RECEIPT
                 </h1>
                 <Image
-                  src="/cert/leaf-small.png"
+                  src="/cert/leaf-small-right.png"
                   alt=""
                   width={28}
                   height={22}
-                  className="scale-x-[-1]"
+                  className=""
                 />
               </div>
               <p className="text-[#6B7280] text-xs mt-1.5 mb-0">
@@ -377,19 +384,15 @@ export default function ReceiptPage({
             </div>
             {/* ══ CLOSING QUOTE ══ */}
             <div className="text-center px-7 pt-2 pb-1 mt-5 mb-7">
-              <div className="font-serif italic text-base text-[#1a5c1a] font-bold">
-                Your kindness today creates a brighter tomorrow.{" "}
-                <Image
-                  src="/cert/heart.png"
-                  alt="♥"
-                  width={14}
-                  height={14}
-                  className="inline-block align-middle"
-                />
+              <div className="flex justify-center gap-2">
+                <div className="font-serif italic text-base text-[#1a5c1a] font-bold margin-minus">
+                  Your kindness today creates a brighter tomorrow.{" "}
+                </div>
+                <Image src="/cert/heart.png" alt="♥" width={20} height={14} className="inline-block" />
               </div>
               <div className="flex items-center gap-3 my-1.5">
                 <div className="flex-1 h-px bg-[#D1D5DB]" />
-                <span className="text-[11px] text-[#9CA3AF]">We are grateful for your trust and support.</span>
+                <span className="text-[11px] text-[#9CA3AF] margin-minus">We are grateful for your trust and support.</span>
                 <div className="flex-1 h-px bg-[#D1D5DB]" />
               </div>
             </div>
@@ -423,14 +426,16 @@ export default function ReceiptPage({
             <div className="bg-[#1a5c1a] flex items-center justify-between px-7 py-3">
               <div className="flex items-center gap-3.5">
                 <Image src="/cert/hands.png" alt="" width={44} height={44} />
-                <div className="text-[#cde8cd] text-[11px] leading-relaxed">
+                <div className="text-[#cde8cd] text-[11px] leading-relaxed margin-minus">
                   Your small act of kindness today
                   <br />
                   can bring a big change in someone's life tomorrow.
                 </div>
               </div>
-              <div className="font-serif italic text-lg text-[#FFF] font-bold flex items-center gap-2">
-                You make a difference.{" "}
+              <div className="flex items-center gap-2">
+                <div className="font-serif italic margin-minus text-lg text-[#FFF] font-bold flex items-center gap-2">
+                  You make a difference.{" "}
+                </div>
                 <Image src="/cert/white-heart.png" alt="♥" width={30} height={30} className="inline-block" />
               </div>
             </div>
@@ -454,7 +459,7 @@ function SectionBlock({
 }) {
   return (
     <div className="mx-7 my-[20px]">
-      <div className="bg-[#1a5c1a] text-[#FFF] text-center font-extrabold text-[12px] tracking-widest py-1.5 px-5 rounded-t-md">
+      <div className="margin-minus bg-[#1a5c1a] text-[#FFF] text-center font-extrabold text-[12px] tracking-widest py-1.5 px-5 rounded-t-md">
         {title}
       </div>
       <div className="border-[1.5px] border-[#2d6e2d] border-t-0 rounded-b-lg p-3.5 relative overflow-hidden">

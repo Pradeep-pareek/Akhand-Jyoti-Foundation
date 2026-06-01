@@ -22,27 +22,6 @@ export interface UseSendDonationEmailReturn {
   reset: () => void;
 }
 
-/**
- * useSendDonationEmail
- *
- * Custom hook that calls /api/send-donation-email and tracks the request state.
- *
- * Usage (e.g. on the payment success page):
- *
- *   const { sendEmail, status, error } = useSendDonationEmail();
- *
- *   useEffect(() => {
- *     if (txnid && amount && mihpayid && donorEmail) {
- *       sendEmail({
- *         toEmail:  donorEmail,
- *         toName:   donorName,
- *         txnid,
- *         amount,
- *         mihpayid,
- *       });
- *     }
- *   }, [txnid]);
- */
 export function useSendDonationEmail(): UseSendDonationEmailReturn {
   const [status, setStatus] = useState<EmailStatus>("idle");
   const [error, setError] = useState<string | null>(null);

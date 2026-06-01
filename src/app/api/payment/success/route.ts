@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDbPool, sql } from "@/lib/db";
 import { verifyPayUResponseHash, PAYU_CONFIG } from "@/lib/payu";
-import type { DonationEmailPayload } from "@/app/api/send-donation-email/route";
+import { buildHtmlEmail, buildPlainText, transporter, type DonationEmailPayload } from "@/app/api/send-donation-email/route";
+import { generateReceiptToken } from "@/lib/receipt-token";
 
 // Helper — never returns null, uses request origin as fallback
 function getAppUrl(req: NextRequest): string {
@@ -25,26 +26,28 @@ function getAppUrl(req: NextRequest): string {
   }
 }
 
-/**
- * Fire-and-forget helper: calls the internal /api/send-donation-email route.
- * Any failure is logged but NEVER bubbles up to break the payment redirect.
- */
-async function triggerDonationEmail(
-  appUrl: string,
+export async function triggerDonationEmail(
   payload: DonationEmailPayload
 ): Promise<void> {
   try {
-    const res = await fetch(`${appUrl}/api/send-donation-email`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+    const { toEmail, toName, txnid, amount, mihpayid, certificate = false } = payload;
+
+    const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? "https://akhandjyotifoundation.org").replace(/\/$/, "");
+    const token = generateReceiptToken(txnid);
+    const receiptUrl = `${appUrl}/receipt/${token}`;
+
+    const subject = certificate
+      ? "Your Donation Receipt & 80G Certificate – AkhandJyoti Foundation"
+      : "Thank You for Your Generous Donation – AkhandJyoti Foundation";
+
+    await transporter.sendMail({
+      from: `"AkhandJyoti Foundation" <${process.env.FOUNDATION_EMAIL}>`,
+      to: toEmail,
+      subject,
+      text: buildPlainText(toName, txnid, amount, mihpayid, certificate, receiptUrl),
+      html: buildHtmlEmail(toName, txnid, amount, mihpayid, certificate, receiptUrl),
     });
-    if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
-      console.error("[payment/success] Email API responded with error:", res.status, body);
-    } else {
-      console.log("[payment/success] Donation email triggered for txnid:", payload.txnid);
-    }
+
   } catch (err) {
     console.error("[payment/success] Failed to call email API:", err);
   }
@@ -99,12 +102,13 @@ export async function POST(req: NextRequest) {
       // ── Send donation confirmation email (non-blocking) ───────────────────
       if (donorEmail) {
         const donorName = [donorFirstName, donorLastName].filter(Boolean).join(" ").trim();
-        triggerDonationEmail(appUrl, {
+        triggerDonationEmail({
           toEmail: donorEmail,
           toName: donorName,
           txnid,
           amount,
           mihpayid,
+          certificate: true
         });
       } else {
         console.warn("[payment/success] No donor email in PayU params; skipping email for txnid:", txnid);

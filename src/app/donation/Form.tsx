@@ -72,7 +72,15 @@ export default function DonationCard() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        if (name === "pan") {
+            setFormData((prev) => ({ ...prev, [name]: value?.toUpperCase() || "" }));
+        } else if (name === "name" || name === "city") {
+            setFormData((prev) => ({ ...prev, [name]: value?.charAt(0).toUpperCase() + value?.slice(1).toLowerCase() || "" }));
+        } else if (name === "phone") {
+            !isNaN(Number(value)) && setFormData((prev) => ({ ...prev, [name]: value }));
+        } else {
+            setFormData((prev) => ({ ...prev, [name]: value?.toLowerCase() || "" }));
+        }
         if (error) setError("");
     };
 

@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { generateReceiptToken } from "@/lib/receipt-token";
+import { triggerDonationEmail } from "../payment/success/route";
 
 export interface DonationEmailPayload {
   toEmail: string;
@@ -9,11 +10,11 @@ export interface DonationEmailPayload {
   txnid: string;
   amount: string;
   mihpayid: string;
-  certificate?: boolean;
+  certificate: boolean;
 }
 
 // ─── Transporter ──────────────────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
+export const transporter = nodemailer.createTransport({
   host: "smtp.zoho.in",
   port: 465,
   secure: true,
@@ -35,23 +36,7 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? "https://akhandjyotifoundation.org").replace(/\/$/, "");
-    const token = generateReceiptToken(txnid);
-    const receiptUrl = `${appUrl}/receipt/${token}`;
-
-    const subject = certificate
-      ? "Your Donation Receipt & 80G Certificate – AkhandJyoti Foundation"
-      : "Thank You for Your Generous Donation – AkhandJyoti Foundation";
-
-    await transporter.sendMail({
-      from: `"AkhandJyoti Foundation" <${process.env.FOUNDATION_EMAIL}>`,
-      to: toEmail,
-      subject,
-      text: buildPlainText(toName, txnid, amount, mihpayid, certificate, receiptUrl),
-      html: buildHtmlEmail(toName, txnid, amount, mihpayid, certificate, receiptUrl),
-    });
-
+    await triggerDonationEmail(body);
     return NextResponse.json(
       { success: true, message: "Email sent successfully.", hasCertificate: certificate },
       { status: 200 }
@@ -67,7 +52,7 @@ export async function POST(req: NextRequest) {
 }
 
 // ─── Plain-text ───────────────────────────────────────────────────────────────
-function buildPlainText(
+export function buildPlainText(
   name: string,
   txnid: string,
   amount: string,
@@ -90,7 +75,7 @@ Payment Details:
   Amount         : ₹${amount}
 
 ${withCert
-    ? `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ? `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📄 YOUR DONATION RECEIPT & 80G CERTIFICATE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -106,7 +91,7 @@ Steps to save as PDF:
   3. Set Destination to "Save as PDF"
   4. Click Save
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-    : "Please retain this email for your reference and records."}
+      : "Please retain this email for your reference and records."}
 
 Your contribution is eligible for tax benefits under Section 80G of the Income Tax Act (subject to applicable provisions and guidelines).
 
@@ -124,7 +109,7 @@ Office  : C-25, MIQB Centre, Sector 58, Noida, UP – 201301
 }
 
 // ─── HTML email ───────────────────────────────────────────────────────────────
-function buildHtmlEmail(
+export function buildHtmlEmail(
   name: string,
   txnid: string,
   amount: string,
