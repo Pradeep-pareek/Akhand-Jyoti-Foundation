@@ -2,9 +2,9 @@
 
 export default function HeroSection() {
   return (
-    <section className=" mt-2 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className=" mt-2 w-full  mx-auto px-4 sm:px-6 lg:px-8">
       <div
-        className="relative rounded-[18px] border border-black/10 bg-cover bg-center overflow-hidden lg:py-16 py-10"
+        className="relative rounded-[18px] lg:min-h-[500px] border border-black/10 bg-cover bg-center overflow-hidden lg:py-16 py-10"
         style={{ backgroundImage: "url('/images/about-hero-bg.png')" }}>
         <div className="relative z-10 px-8 md:px-16  lg:w-[80%]">
           <div>

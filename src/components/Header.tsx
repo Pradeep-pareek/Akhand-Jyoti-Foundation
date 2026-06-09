@@ -33,18 +33,21 @@ const Header = () => {
     router.refresh();
   };
 
-
+  const isReceiptRoute = pathname.startsWith("/receipt/");
+  if (isReceiptRoute) {
+    return null;
+  }
   return (
-    <header className="w-full max-w-[1320px] mx-auto md:px-6 lg:px-8">
+    <header className="w-full mx-auto md:px-6 lg:px-8">
       <div className="bg-[#fff] md:rounded-[18px] shadow-md top-0 z-50 lg:mt-2 py-2">
         <div className="flex items-center justify-between md:py-0 py-3 lg:px-10 px-5">
 
           <Link href="/" className="text-2xl font-bold text-[#f70d28] py-1">
             <Image
-              src="/images/logo-img.png"
+              src="/images/logo-img.svg"
               alt="logo image"
-              width={75}
-              height={75}
+              width={50}
+              height={50}
             />
           </Link>
           <div className="hidden md:flex gap-6 items-center py-2">
@@ -63,8 +66,8 @@ const Header = () => {
                   <Link
                     href="/about-us"
                     className={`text-base font-medium ${pathname === "/about-us"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     About Us
@@ -73,8 +76,8 @@ const Header = () => {
                   <Link
                     href="/our-programs"
                     className={`text-base font-medium ${pathname === "/our-programs"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Our Programs
@@ -83,8 +86,8 @@ const Header = () => {
                   <Link
                     href="/gallery"
                     className={`text-base font-medium ${pathname === "/gallery"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Gallery
@@ -93,8 +96,8 @@ const Header = () => {
                   <Link
                     href="/contact-us"
                     className={`text-base font-medium ${pathname === "/contact-us"
-                        ? "text-[#81BA45]"
-                        : "text-[#000]"
+                      ? "text-[#81BA45]"
+                      : "text-[#000]"
                       }`}
                   >
                     Contact Us
@@ -104,20 +107,38 @@ const Header = () => {
                 <>
                   <Link
                     href="/admin/gallery"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Gallery Admin
                   </Link>
 
                   <Link
                     href="/admin/Impactnumbers"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Impact Numbers
                   </Link>
                   <Link
+                    href="/admin/our-programs"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Our-Programs
+                  </Link>
+                  <Link
+                    href="/admin/contact-us"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Contact Us
+                  </Link>
+                  <Link
+                    href="/admin/donations"
+                    className="text-[#111] text-base font-medium"
+                  >
+                    Donations
+                  </Link>
+                  <Link
                     href="/admin/change-password"
-                    className="text-[#fff] text-base font-medium"
+                    className="text-[#111] text-base font-medium"
                   >
                     Change Password
                   </Link>
@@ -193,6 +214,12 @@ const Header = () => {
                 <Link href="/contact-us" className="block text-gray-700" onClick={closeMenu}>
                   Contact Us
                 </Link>
+                <button className="bg-[#81BA45] rounded-full px-6 py-2 text-[#fff] text-base font-normal cursor-pointer">
+                  <Link className="flex gap-1" href={"/donation"}>
+                    <IconHeartFilled className="text-red-500 text-base" />
+                    Donation
+                  </Link>
+                </button>
               </>
             ) : (
               <>
@@ -210,6 +237,34 @@ const Header = () => {
                   onClick={closeMenu}
                 >
                   Impact Numbers
+                </Link>
+                <Link
+                  href="/admin/our-programs"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Our-Programs
+                </Link>
+                <Link
+                  href="/admin/contact-us"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  href="/admin/donations"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Donations
+                </Link>
+                <Link
+                  href="/admin/change-password"
+                  className="block text-gray-700"
+                  onClick={closeMenu}
+                >
+                  Change Password
                 </Link>
 
                 <button

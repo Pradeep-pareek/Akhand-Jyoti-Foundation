@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 type Params = { params: Promise<{ id: string }> };
-// ─── GET /api/gallery/:id ────────────────────────────────────────────────────
+// ─── GET /api/admin/gallery/:id ────────────────────────────────────────────────────
 export async function GET(_req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
@@ -28,7 +28,7 @@ export async function GET(_req: NextRequest, { params }: Params) {
   }
 }
 
-// ─── PUT /api/gallery/:id ────────────────────────────────────────────────────
+// ─── PUT /api/admin/gallery/:id ────────────────────────────────────────────────────
 // Body: { title?, description?, images? }
 // images = array of filenames (already uploaded). Pass full list to replace.
 export async function PUT(req: NextRequest, { params }: Params) {
@@ -62,7 +62,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
   }
 }
 
-// ─── DELETE /api/gallery/:id ─────────────────────────────────────────────────
+// ─── DELETE /api/admin/gallery/:id ─────────────────────────────────────────────────
 // Also deletes image files from disk that are NOT referenced by any other item.
 export async function DELETE(_req: NextRequest, { params }: Params) {
   try {

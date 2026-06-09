@@ -73,7 +73,7 @@ export default function ImpactNumbersAdmin() {
 
     setSaving((prev) => new Set(prev).add(id));
     try {
-      const res = await fetch("/api/impact-numbers", {
+      const res = await fetch("/api/admin/impact-numbers", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, value: numVal, label: draft.label.trim() }),
@@ -123,7 +123,7 @@ export default function ImpactNumbersAdmin() {
         label: dirtyIds.includes(s.id) ? drafts[s.id].label.trim().toUpperCase() : s.label,
       }));
 
-      const res = await fetch("/api/impact-numbers", {
+      const res = await fetch("/api/admin/impact-numbers", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ stats: updated }),

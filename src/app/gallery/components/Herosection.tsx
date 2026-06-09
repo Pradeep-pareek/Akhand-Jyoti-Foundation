@@ -4,7 +4,7 @@ import Imageslider from "./Imageslider";
 
 export default function HeroSection() {
   return (
-    <section className="mt-2 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="mt-2 w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div
         className="relative bg-[#81BA45]/30 rounded-[18px] border border-black/10 bg-cover bg-center">
         <div className="relative z-10  py-12 ">

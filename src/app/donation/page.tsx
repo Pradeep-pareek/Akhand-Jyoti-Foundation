@@ -1,11 +1,11 @@
-import Form from "./components/Form";
+import Form from "./Form";
 import Image from "next/image";
 
 export default function Home() {
     return (
         <>
             <div className="bg-white">
-                <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full  mx-auto px-4 sm:px-6 lg:px-8">
 
                     <div className="lg:grid lg:grid-cols-[1fr_390px] xl:grid-cols-[1fr_420px] lg:gap-0 lg:items-start mt-2">
 
