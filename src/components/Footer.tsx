@@ -149,11 +149,14 @@ export default function Footer() {
               © {new Date().getFullYear()} Akhand Jyoti Foundation. All Rights Reserved.
             </span>
             <div className="flex gap-5">
-              <a href="#" className="hover:text-gray-300 transition-colors">
+              <a href="/privacy-policy" className="hover:text-gray-300 transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-gray-300 transition-colors">
+              <a href="/terms-and-conditions" className="hover:text-gray-300 transition-colors">
                 Terms &amp; Conditions
+              </a>
+               <a href="/refund-policy" className="hover:text-gray-300 transition-colors">
+                Refund Policy
               </a>
             </div>
           </div>

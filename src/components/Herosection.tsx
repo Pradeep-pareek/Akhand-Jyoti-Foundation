@@ -9,8 +9,9 @@ const SLIDES = [
      badge: "Empowering Women, ",
     title: "Transforming Communities",
     description:
-      "Akhandjyoti Foundation empowers women and youth through skill development, vocational training, and entrepreneurship support to create sustainable livelihoods and economic independence.",
-    heroBg: "/images/women-hero-section-image.png",
+    "Akhandjyoti Foundation empowers women and youth through skill development, vocational training, and entrepreneurship support to create sustainable livelihoods and economic independence.",
+    heroBg: "/images/home-page-hero-slide-01.png",
+    //  personImg: "/images/home-page-hero-slide-01.png",
   },
   {
     id: 2,
@@ -27,7 +28,7 @@ const SLIDES = [
     title: "One Community at a Time",
     description:
       "Empowering communities through education, healthcare, women entrepreneurship, and sustainable development initiatives.",
-    heroBg: "/images/herosection-slider-img11.png",
+    heroBg: "/images/home-page-hero-slide-3.png",
     // personImg: "/images/hero-img01.png",
   },
 ];
@@ -69,7 +70,7 @@ export default function HeroSection() {
             className="object-cover object-center rounded-[18px]"
             priority
           />
-          <div className="absolute inset-0 lg:bg-[#e6edd5]/20 bg-[#e6edd5]/70" />
+          {/* <div className="absolute inset-0 lg:bg-[#e6edd5]/20 bg-[#e6edd5]/70" /> */}
         </div>
         <div className="relative z-10 w-full flex items-center justify-between px-8 md:px-16 ">
           <div
@@ -102,6 +103,15 @@ export default function HeroSection() {
               ))}
             </div>
           </div>
+          {/* <div>
+               <Image
+            src={slide.personImg}
+            alt="Hero background"
+            fill
+            className="object-cover object-center rounded-[18px]"
+            priority
+          />
+          </div> */}
         </div>
       </div>
     </section>
