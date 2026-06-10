@@ -169,7 +169,7 @@ const Gallery = () => {
             const extraCount = item.images.length - 4
 
             return (
-              <article key={item.id} style={{
+              <article key={item.id} className="gallery-card" style={{
                 display: 'grid',
                 gridTemplateColumns: '480px 1fr',
                 background: '#ffffff',
@@ -254,7 +254,7 @@ const Gallery = () => {
                 </div>
 
                 {/* RIGHT — content */}
-                <div style={{ padding: '28px 32px 32px', display: 'flex', flexDirection: 'column' }}>
+                <div className="gallery-card-content" style={{ padding: '28px 32px 32px', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                     <span style={{ fontSize: 12, color: '#7a9e7e', fontWeight: 500 }}>📅 {formatDate(item.eventDate || item.createdAt)}</span>
                     <span style={{
@@ -433,6 +433,15 @@ const Gallery = () => {
 
         .img-wrap:hover img { transform: scale(1.05); }
         .img-wrap:hover .img-overlay { opacity: 1 !important; }
+
+        @media (max-width: 768px) {
+          .gallery-card {
+            grid-template-columns: 1fr !important;
+          }
+          .gallery-card-content {
+            padding: 20px 18px 24px !important;
+          }
+        }
       `}</style>
     </section>
   )
