@@ -41,7 +41,7 @@ export default function Home() {
                                 </div>
                             </div>
                             <Link
-                                href=""
+                                href="/our-programs"
                                 className="inline-flex items-center gap-2 bg-[#81BA45] rounded-full px-6 py-2.5 text-white font-semibold">
                                 <IconHeartFilled className="text-red-500" />
                                 Join Our Mission
@@ -66,7 +66,7 @@ export default function Home() {
                     <div className="grid lg:grid-cols-2 grid-cols-1 mt-8 gap-8">
                         <div>
                             <Image
-                                src="/images/wo-we-are-image.png"
+                                src="/images/group-image-org.png"
                                 alt="logo image"
                                 width={300}
                                 height={300}
@@ -145,7 +145,7 @@ export default function Home() {
                                 <IconLicense size={40} stroke={2} />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-black lg:text-2xl text-xl font-bold">Empowering Lives Through Opportunity</h3>
+                                <h3 className="text-black lg:text-2xl text-xl font-bold">Vision</h3>
                                 <p className="text-black text-base">Our mission is to empower women, youth, and underserved communities through skill development, education, entrepreneurship support, and sustainable livelihood programs that foster self-reliance, dignity, and long-term community growth.</p>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ export default function Home() {
                                 <IconEyeDotted size={40} stroke={2} />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-black lg:text-2xl text-xl font-bold">Building a More Inclusive Future</h3>
+                                <h3 className="text-black lg:text-2xl text-xl font-bold">Mission</h3>
                                 <p className="text-black text-base">We envision a future where every individual—especially women and marginalized communities—has equal access to education, skills, and opportunities to thrive, lead, and contribute to a stronger, self-reliant society.</p>
                             </div>
 
@@ -200,7 +200,7 @@ export default function Home() {
             <section className="bg-[#F5F5F5] lg:py-16 py-10">
                 <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div>
-                        <h4 className="text-[#74AA3A] text-center font-semibold text-lg">Our Team</h4>
+                        <h4 className="text-[#74AA3A] text-center font-medium lg:text-2xl md:text-xl text-lg">Our Team</h4>
                         <h2 className="text-black lg:text-4xl md:text-3xl text-xl font-bold leading-snug text-center">
                             The People Powering Our Mission
                         </h2>
@@ -221,9 +221,7 @@ export default function Home() {
                                 <h3 className="text-xl font-semibold text-center text-black">Shyama Geeta Pandey</h3>
                                 <p className="text-center text-base text-black">Program Executive</p>
                             </div>
-                            <div className="flex justify-center">
-                                <span className="text-[#1D9E75] bg-[#E1F5EE] px-4 py-1 rounded-full">Board Member</span>
-                            </div>
+                           
                         </div>
                         <div className="bg-[#FFFFFF] border border-[#DEDDDD] py-8 px-4 rounded-[12px] space-y-4">
                               <div className="h-[110px] w-[110px] rounded-full flex items-center justify-center bg-[#E1F5EE] mx-auto">
@@ -238,9 +236,6 @@ export default function Home() {
                             <div>
                                 <h3 className="text-xl font-semibold text-center text-black">Amit Kumr Goel</h3>
                                 <p className="text-center text-base text-black">Social Impact Consultant</p>
-                            </div>
-                            <div className="flex justify-center">
-                                <span className="text-[#534AB7] bg-[#EEEDFE] px-4 py-1 rounded-full">Board Member</span>
                             </div>
 
                         </div>
@@ -258,9 +253,7 @@ export default function Home() {
                                 <h3 className="text-xl font-semibold text-center text-black">Deepa Chaudhary </h3>
                                 <p className="text-center text-base text-black">Operations Head</p>
                             </div>
-                            <div className="flex justify-center">
-                                <span className="text-[#185FA5] bg-[#E6F1FB] px-4 py-1 rounded-full">Board Member</span>
-                            </div>
+                           
 
                         </div>
                     </div>

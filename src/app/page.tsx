@@ -27,7 +27,7 @@ export default function Home() {
       <section className=" lg:py-16 py-10 ">
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
-            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Empowering Women Across Every Stage of Life</h2>
+            <h2 className="text-center text-black lg:text-4xl md:text-3xl text-xl font-bold ">Empowering Women Across Every Stage of Life</h2>
             <p className="text-center text-black text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Supporting women at every phase of life through access to education, healthcare, skill development, and sustainable livelihood opportunities—enabling dignity, independence, and a brighter future.</p>
           </div>
           <div className="mt-6">

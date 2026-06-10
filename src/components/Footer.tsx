@@ -15,17 +15,25 @@ import Image from "next/image";
 import { IconPhoneCall } from '@tabler/icons-react';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-// import { IconMail } from '@tabler/icons-react';
+import { IconBrandX } from '@tabler/icons-react';
 
 export default function Footer() {
-  const quickLinks = ["Home", "About Us", "What We Do", "Programs", "Contact Us"];
+  const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Our Programs", href: "our-programs" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Contact Us", href: "/contact-us" },
+];
   const pathname = usePathname();
+// < size={26} color="white" />
 
+  
   const socialLinks = [
-    { Icon: IconBrandWhatsapp, label: "WhatsApp", href: "#" },
-    { Icon: IconBrandInstagram, label: "Instagram", href: "#" },
-    { Icon: IconBrandFacebook, label: "Facebook", href: "#" },
-    { Icon: IconBrandLinkedin, label: "LinkedIn", href: "#" },
+    { Icon: IconBrandX, label: "X", href: "https://x.com/Akhandjyoti_1" },
+    { Icon: IconBrandInstagram, label: "Instagram", href: "https://www.instagram.com/akhandjyoti_foundation?utm_source=qr&igsh=YXZiOXdxdnVrejl6" },
+    { Icon: IconBrandFacebook, label: "Facebook", href: "https://www.facebook.com/share/1B9tdjKp7e/" },
+    { Icon: IconBrandLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/akhandjyoti-foundation/" },
   ];
 
   const touchIcons = [
@@ -50,20 +58,20 @@ export default function Footer() {
                 Discover how Akhandjyoti Foundation is empowering women, strengthening communities, and creating sustainable social impact—and learn how you can become a part of this journey of change.
               </p>
             </div>
+             <Link className="flex gap-1" href={"/contact-us"}>
             <button className="bg-white text-gray-900 py-2.5 px-7 rounded-full text-base font-semibold inline-flex items-center gap-1 hover:bg-gray-100 transition-colors cursor-pointer">
-              <Link className="flex gap-1" href={"/contact-us"}>
               Contact us <IconChevronsRight size={20} stroke={2.5} />
-              </Link>
             </button>
+            </Link>
           </div>
 
           <div className="relative z-10 shrink-0">
+             <Link className="flex gap-1" href={"/donation"}>
             <button className="bg-white text-gray-900 py-2.5 px-7 rounded-full text-base font-semibold inline-flex items-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer">
-              <Link className="flex gap-1" href={"/donation"}>
                 <IconHeartFilled className="text-red-500 text-base" />
                 Donate Now
-              </Link>
             </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -82,7 +90,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-[#fff] text-base leading-relaxed">
-                We are a dedicated non-profit organization working towards skill development, education, and community empowerment across India.
+                We are a dedicated non-profit organization working towards skill development, education, Sports and community empowerment across India.
               </p>
 
               <div className="flex gap-2.5 pt-1">
@@ -91,6 +99,7 @@ export default function Footer() {
                     key={label}
                     href={href}
                     aria-label={label}
+                    target="_blank"
                     className="w-10 h-10 rounded-full bg-[#81BA45] flex items-center justify-center hover:bg-[#6fa336] transition-colors"
                   >
                     <Icon size={26} color="white" />
@@ -104,18 +113,18 @@ export default function Footer() {
                 <h3 className="text-white font-bold text-lg mb-5 tracking-wide ">
                   Quick Links
                 </h3>
-                <ul className="space-y-2 text-start">
-                  {quickLinks.map((link) =>
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="text-white text-center text-base hover:text-[#81BA45] transition-colors"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  )}
-                </ul>
+             <ul className="space-y-2 text-start">
+  {quickLinks.map((link) => (
+    <li key={link.name}>
+      <Link
+        href={link.href}
+        className="text-white text-base hover:text-[#81BA45] transition-colors"
+      >
+        {link.name}
+      </Link>
+    </li>
+  ))}
+</ul>
               </div>
             </div>
 
@@ -136,7 +145,7 @@ export default function Footer() {
 
                 <div className="flex gap-2 items-center">
                   <IconMail stroke={2} />
-                  <a href="#"
+                  <a href="mailto:akhandjyotifoundation@gmail.com"
                     className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
                     akhandjyotifoundation@gmail.com
@@ -145,7 +154,7 @@ export default function Footer() {
 
                 <div className="flex gap-2 items-center">
                   <IconPhoneCall stroke={2} />
-                  <a href="#"
+                  <a href="tel:+918800452255"
                     className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
                     8800452255
@@ -157,7 +166,7 @@ export default function Footer() {
 
           <div className="border-t border-[#fff]/40 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[13px] text-[#fff]/60">
             <span>
-              © {new Date().getFullYear()} Akhand Jyoti Foundation. All Rights Reserved.
+              © {new Date().getFullYear()} Akhandjyoti Foundation. All Rights Reserved.
             </span>
             <div className="flex gap-5">
               <a href="/privacy-policy" className="hover:text-gray-300 transition-colors">

@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className=" mt-2 w-full  mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,9 +16,11 @@ export default function HeroSection() {
             </p>
           </div>
 
-          <button className="bg-[#5a9e3a] text-white text-base font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e] transition-colors">
-            Become a Volunteer
-          </button>
+           <Link className="flex gap-1" href={"/contact-us"}>
+            <button className="bg-[#81ba45] text-white text-base font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e]  transition-colors cursor-pointer">
+              Become a Volunteer
+            </button>
+            </Link>
         </div>
       </div>
     </section>

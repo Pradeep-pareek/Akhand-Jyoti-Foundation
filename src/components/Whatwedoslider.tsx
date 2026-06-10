@@ -11,38 +11,45 @@ const whatWeDoData = [
     image: "/images/education-slider-img.png",
     title: "Education",
     description: "Unlocking Potential Through Learning",
-    link: "#",
+    link: "/our-programs",
   },
   {
     image: "/images/women-empowerment-what-we-do.png",
     title: "Women Empowerment",
     description: "Empowering Women, Transforming Communities",
-    link: "#",
+   link: "/our-programs",
   },
   {
     image: "/images/environment-what-we-do-img.png",
     title: "Environment",
     description: "Creating awareness for a cleaner and greener future.",
-    link: "#",
+    link: "/our-programs",
   },
   {
     image: "/images/healthcare-awareness-image.png",
     title: "Healthcare Awareness",
     description: "Promoting health, hygiene, and community wellness.",
-    link: "#",
+   link: "/our-programs",
   },
   {
     image: "/images/skill-development-image.png",
     title: "Skill Development",
     description: "Building practical skills for better career opportunities.",
-    link: "#",
+    link: "/our-programs",
+  },
+
+  {
+    image: "/images/sport-image-slide.png",
+    title: "Sport",
+    description: "Building confidence through sports",
+    link: "/our-programs",
   },
 
    {
     image: "/images/community-development-image.png",
     title: "Community Development",
     description: "Supporting sustainable growth and social impact.",
-    link: "#",
+    link: "/our-programs",
   },
 ];
 

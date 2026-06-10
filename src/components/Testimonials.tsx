@@ -119,13 +119,15 @@ export default function TestimonialsSlider() {
         </div>
         <div className="w-full md:w-[60%]">
           <div className="space-y-2">
-            <h2 className="text-start text-black lg:text-4xl md:text-3xl text-xl font-bold">Our Media Coverage</h2>
+            <h2 className="text-start text-black lg:text-4xl md:text-3xl text-xl font-bold">Testimonials</h2>
             <p className="text-start text-black text-sm md:text-base lg:text-lg">Explore how our work and impact have been recognized across various media platforms. From inspiring stories to meaningful achievements, discover how we are making a difference in communities nationwide.</p>
           </div>
           <StarRating rating={4.5} />
           <div className="flex items-center justify-between gap-4 mt-6">
             <button className="bg-[#81BA45] text-white px-6 py-2 rounded-full font-semibold cursor-pointer">
+              <a href="/donation">
               ❤️ Donate Now
+              </a>
             </button>
             <div className="flex gap-2">
               {testimonialsData.map((_, i) => (

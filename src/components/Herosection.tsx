@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 
 const SLIDES = [
   {
@@ -86,9 +87,11 @@ export default function HeroSection() {
             <p className="text-black text-sm md:text-base lg:text-base mt-3 mb-6 leading-relaxed lg:w-[60%]">
               {slide.description}
             </p>
+            <Link className="flex gap-1" href={"/contact-us"}>
             <button className="bg-[#81ba45] text-white text-base font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e]  transition-colors cursor-pointer">
               Become a Volunteer
             </button>
+            </Link>
             <div className="flex items-center gap-2 mt-6">
               {SLIDES.map((_, i) => (
                 <button
