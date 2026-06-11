@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000];
-const MIN_AMOUNT = 1;
-const MAX_AMOUNT = 20000;
+const MIN_AMOUNT = 101;
+const MAX_AMOUNT = 100000;
 
 function formatINR(amount: number) {
     return new Intl.NumberFormat("en-IN").format(amount);
@@ -32,9 +32,9 @@ export default function DonationCard() {
     const [payuParams, setPayuParams] = useState<Record<string, string> | null>(null);
     const [payuUrl, setPayuUrl] = useState("");
 
-    const sliderPercent = Math.round(
+    const sliderPercent = Math.min(100, Math.max(0, Math.round(
         ((selectedAmount - MIN_AMOUNT) / (MAX_AMOUNT - MIN_AMOUNT)) * 100
-    );
+    )));
 
     const handlePreset = (amount: number) => {
         setSelectedAmount(amount);
@@ -58,7 +58,7 @@ export default function DonationCard() {
         const raw = e.target.value.replace(/\D/g, "");
         setCustomInput(raw);
         const num = Number(raw);
-        if (num >= MIN_AMOUNT && num <= MAX_AMOUNT) {
+        if (num >= MIN_AMOUNT) {
             setSelectedAmount(num);
         }
     };
@@ -102,6 +102,16 @@ export default function DonationCard() {
             return;
         }
 
+        // Resolve final amount — custom input takes priority when valid
+        const effectiveAmount = isCustom && customInput && Number(customInput) >= MIN_AMOUNT
+            ? Number(customInput)
+            : selectedAmount;
+
+        if (!effectiveAmount || effectiveAmount < MIN_AMOUNT) {
+            setError(`Please enter a donation amount of at least ₹${formatINR(MIN_AMOUNT)}.`);
+            return;
+        }
+
         setIsLoading(true);
         setError("");
 
@@ -115,7 +125,7 @@ export default function DonationCard() {
                     email: formData.email.trim(),
                     pan: formData.pan.trim(),
                     city: formData.city.trim(),
-                    amount: selectedAmount.toString(),
+                    amount: effectiveAmount.toString(),
                 }),
             });
 
@@ -255,7 +265,7 @@ export default function DonationCard() {
                             </div>
                             <div
                                 className="absolute flex items-center justify-center pointer-events-none"
-                                style={{ left: `calc(${sliderPercent}% - 14px)`, zIndex: 10 }}
+                                style={{ left: `clamp(0px, calc(${sliderPercent}% - 11px), calc(100% - 22px))`, zIndex: 10 }}
                             >
                                 <span className="text-[22px]">❤️</span>
                             </div>
@@ -324,7 +334,7 @@ export default function DonationCard() {
                                     Processing...
                                 </span>
                             ) : (
-                                `Donate ₹${formatINR(selectedAmount)}`
+                                `Donate ₹${formatINR(isCustom && customInput && Number(customInput) >= MIN_AMOUNT ? Number(customInput) : selectedAmount)}`
                             )}
                         </button>
                     </div>

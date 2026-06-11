@@ -24,7 +24,7 @@ export default function NewsSection() {
           setNewsData(json.data);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   useEffect(() => {
@@ -48,8 +48,9 @@ export default function NewsSection() {
           <Image
             src={current.image}
             alt={current.title}
-            fill
-            className="object-contain transition-all duration-700"
+            width={600}
+            height={400}
+            className="w-full h-full object-cover transition-all duration-700"
           />
         </div>
         <div className="flex flex-col justify-between h-full">
@@ -75,11 +76,8 @@ export default function NewsSection() {
                   <button
                     key={i}
                     onClick={() => setActiveIndex(i)}
-                    className={`h-2 rounded-full transition-all duration-500 ${
-                      activeIndex === i
-                        ? "w-8 bg-[#81BA45]"
-                        : "w-2 bg-gray-300"
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-500 ${activeIndex === i ? "w-8 bg-[#81BA45]" : "w-2 bg-gray-300"
+                      }`}
                   />
                 ))}
               </div>
