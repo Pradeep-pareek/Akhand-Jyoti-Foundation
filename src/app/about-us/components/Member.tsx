@@ -6,17 +6,17 @@ const boardMembers = [
   {
     name: "Saikat Mukherjee",
     role: "Founder & Chairman",
-    image: "/images/director-image-11.png",
+    image: "/images/saikat-mukherjee-image-01.png",
   },
   {
     name: "Varun Jalota",
     role: "Founder & Chairman",
-    image: "/images/director-image-22.png",
+    image: "/images/varun-jalota-image01.png",
   },
   {
     name: "Mousumi Mukherjee",
     role: "Founder & Chairman",
-    image: "/images/director-image-33.png",
+    image: "/images/mousumi-mukherjee-image-member.png",
   },
  
 ];
@@ -38,22 +38,21 @@ export default function BoardMembers() {
           {boardMembers.map((member) => (
             <div
               key={member.name}
-              className="bg-white rounded-[18px] shadow-2xl mt-16  flex flex-col items-center pb-6">
-              <div className="relative w-full h-[230px] flex justify-center">
+              className="bg-white rounded-[18px] shadow-2xl mt-16  flex flex-col items-center ">
+              <div className="">
                 <Image
                   src={member.image}
                   alt={member.name}
                   width={200}
                   height={230}
-                  className=" absolute z-[9] bottom-[10px]"
+                  className="w-full h-full rounded-[18px] p-2"
                 />
-                <div className="absolute inset-[10px] bg-[#81BA45] rounded-lg pointer-events-none" />
               </div>
-              <div className="w-4/5 h-px bg-gray-200 my-3" />
-              <p className="font-playfair text-[17px] font-bold text-gray-900 text-center leading-snug mb-1">
+              <div className="w-4/5 h-px bg-gray-200" />
+              <p className="font-playfair text-[20px] font-bold text-gray-900 text-center leading-snug pt-2 mb-1">
                 {member.name}
               </p>
-              <p className="text-[16px] font-medium text-gray-400 text-center">
+              <p className="text-[16px] font-medium text-gray-400 text-center pb-4">
                 {member.role}
               </p>
             </div>

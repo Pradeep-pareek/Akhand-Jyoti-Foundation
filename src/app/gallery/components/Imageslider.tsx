@@ -3,17 +3,17 @@ import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
 const slides = [
-    { src: "/images/gallery-img1.png", alt: "Sports program with girls and coach" },
-    { src: "/images/gallery-img2.png", alt: "Digital Champions closing ceremony" },
-    { src: "/images/gallery-img1.png", alt: "Sports program with girls and coach" },
-    { src: "/images/gallery-img2.png", alt: "Health awareness interactive session" },
-    { src: "/images/gallery-img1.png", alt: "Sports program with girls and coach" },
-    { src: "/images/gallery-img2.png", alt: "Award ceremony with foundation" },
+    { src: "/images/health-gallery-image01.png", alt: "Sports program with girls and coach" },
+    { src: "/images/galery-image-hero02.png", alt: "Digital Champions closing ceremony" },
+    { src: "/images/girl-player-hero-image03.png", alt: "Sports program with girls and coach" },
+    { src: "/images/empowering-girl-child-image.png", alt: "Health awareness interactive session" },
+    { src: "/images/empowering-student-image-hero.png", alt: "Sports program with girls and coach" },
+    { src: "/images/work-women-image-image.png", alt: "Award ceremony with foundation" },
     { src: "/images/gallery-img1.png", alt: "Sports program with girls and coach" },
 ];
 
 const VISIBLE_COUNT = 7;
-const CENTER_INDEX = 3; 
+const CENTER_INDEX = 3;
 
 type SlideConfig = {
     offset: number;
@@ -28,10 +28,10 @@ function getSlideConfig(relIndex: number): SlideConfig {
         { offset: -290, scale: 0.50, zIndex: 1, opacity: 0.35, rotateY: 50 },  // -3
         { offset: -195, scale: 0.63, zIndex: 2, opacity: 0.52, rotateY: 33 },  // -2
         { offset: -105, scale: 0.78, zIndex: 3, opacity: 0.72, rotateY: 18 },  // -1
-        { offset: 0,    scale: 1.00, zIndex: 6, opacity: 1.00, rotateY: 0  },  //  0 center
-        { offset: 105,  scale: 0.78, zIndex: 3, opacity: 0.72, rotateY: -18 }, // +1
-        { offset: 195,  scale: 0.63, zIndex: 2, opacity: 0.52, rotateY: -33 }, // +2
-        { offset: 290,  scale: 0.50, zIndex: 1, opacity: 0.35, rotateY: -50 }, // +3
+        { offset: 0, scale: 1.00, zIndex: 6, opacity: 1.00, rotateY: 0 },  //  0 center
+        { offset: 105, scale: 0.78, zIndex: 3, opacity: 0.72, rotateY: -18 }, // +1
+        { offset: 195, scale: 0.63, zIndex: 2, opacity: 0.52, rotateY: -33 }, // +2
+        { offset: 290, scale: 0.50, zIndex: 1, opacity: 0.35, rotateY: -50 }, // +3
     ];
     return configs[relIndex] ?? { offset: 0, scale: 0, zIndex: 0, opacity: 0, rotateY: 0 };
 }
@@ -125,9 +125,12 @@ export default function ImageCarousel() {
                                 src={slide.src}
                                 alt={slide.alt}
                                 fill
-                                sizes="160px"
-                                style={{ objectFit: "cover" }}
+                                quality={100}
                                 priority={isCenter}
+                                unoptimized
+                                style={{
+                                    objectFit: "cover",
+                                }}
                             />
                         </div>
                     );

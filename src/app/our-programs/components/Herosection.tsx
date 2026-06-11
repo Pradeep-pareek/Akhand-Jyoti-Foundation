@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
+
 export default function HeroSection() {
   return (
     <section className="w-full mx-auto px-4 sm:px-6 lg:px-8 mt-2">
@@ -24,9 +26,11 @@ export default function HeroSection() {
           <p className="text-gray-700 text-sm md:text-base lg:text-lg mb-6 lg:w-[80%]">
            From women empowerment and education to skill development, healthcare, and sustainable livelihood initiatives, Akhandjyoti Foundation creates programs that uplift communities, create opportunities, and drive lasting social impact across India.
           </p>
-          <button className="bg-[#5a9e3a] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e] transition-colors">
-            Explore Our Impact
-          </button>
+           <Link className="flex gap-1" href={"/contact-us"}>
+            <button className="bg-[#81ba45] text-white text-base font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e]  transition-colors cursor-pointer">
+              Explore Our Impact
+            </button>
+            </Link>
 
         </div>
         </div>
