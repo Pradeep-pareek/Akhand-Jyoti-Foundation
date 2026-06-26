@@ -158,7 +158,7 @@ const Header = () => {
             ) : (
               <>
                 <Link href="/admin/gallery" className={adminMobileLinkClass("/admin/gallery")} onClick={closeMenu}>Gallery Admin</Link>
-                <Link href="/admin/gallery" className={adminMobileLinkClass("/admin/financials")} onClick={closeMenu}>Financials</Link>
+                <Link href="/admin/financials" className={adminMobileLinkClass("/admin/financials")} onClick={closeMenu}>Financials</Link>
                 <Link href="/admin/Impactnumbers" className={adminMobileLinkClass("/admin/Impactnumbers")} onClick={closeMenu}>Impact Numbers</Link>
                 <Link href="/admin/our-programs" className={adminMobileLinkClass("/admin/our-programs")} onClick={closeMenu}>Our Programs</Link>
                 <Link href="/admin/contact-us" className={adminMobileLinkClass("/admin/contact-us")} onClick={closeMenu}>Contact Us</Link>
