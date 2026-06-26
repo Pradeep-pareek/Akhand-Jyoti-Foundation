@@ -32,13 +32,11 @@ const Header = () => {
   };
 
   const adminLinkClass = (href: string) =>
-    `text-base font-medium transition-colors ${
-      pathname === href ? "text-[#81BA45]" : "text-[#111] hover:text-[#81BA45]"
+    `text-base font-medium transition-colors ${pathname === href ? "text-[#81BA45]" : "text-[#111] hover:text-[#81BA45]"
     }`;
 
   const adminMobileLinkClass = (href: string) =>
-    `block font-medium transition-colors ${
-      pathname === href ? "text-[#81BA45]" : "text-gray-700 hover:text-[#81BA45]"
+    `block font-medium transition-colors ${pathname === href ? "text-[#81BA45]" : "text-gray-700 hover:text-[#81BA45]"
     }`;
 
   const isReceiptRoute = pathname.startsWith("/receipt/");
@@ -78,10 +76,14 @@ const Header = () => {
                   <Link href="/contact-us" className={`text-base font-medium ${pathname === "/contact-us" ? "text-[#81BA45]" : "text-[#000]"}`}>
                     Contact Us
                   </Link>
+                  <Link href="/financials" className={`text-base font-medium ${pathname === "/financials" ? "text-[#81BA45]" : "text-[#000]"}`}>
+                    Our Financials
+                  </Link>
                 </>
               ) : (
                 <>
                   <Link href="/admin/gallery" className={adminLinkClass("/admin/gallery")}>Gallery Admin</Link>
+                  <Link href="/admin/financials" className={adminLinkClass("/admin/financials")}>Financials</Link>
                   <Link href="/admin/Impactnumbers" className={adminLinkClass("/admin/Impactnumbers")}>Impact Numbers</Link>
                   <Link href="/admin/our-programs" className={adminLinkClass("/admin/our-programs")}>Our Programs</Link>
                   <Link href="/admin/contact-us" className={adminLinkClass("/admin/contact-us")}>Contact Us</Link>
@@ -126,9 +128,8 @@ const Header = () => {
 
         {/* Mobile Sidebar */}
         <aside
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-            isOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex justify-end px-4 py-4">
             <button onClick={closeMenu} className="text-gray-700 hover:text-[#f70d28]">
@@ -144,6 +145,7 @@ const Header = () => {
                 <Link href="/our-programs" className="block text-gray-700" onClick={closeMenu}>Our Programs</Link>
                 <Link href="/gallery" className="block text-gray-700" onClick={closeMenu}>Gallery</Link>
                 <Link href="/contact-us" className="block text-gray-700" onClick={closeMenu}>Contact Us</Link>
+                <Link href="/financials" className="block text-gray-700" onClick={closeMenu}>Our Financials</Link>
                 <Link
                   href="/donation"
                   onClick={closeMenu}
@@ -156,6 +158,7 @@ const Header = () => {
             ) : (
               <>
                 <Link href="/admin/gallery" className={adminMobileLinkClass("/admin/gallery")} onClick={closeMenu}>Gallery Admin</Link>
+                <Link href="/admin/gallery" className={adminMobileLinkClass("/admin/financials")} onClick={closeMenu}>Financials</Link>
                 <Link href="/admin/Impactnumbers" className={adminMobileLinkClass("/admin/Impactnumbers")} onClick={closeMenu}>Impact Numbers</Link>
                 <Link href="/admin/our-programs" className={adminMobileLinkClass("/admin/our-programs")} onClick={closeMenu}>Our Programs</Link>
                 <Link href="/admin/contact-us" className={adminMobileLinkClass("/admin/contact-us")} onClick={closeMenu}>Contact Us</Link>

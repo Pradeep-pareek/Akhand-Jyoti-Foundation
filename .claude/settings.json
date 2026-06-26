@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:\\\\Users\\\\mohit\\\\Desktop\\\\Akhand-Jyoti-Foundation\\\\src\\\\app\\\\api\\\\admin\\\\medianews\\\\[id]\" 2>/dev/null; echo done)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\mohit\\Desktop\\Akhand-Jyoti-Foundation\\src\\app\\api\\admin\\medianews"
+    ]
+  }
+}
