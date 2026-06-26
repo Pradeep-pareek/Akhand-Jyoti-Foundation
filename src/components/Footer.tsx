@@ -55,7 +55,7 @@ export default function Footer() {
                 Want to Know More?
               </h2>
               <p className="text-[#fff] text-sm md:text-base  max-w-lg leading-relaxed">
-                Discover how Akhandjyoti Foundation is empowering women, strengthening communities, and creating sustainable social impact—and learn how you can become a part of this journey of change.
+                Discover how AkhandJyoti Foundation is empowering women, strengthening communities, and creating sustainable social impact—and learn how you can become a part of this journey of change.
               </p>
             </div>
              <Link className="flex gap-1" href={"/contact-us"}>
@@ -145,10 +145,10 @@ export default function Footer() {
 
                 <div className="flex gap-2 items-center">
                   <IconMail stroke={2} />
-                  <a href="mailto:akhandjyotifoundation@gmail.com"
+                  <a href="mailto:info@akhandjyotifoundation.org"
                     className="text-white text-base hover:text-[#81BA45] transition-colors"
                   >
-                    akhandjyotifoundation@gmail.com
+                    info@akhandjyotifoundation.org
                   </a>
                 </div>
 
@@ -166,7 +166,7 @@ export default function Footer() {
 
           <div className="border-t border-[#fff]/40 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[13px] text-[#fff]/60">
             <span>
-              © {new Date().getFullYear()} Akhandjyoti Foundation. All Rights Reserved.
+              © {new Date().getFullYear()} AkhandJyoti Foundation. All Rights Reserved.
             </span>
             <div className="flex gap-5">
               <a href="/privacy-policy" className="hover:text-gray-300 transition-colors">

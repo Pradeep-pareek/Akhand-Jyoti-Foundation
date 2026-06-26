@@ -10,7 +10,7 @@ const SLIDES = [
      badge: "Empowering Women, ",
     title: "Transforming Communities",
     description:
-    "Akhandjyoti Foundation empowers women and youth through skill development, vocational training, and entrepreneurship support to create sustainable livelihoods and economic independence.",
+    "AkhandJyoti Foundation empowers women and youth through skill development, vocational training, and entrepreneurship support to create sustainable livelihoods and economic independence.",
     heroBg: "/images/home-page-hero-slide-01.png",
     //  personImg: "/images/home-page-hero-slide-01.png",
   },

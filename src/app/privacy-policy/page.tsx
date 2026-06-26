@@ -293,7 +293,7 @@ export default function Home() {
                     </p>
 
                     <p className="text-gray-700 mb-4">
-                        akhandjyotifoundation@gmail.com
+                        info@akhandjyotifoundation.org
                     </p>
 
                     <p className="text-gray-700 mb-2">

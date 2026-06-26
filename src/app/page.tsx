@@ -132,7 +132,7 @@ export default function Home() {
         <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-1">
             <h2 className="text-center text-white lg:text-4xl md:text-3xl text-xl font-bold lg:w-[60%] mx-auto">Our Media Coverage</h2>
-            <p className="text-center text-white text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Discover how Akhandjyoti Foundation’s work in women empowerment, education, and community development is being recognized across leading media platforms—sharing stories of impact, inspiration, and positive change across communities in India.</p>
+            <p className="text-center text-white text-sm md:text-base lg:text-lg lg:w-[60%] mx-auto">Discover how AkhandJyoti Foundation’s work in women empowerment, education, and community development is being recognized across leading media platforms—sharing stories of impact, inspiration, and positive change across communities in India.</p>
           </div>
           <Medianews />
         </div>

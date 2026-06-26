@@ -188,7 +188,7 @@ export default function Financialstab() {
             <OrgIcon />
             <div>
               <h2 className="text-xl font-bold text-[#0F2419] leading-tight">
-                Akhandjyoti Foundation
+                AkhandJyoti Foundation
               </h2>
               <p className="text-xs text-[#8AA894] mt-0.5 font-medium tracking-wide">
                 Section 8 Company · Non-Profit

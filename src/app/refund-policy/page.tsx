@@ -78,7 +78,7 @@ export default function Home() {
             </p>
 
             <p>
-                Email:&nbsp;akhandjyotifoundation@gmail.com
+                Email:&nbsp;info@akhandjyotifoundation.org
             </p>
 
             <p>

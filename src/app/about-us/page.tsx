@@ -32,7 +32,7 @@ export default function Home() {
                                 </h2>
                                 <div>
                                     <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed">
-                                        At Akhandjyoti Foundation, we empower women, youth, and underserved communities through skill development, education, entrepreneurship, and sustainable livelihood programs. By combining grassroots outreach with professional expertise, we create meaningful opportunities that foster self-reliance, dignity, and long-term community development across India.
+                                        At AkhandJyoti Foundation, we empower women, youth, and underserved communities through skill development, education, entrepreneurship, and sustainable livelihood programs. By combining grassroots outreach with professional expertise, we create meaningful opportunities that foster self-reliance, dignity, and long-term community development across India.
                                     </p>
                                     <p className="text-black text-sm md:text-base lg:text-lg leading-relaxed mt-2">
                                         We believe in creating equal opportunities through education, skill development, and community support — helping individuals build a brighter and self-reliant future.
@@ -74,7 +74,7 @@ export default function Home() {
                             />
                         </div>
                         <div>
-                            <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">Akhandjyoti Foundation is committed to creating meaningful change through women empowerment, skill development, education, and sustainable livelihood initiatives. With deep grassroots engagement and strategic partnerships, we help underserved communities gain access to opportunities that foster self-reliance, economic independence, and long-term social transformation. Our mission is to build stronger communities by empowering individuals with the skills, support, and confidence to create a better future.</p>
+                            <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">AkhandJyoti Foundation is committed to creating meaningful change through women empowerment, skill development, education, and sustainable livelihood initiatives. With deep grassroots engagement and strategic partnerships, we help underserved communities gain access to opportunities that foster self-reliance, economic independence, and long-term social transformation. Our mission is to build stronger communities by empowering individuals with the skills, support, and confidence to create a better future.</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12 mt-5">
                                 <div className="flex items-center gap-2">
                                     <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shrink-0">
@@ -175,7 +175,7 @@ export default function Home() {
                         </div>
                         <div className="lg:w-[50%] bg-white rounded-[12px] px-6 py-6 space-y-2 chairman-details">
                             <p className="text-black text-base">
-                                At Akhandjyoti Foundation, we believe that real change begins when people are empowered with opportunities, support, and hope. Our mission is to uplift women, youth, and underserved communities through initiatives focused on education, skill development, social welfare, and sustainable growth. By fostering confidence, self-reliance, and inclusion, we aim to create stronger communities and a brighter future where every individual has the chance to grow with dignity and purpose.
+                                At AkhandJyoti Foundation, we believe that real change begins when people are empowered with opportunities, support, and hope. Our mission is to uplift women, youth, and underserved communities through initiatives focused on education, skill development, social welfare, and sustainable growth. By fostering confidence, self-reliance, and inclusion, we aim to create stronger communities and a brighter future where every individual has the chance to grow with dignity and purpose.
                             </p>
                             <div className="flex justify-between items-center ">
                                 <div>

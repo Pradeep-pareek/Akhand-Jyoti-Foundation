@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className="lg:mx-5 xl:mx-10 2xl:mx-0 mt-2 pb-10">
@@ -23,9 +24,9 @@ export default function HeroSection() {
           <p className="text-gray-700 text-sm md:text-base lg:text-lg mb-6 w-[60%]">
             Transparent reporting across all our entities — building trust through accountability and open governance.
           </p>
-          <button className="bg-[#81BA45] text-white text-lg px-8 py-2 rounded-full hover:bg-[#4a8a2e] transition-colors cursor-pointer">
+          <Link href={"/contact-us"} className="bg-[#81BA45] text-white text-lg px-8 py-2 rounded-full hover:bg-[#4a8a2e] transition-colors cursor-pointer">
             Contact us
-          </button>
+          </Link>
 
         </div>
       </div>

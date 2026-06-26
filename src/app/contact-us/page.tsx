@@ -185,9 +185,9 @@ export default function Home() {
                                         <p className="text-[#000]/70 text-base">Our friendly team is here to help.</p>
                                     </div>
                                     <a
-                                        href="mailto:akhandjyotifoundation@gmail.com"
+                                        href="mailto:info@akhandjyotifoundation.org"
                                         className="text-[#81BA45] text-base font-medium hover:underline break-all">
-                                        akhandjyotifoundation@gmail.com
+                                        info@akhandjyotifoundation.org
                                     </a>
                                 </div>
                                 <div className="flex flex-col gap-2">

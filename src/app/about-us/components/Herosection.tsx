@@ -12,7 +12,7 @@ export default function HeroSection() {
               Empowering Lives. Strengthening Communities. Creating Lasting Change.
             </h1>
             <p className="text-gray-700 text-sm md:text-base lg:text-lg mb-4 lg:w-[80%]">
-              With a strong grassroots presence and strategic partnerships, Akhandjyoti Foundation works across women empowerment, skill development, education, and community development to build self-reliant communities and a more inclusive future.
+              With a strong grassroots presence and strategic partnerships, AkhandJyoti Foundation works across women empowerment, skill development, education, and community development to build self-reliant communities and a more inclusive future.
             </p>
           </div>
 

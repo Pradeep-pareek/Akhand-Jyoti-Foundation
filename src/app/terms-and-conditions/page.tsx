@@ -307,7 +307,7 @@ export default function Home() {
 
                 <p>
                     Email:
-                    akhandjyotifoundation@gmail.com
+                    info@akhandjyotifoundation.org
                 </p>
 
                 <p>

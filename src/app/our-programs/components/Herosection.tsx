@@ -24,7 +24,7 @@ export default function HeroSection() {
              <span className="text-[#81BA45]">Empowering Lives</span>Through Meaningful Programs
           </h1>
           <p className="text-gray-700 text-sm md:text-base lg:text-lg mb-6 lg:w-[80%]">
-           From women empowerment and education to skill development, healthcare, and sustainable livelihood initiatives, Akhandjyoti Foundation creates programs that uplift communities, create opportunities, and drive lasting social impact across India.
+           From women empowerment and education to skill development, healthcare, and sustainable livelihood initiatives, AkhandJyoti Foundation creates programs that uplift communities, create opportunities, and drive lasting social impact across India.
           </p>
            <Link className="flex gap-1" href={"/contact-us"}>
             <button className="bg-[#81ba45] text-white text-base font-semibold px-6 py-2.5 rounded-full hover:bg-[#4a8a2e]  transition-colors cursor-pointer">
