@@ -12,7 +12,7 @@ const testimonialsData = [
   },
   {
     id: 2,
-    text: "Akhand Jyoti Foundation is doing incredible work at the grassroots level. Their dedication towards skill development and community growth is truly inspiring.",
+    text: "AkhandJyoti Foundation is doing incredible work at the grassroots level. Their dedication towards skill development and community growth is truly inspiring.",
     rating: 4.5,
     name: "Rahul Sharma",
     role: "Community Partner",
@@ -26,7 +26,7 @@ const testimonialsData = [
   },
   {
     id: 4,
-    text: "Supporting Akhand Jyoti Foundation has been one of the most fulfilling decisions. Their transparent use of donations and ground impact is remarkable.",
+    text: "Supporting AkhandJyoti Foundation has been one of the most fulfilling decisions. Their transparent use of donations and ground impact is remarkable.",
     rating: 5,
     name: "Anjali Mehta",
     role: "Donor",

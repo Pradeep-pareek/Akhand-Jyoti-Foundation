@@ -10,12 +10,12 @@ const boardMembers = [
   },
   {
     name: "Varun Jalota",
-    role: "Founder & Chairman",
+    role: "Director",
     image: "/images/varun-jalota-image01.png",
   },
   {
     name: "Mousumi Mukherjee",
-    role: "Founder & Chairman",
+    role: "Director",
     image: "/images/mousumi-mukherjee-image-member.png",
   },
  
